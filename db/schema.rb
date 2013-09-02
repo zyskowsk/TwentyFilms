@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902164729) do
+ActiveRecord::Schema.define(:version => 20130902235102) do
+
+  create_table "film_choices", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "film_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "film_choices", ["film_id"], :name => "index_film_choices_on_film_id"
+  add_index "film_choices", ["user_id"], :name => "index_film_choices_on_user_id"
+
+  create_table "films", :force => true do |t|
+    t.string   "title",        :null => false
+    t.integer  "release_year", :null => false
+    t.string   "director",     :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name",            :null => false

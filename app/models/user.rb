@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
   before_create :encrypt_password
   after_initialize :ensure_session_token
 
+  has_many :films, :through => :film_choices
+  has_many(
+    :film_choices,
+    :class_name => "FilmChoice",
+    :foreign_id => :film_id
+  )
+
+
   def self.find_by_credentials(login, password)
     user = User.find_by_username(login)
     user ||= User.find_by_email(login)
