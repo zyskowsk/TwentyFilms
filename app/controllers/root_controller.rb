@@ -1,11 +1,11 @@
-class RootController < ActionController::Base
+class RootController < ApplicationController
 
-  def welcome_root
-    render :welcome_root
-  end
-
-  def authenticated_root
-
+  def root
+    if logged_in?
+      render :authenticated_root 
+    else 
+      render :welcome_root 
+    end
   end
 
 end

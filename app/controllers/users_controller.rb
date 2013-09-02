@@ -1,14 +1,14 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
 
     if @user.save
       login!(@user)
-
-      render :authenticated_root
+      redirect_to root_url
     else
-      render :welcome_root
+      now_notices.push(*@user.errors.full_messages)
+      render 'root/welcome_root'
     end
   end
 

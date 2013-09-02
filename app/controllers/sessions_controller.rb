@@ -1,4 +1,4 @@
-class SessionsController < ActionController::Base
+class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(
@@ -7,15 +7,18 @@ class SessionsController < ActionController::Base
     )
 
     if @user
-      login!(user)
+      login!(@user)
 
-      render :authenticated_root
+      redirect_to root_url
     else
-      render :welcome_root
+      now_notices << "Incorrect login or password"
+      render 'root/welcome_root'
     end
   end
 
   def destroy
     logout!(current_user)
+
+    redirect_to root_url
   end
 end

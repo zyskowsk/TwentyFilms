@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<% if flash[:notices] %>
+  <% flash[:notices].each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<% if logged_in? %>
+  <%= button_to 'logout', session_url, :method => :delete %>
+<% end %>
+
 <%= yield %>
 
 </body>
