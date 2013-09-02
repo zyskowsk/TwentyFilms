@@ -4,7 +4,7 @@ class UsersController < ActionController::Base
     @user = User.new(params[:user])
 
     if @user.save
-      login(@user)
+      login!(@user)
 
       render :authenticated_root
     else
