@@ -3,8 +3,7 @@ window.TwentyFilms =
   Collections: {}
   Views: {}
   Routers: {}
-  Store: {}
-  initialize: -> alert "welcome to backbone"
+  initialize: -> alert 'Hello from Backbone!'
 
 $(document).ready ->
   TwentyFilms.initialize()
