@@ -1,8 +1,12 @@
 class TwentyFilms.Routers.Router extends Backbone.Router
 
-  constructor: ($list, films) ->
+  initialize: ($list, films) ->
+    @$list = $list
+    @films = films
 
   routes:
-    "/": 'home'
+    "": 'home'
 
-  home: -> #TODO: write
+  home: -> 
+    listView = new TwentyFilms.Views.List(collection: @films)
+    @$list.html listView.render().$el

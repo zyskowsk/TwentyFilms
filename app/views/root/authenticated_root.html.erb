@@ -1,5 +1,8 @@
 <%= current_user.name %>
 
-<script type="application/json" id="bootstrapped_current_user">
-  <%= render('root/launch.json.rabl', :locals => { :current_user => @current_user }) %>
+<div id="film-list">
+</div>
+
+<script type="application/json" id="current_user_bs">
+  <%= render('root/launch.json.rabl', :locals => { :current_user => @current_user }).html_safe %>
 </script>
