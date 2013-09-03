@@ -1,5 +1,9 @@
 class TwentyFilms.Views.List extends Backbone.View
-  template: JST['list']
+
+  initialize: ->
+    @listenTo(@collection, 'change', @render)
+
+  template: JST['list/list']
 
   render: ->
     @$el.html @template()

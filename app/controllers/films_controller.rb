@@ -1,13 +1,18 @@
-class FlimsController < ApplicationController
+class FilmsController < ApplicationController
 
   def create
-    @film = Film.new(params[:film])
+    @film = Film.find_by_title(params[:film][:title])
 
-    if @film.save
-      render :json => @film, :status => 200
-    else
-      render :json => @film.errors, :status => 422
-    end
+     if @film
+      FilmChoice.create(
+        :film_id => @film.id, 
+        :user_id => current_user.id
+      )
+     else
+     end
+
+
+    render :json => @film
   end
 
 end

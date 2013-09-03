@@ -1,12 +1,16 @@
 class TwentyFilms.Routers.Router extends Backbone.Router
 
-  initialize: ($list, films) ->
-    @$list = $list
+  initialize: ($filmList, $filmForm, films) ->
+    @$list = $filmList
+    @$form = $filmForm
     @films = films
 
   routes:
-    "": 'home'
+    '': 'home'
 
   home: -> 
+    formView = new TwentyFilms.Views.ListNew()
     listView = new TwentyFilms.Views.List(collection: @films)
+    console.log("hi")
     @$list.html listView.render().$el
+    @$form.html formView.render().$el

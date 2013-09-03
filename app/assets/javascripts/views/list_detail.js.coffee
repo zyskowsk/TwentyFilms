@@ -1,6 +1,6 @@
 class TwentyFilms.Views.ListDetail extends Backbone.View
   tagName = 'li'
-  template: JST['list_detail']
+  template: JST['list/detail']
 
   render: ->
     @$el.html @template(film: @model)
