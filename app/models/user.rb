@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many(
     :film_choices,
     :class_name => "FilmChoice",
-    :foreign_id => :film_id
+    :foreign_key => :film_id
   )
 
 

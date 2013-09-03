@@ -1,1 +1,5 @@
 <%= current_user.name %>
+
+<script type="application/json" id="bootstrapped_current_user">
+  <%= render('root/launch.json.rabl', :locals => { :current_user => @current_user }) %>
+</script>

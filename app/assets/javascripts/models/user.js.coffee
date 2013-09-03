@@ -1,0 +1,1 @@
+class TwentyFilms.Models.User extends Backbone.Model
