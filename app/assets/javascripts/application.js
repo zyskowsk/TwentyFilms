@@ -3,7 +3,7 @@
 //= require underscore
 //= require backbone
 //= require twenty_films
-//= require sortable
+//= require jquery.ui.all
 //= require serializeJSON
 //= require_tree ../templates
 //= require_tree ./models

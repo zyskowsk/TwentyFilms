@@ -25,6 +25,4 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
     @currentFilms.create film,
       success: ->
         $('#results').html('')
-        $(document).ready ->
-          $( ".sortable" ).sortable()
       

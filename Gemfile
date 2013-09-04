@@ -8,6 +8,7 @@ gem 'rabl'
 gem 'bcrypt-ruby'
 gem 'addressable'
 gem 'rest-client'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'better_errors'

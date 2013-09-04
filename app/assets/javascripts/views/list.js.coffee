@@ -2,6 +2,10 @@ class TwentyFilms.Views.List extends Backbone.View
 
   initialize: ->
     @listenTo(@collection, 'change', @render)
+    @editing = false
+
+  events: 
+    'click #edit': 'toggleEditView'
 
   template: JST['list/list']
 
@@ -14,4 +18,12 @@ class TwentyFilms.Views.List extends Backbone.View
 
   addDetail: (film) ->
     detail = new TwentyFilms.Views.ListDetail(model: film)
-    @$el.find('#film-list').append detail.render().$el
+    @$el.find('#list').append detail.render().$el
+
+  toggleEditView: ->
+    @editing = !@editing
+
+    if @editing
+      $( ".sortable" ).sortable()
+    else
+      $( ".sortable" ).sortable( "destroy" );

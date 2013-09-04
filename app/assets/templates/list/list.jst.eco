@@ -1,5 +1,7 @@
 <h1> List </h1>
 
-<ul id="film-list" class='sortable'>
+<ul id="list" class='sortable'>
 
 </ul>
+
+<button id="edit"> edit your list </button>

@@ -73,7 +73,6 @@ class TwentyFilms.Views.Search extends Backbone.View
             film = new TwentyFilms.Models.Film(result) 
             @currentResults.push(film) unless @isDuplicate(film)
         $('#results').html('')
-        console.log(data)
         @handleResults(data)
 
   sendDbRequest: (event, successCallback) ->
@@ -88,5 +87,4 @@ class TwentyFilms.Views.Search extends Backbone.View
           film = new TwentyFilms.Models.Film(result) 
           @currentResults.push(film)
         successCallback()
-        console.log('hello')
 

@@ -17,4 +17,3 @@ window.TwentyFilms =
 
 $(document).ready ->
   TwentyFilms.initialize()
-  $( ".sortable" ).sortable()
