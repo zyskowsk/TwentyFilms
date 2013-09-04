@@ -7,8 +7,8 @@ class TwentyFilms.Views.Search extends Backbone.View
   template: JST['search/search']
 
   events: 
-    'keyup': 'findFilm'
     'submit': 'preventDefault'
+    "keyup": 'findFilm'
 
   render: ->
     @$el.html @template()
@@ -59,7 +59,6 @@ class TwentyFilms.Views.Search extends Backbone.View
     else if @currentResults.length == 0
       @appendNoResults()
 
-
   sendApiRequest: (event) ->
     data = $('#new-film-form').serializeJSON().film.title
     $.ajax
@@ -77,6 +76,7 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   sendDbRequest: (event, successCallback) ->
     data = $('#new-film-form').serializeJSON().film.title
+    $('#results').html('') if data == ''
     $.ajax
       type: 'GET'
       url: "/films"
@@ -87,4 +87,3 @@ class TwentyFilms.Views.Search extends Backbone.View
           film = new TwentyFilms.Models.Film(result) 
           @currentResults.push(film)
         successCallback()
-
