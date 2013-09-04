@@ -1,0 +1,4 @@
+<%= @film.get('title') %>
+<%= @film.get('director') %>
+<%= @film.get('release_year') %>
+<a class="delete">×</a>
