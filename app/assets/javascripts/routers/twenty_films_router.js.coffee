@@ -1,8 +1,8 @@
 class TwentyFilms.Routers.Router extends Backbone.Router
 
-  initialize: ($filmList, $filmForm, films) ->
+  initialize: ($filmList, $search, films) ->
     @$list = $filmList
-    @$form = $filmForm
+    @$search = $search
     @films = films
 
   routes:
@@ -13,4 +13,4 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     listView = new TwentyFilms.Views.List(collection: @films)
     console.log("hi")
     @$list.html listView.render().$el
-    @$form.html searchView.render().$el
+    @$search.html searchView.render().$el

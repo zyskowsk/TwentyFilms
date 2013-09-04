@@ -9,10 +9,10 @@ window.TwentyFilms =
     currentUser = new TwentyFilms.Models.User(data, {parse: true})
     TwentyFilms.Store.currentUser = currentUser
     $filmList = $('#film-list')
-    $filmForm = $('#film-form')
+    $search = $('#search')
     films = currentUser.get('films')
 
-    new TwentyFilms.Routers.Router($filmList, $filmForm, films)
+    new TwentyFilms.Routers.Router($filmList, $search, films)
     Backbone.history.start()
 
 $(document).ready ->
