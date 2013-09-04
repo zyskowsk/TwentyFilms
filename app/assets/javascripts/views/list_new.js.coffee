@@ -14,4 +14,6 @@ class TwentyFilms.Views.ListNew extends Backbone.View
     TwentyFilms.Store.currentUser.get('films').create data, 
       success: =>
         @render()
+        $(document).ready ->
+          $( ".sortable" ).sortable()
     

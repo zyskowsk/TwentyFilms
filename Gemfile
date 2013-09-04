@@ -6,6 +6,8 @@ gem 'pg'
 gem 'backbone-on-rails'
 gem 'rabl'
 gem 'bcrypt-ruby'
+gem 'addressable'
+gem 'rest-client'
 
 group :development do
   gem 'better_errors'
