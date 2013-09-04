@@ -1,9 +1,8 @@
 class FilmsController < ApplicationController
 
   def create
-    title = params[:film][:title]
+    title = params[:Title]
     @film = Film.find_by_title(title)
-    omdb_film = Film.omdb_search(title)
 
     if @film
       FilmChoice.create(
@@ -12,12 +11,12 @@ class FilmsController < ApplicationController
       )
 
       render :json => @film, :status => 200
-    elsif (omdb_film["Response"] == "True")
+    else
       ActiveRecord::Base.transaction do
         @new_film = Film.new(
-          :title => omdb_film['Title'],
-          :director => omdb_film['Director'],
-          :release_year => omdb_film['Year']
+          :title => params[:Title],
+          :director => params[:Director],
+          :release_year => params[:Year]
         )
 
         @new_film.save!
@@ -29,8 +28,6 @@ class FilmsController < ApplicationController
       end
 
       render :json => @new_film, :status => 200
-    else
-      render :json => "error", :status => 422
     end
   end
 end
