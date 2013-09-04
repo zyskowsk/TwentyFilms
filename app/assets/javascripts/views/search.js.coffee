@@ -79,7 +79,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     data = $('#new-film-form').serializeJSON().film.title
     $.ajax
       type: 'GET'
-      url: 'http://localhost:3000/films'
+      url: '#{TwentyFilms._DdBaseUrl}/films'
       dataType: 'json'
       data: {search: data}
       success: (response) =>

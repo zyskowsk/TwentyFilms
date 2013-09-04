@@ -1,4 +1,6 @@
 window.TwentyFilms =
+  _DbBaseUrl: 'http://twentyFilms.herokuapp.com'
+  # _DbBaseUrl: 'http://localhost:3000'
   Models: {}
   Collections: {}
   Views: {}
