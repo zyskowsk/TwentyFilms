@@ -1,4 +1,8 @@
 class TwentyFilms.Views.Search extends Backbone.View 
+
+  initialize: ->
+    @listenTo(@collection, 'add', @render)
+
   template: JST['search']
 
   events: 
@@ -23,13 +27,5 @@ class TwentyFilms.Views.Search extends Backbone.View
 
           for result in filmResults
             film = new TwentyFilms.Models.Film(result)
-            console.log(film)
             resultView = new TwentyFilms.Views.SearchDetail(model: film)
             $('#results').append(resultView.render().$el)
-
-    # TwentyFilms.Store.currentUser.get('films').create data, 
-    #   success: =>
-    #     @render()
-    #     $(document).ready ->
-    #       $( ".sortable" ).sortable()
-    # 

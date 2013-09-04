@@ -1,1 +1,1 @@
-<a><%= @film.get('Title') %></a>
+<div class='result'><%= @film.get('Title') %></div>
