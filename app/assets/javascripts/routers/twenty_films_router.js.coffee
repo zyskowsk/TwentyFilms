@@ -9,8 +9,20 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     '': 'home'
 
   home: -> 
+    @removeCurrentViews()
+    @renderSearchView()
+    @renderListView()
+
+  renderSearchView: ->
     searchView = new TwentyFilms.Views.Search(collection: @films)
-    listView = new TwentyFilms.Views.List(collection: @films)
-    console.log("hi")
-    @$list.html listView.render().$el
+    @currentSearch = searchView
     @$search.html searchView.render().$el
+
+  renderListView: ->
+    listView = new TwentyFilms.Views.List(collection: @films)
+    @currentListView = listView
+    @$list.html listView.render().$el
+
+  removeCurrentViews: ->
+    @currentListView.remove() if @currentListView
+    @currentSearchView.remove() if @currentSearchView

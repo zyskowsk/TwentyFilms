@@ -2,8 +2,9 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   initialize: ->
     @listenTo(@collection, 'add', @render)
+    @currentResults = []
 
-  template: JST['search']
+  template: JST['search/search']
 
   events: 
     'keyup': 'findFilm'
@@ -18,14 +19,35 @@ class TwentyFilms.Views.Search extends Backbone.View
       type: 'GET'
       url: 'http://www.omdbapi.com'
       dataType: 'json'
-      data: {s: data}
-      success: (response) ->
+      data: {s: "#{data}*"}
+      success: (response) =>
         $('#results').html('')
         if response.Search
-          filmResults = _(response.Search).reject (film) ->
+          @appendResults(@filteredResults(response))
+        else if response.Error == 'Movie not found!'
+          @appendNoResults()
+
+
+  appendNoResults: ->
+    message = "<li><a>No Results</a></li>"
+    $('#results').append(message)
+
+  appendResults: (results) ->
+    @removeCurrentResults()
+    for result in results
+      film = new TwentyFilms.Models.Film(result)
+      resultView = new TwentyFilms.Views.SearchDetail(model: film)
+      @currentResults.push(resultView)
+
+      $('#results').append(resultView.render().$el)
+      
+  filteredResults: (response) ->
+    _(response.Search).reject (film) ->
             film.Type != 'movie'
 
-          for result in filmResults
-            film = new TwentyFilms.Models.Film(result)
-            resultView = new TwentyFilms.Views.SearchDetail(model: film)
-            $('#results').append(resultView.render().$el)
+  # needed?
+  removeCurrentResults: ->
+    for view in @currentResults
+      view.remove()
+
+    @currentResults = []

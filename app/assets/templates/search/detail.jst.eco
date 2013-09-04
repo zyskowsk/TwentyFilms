@@ -1,0 +1,1 @@
+<a class='result'><%= @film.get('Title') %></a>
