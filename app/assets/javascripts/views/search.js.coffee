@@ -8,13 +8,13 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   events: 
     'keyup': 'findFilm'
+    'submit': 'preventDefault'
 
   render: ->
     @$el.html @template()
     this
 
   findFilm: (event) ->
-    event.preventDefault()
     _.debounce(@sendRequest(event), 200)
 
   appendNoResults: ->
@@ -27,6 +27,9 @@ class TwentyFilms.Views.Search extends Backbone.View
       resultView = new TwentyFilms.Views.SearchDetail(model: film)
       $('#results').append(resultView.render().$el)
     @currentResults = []
+
+  preventDefault: (event) ->
+    event.preventDefault()
 
   isDuplicate: (film) ->
     title = film.get('Title')
@@ -58,7 +61,6 @@ class TwentyFilms.Views.Search extends Backbone.View
 
 
   sendApiRequest: (event) ->
-    event.preventDefault()
     data = $('#new-film-form').serializeJSON().film.title
     $.ajax
       type: 'GET'
@@ -75,11 +77,10 @@ class TwentyFilms.Views.Search extends Backbone.View
         @handleResults(data)
 
   sendDbRequest: (event, successCallback) ->
-    event.preventDefault()
     data = $('#new-film-form').serializeJSON().film.title
     $.ajax
       type: 'GET'
-      url: '#{TwentyFilms._DdBaseUrl}/films'
+      url: "/films"
       dataType: 'json'
       data: {search: data}
       success: (response) =>
@@ -87,4 +88,5 @@ class TwentyFilms.Views.Search extends Backbone.View
           film = new TwentyFilms.Models.Film(result) 
           @currentResults.push(film)
         successCallback()
+        console.log('hello')
 
