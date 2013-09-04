@@ -30,4 +30,12 @@ class FilmsController < ApplicationController
       render :json => @new_film, :status => 200
     end
   end
+
+  def index
+    search_string = params[:search]
+
+    results = Film.where('title LIKE ?', "%#{search_string.titleize}%")
+
+    render :json => results.to_json, :status => 200
+  end
 end
