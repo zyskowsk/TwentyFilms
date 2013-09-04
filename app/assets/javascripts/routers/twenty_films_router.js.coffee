@@ -9,8 +9,8 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     '': 'home'
 
   home: -> 
-    formView = new TwentyFilms.Views.ListNew()
+    searchView = new TwentyFilms.Views.Search()
     listView = new TwentyFilms.Views.List(collection: @films)
     console.log("hi")
     @$list.html listView.render().$el
-    @$form.html formView.render().$el
+    @$form.html searchView.render().$el

@@ -1,5 +1,5 @@
-class TwentyFilms.Views.ListNew extends Backbone.View 
-  template: JST['list/new']
+class TwentyFilms.Views.Search extends Backbone.View 
+  template: JST['search']
 
   events: 
     'submit': 'findFilm'
