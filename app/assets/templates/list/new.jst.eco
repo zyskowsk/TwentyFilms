@@ -1,4 +1,0 @@
-<form id="new-film-form">
-  <input type="text" name="film[title]">
-  <input type="submit">
-</form>
