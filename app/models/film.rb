@@ -6,10 +6,10 @@ class Film < ActiveRecord::Base
   TMDB_API_KEY = "5c7ad0d82517d3ccbec62a77fb1269ca"
 
   validates :title, :release_year, :director, :presence => true
-  validates :year, :inclusion => { :in => (1840..Date.today.year) }
+  validates :release_year, :inclusion => { :in => (1840..Date.today.year) }
 
   def self.omdb_search(title)
-    url = self.build_url('/', {'t' => "#{title.titleize}", 'tomatoes' => 'true'})
+    url = self.build_omdb_url('/', {'t' => "#{title.titleize}" })
     result = JSON.parse(RestClient.get url)
   end
 
