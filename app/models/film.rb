@@ -8,6 +8,42 @@ class Film < ActiveRecord::Base
   validates :title, :release_year, :director, :presence => true
   validates :release_year, :inclusion => { :in => (1840..Date.today.year) }
 
+  def self.build_omdb_url(path, query_values = {})
+    Addressable::URI.new(
+      :scheme => 'http',
+      :host => 'www.omdbapi.com',
+      :path => path,
+      :query_values => query_values
+    ).to_s
+  end
+
+  def self.build_tmdb_url(path, query_values = {})
+    Addressable::URI.new(
+      :scheme => 'http',
+      :host => 'api.themoviedb.org',
+      :path => path,
+      :query_values => query_values.merge({'api_key' => TMDB_API_KEY})
+    ).to_s
+  end
+
+  def self.add_films_and_choice(params)
+    ActiveRecord::Base.transaction do
+      @new_film = Film.new(
+        :title => params[:Title],
+        :director => params[:Director],
+        :release_year => params[:Year]
+      )
+
+      @new_film.save!
+
+      FilmChoice.create(
+        :film_id => @new_film.id,
+        :user_id => current_user.id,
+        :ord => current_user.films ? current_user.films.length : 0
+      )
+    end
+  end
+
   def self.omdb_search(title)
     url = self.build_omdb_url('/', {'t' => "#{title.titleize}" })
     result = JSON.parse(RestClient.get url)
@@ -31,21 +67,4 @@ class Film < ActiveRecord::Base
     JSON.parse(RestClient.get url)['results'][0]['id']
   end
 
-  def self.build_omdb_url(path, query_values = {})
-    Addressable::URI.new(
-      :scheme => 'http',
-      :host => 'www.omdbapi.com',
-      :path => path,
-      :query_values => query_values
-    ).to_s
-  end
-
-  def self.build_tmdb_url(path, query_values = {})
-    Addressable::URI.new(
-      :scheme => 'http',
-      :host => 'api.themoviedb.org',
-      :path => path,
-      :query_values => query_values.merge({'api_key' => TMDB_API_KEY})
-    ).to_s
-  end
 end

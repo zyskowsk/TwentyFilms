@@ -20,13 +20,23 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
     this
 
   addFilm: (event) ->
-    $.ajax
-      type: 'GET'
-      url: 'http://www.omdbapi.com'
-      dataType: 'json'
-      data: {i: @model.get('imdbID')}
-      success: (response) =>
-        @_persistFilm(response)
+    if @model.get('imdbID')
+      $.ajax
+        type: 'GET'
+        url: 'http://www.omdbapi.com'
+        dataType: 'json'
+        data: {i: @model.get('imdbID')}
+        success: (response) =>
+          console.log('hello?')
+          @_persistFilm(response)
+    else
+      $.ajax
+        type: 'POST'
+        url: '/films'
+        data: {Title: @model.get('title')}
+        success: (response) =>
+          TwentyFilms.Store.currentUser.get('films').push(@model)
+          @clear()
 
   clear: ->
     $('#results').html('')
@@ -38,6 +48,7 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
     (titleList.indexOf(newFilm.get('Title')) != -1) if newFilm
 
   _persistFilm: (response) ->
+    console.log(response)
     newFilm = new TwentyFilms.Models.Film(response)
     unless @_alreadyInList(newFilm)
       @currentFilms.create newFilm, 

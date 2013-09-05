@@ -30,7 +30,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @$list.html listView.render().$el
 
   _renderNewFormVew: ->
-    newFormView = new TwentyFilms.Views.NewFilm
+    newFormView = new TwentyFilms.Views.NewFilm(collection: @films)
     @$newForm.html newFormView.render().$el
 
   _removeCurrentViews: ->

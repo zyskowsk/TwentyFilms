@@ -1,7 +1,7 @@
 class TwentyFilms.Views.List extends Backbone.View
 
   initialize: ->
-    @listenTo(@collection, 'change sync destroy', @render)
+    @listenTo(@collection, 'change add sync destroy', @render)
     @editing = false
 
   events: 

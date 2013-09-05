@@ -1,34 +1,16 @@
 class FilmsController < ApplicationController
 
   def create
-    title = params[:Title]
-    @film = Film.find_by_title(title)
+    if params[:film]
+      @new_film = Film.new(params[:film])
 
-    if @film
-      FilmChoice.create(
-        :film_id => @film.id, 
-        :user_id => current_user.id
-      )
-
-      render :json => @film, :status => 200
-    else
-      ActiveRecord::Base.transaction do
-        @new_film = Film.new(
-          :title => params[:Title],
-          :director => params[:Director],
-          :release_year => params[:Year]
-        )
-
-        @new_film.save!
-
-        FilmChoice.create(
-          :film_id => @new_film.id,
-          :user_id => current_user.id,
-          :ord => current_user.films ? current_user.films.length : 0
-        )
+      if @new_film.save
+        render :json => @new_film
+      else
+        render :json => @new_film.errors, :status => 422
       end
-
-      render :json => @new_film, :status => 200
+    else
+      add_film_on_search(params)
     end
   end
 
@@ -58,4 +40,23 @@ class FilmsController < ApplicationController
 
     render :json => [], :status => 200
   end
+
+  private
+    def add_film_on_search(params)
+      title = params[:Title]
+      @film = Film.find_by_title(title)
+
+      if @film
+        FilmChoice.create(
+          :film_id => @film.id, 
+          :user_id => current_user.id
+        )
+
+        render :json => @film, :status => 200
+      else
+        Film.add_film_and_choice(params)
+
+        render :json => @new_film, :status => 200
+      end
+    end
 end
