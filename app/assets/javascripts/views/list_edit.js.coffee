@@ -1,19 +1,27 @@
 class TwentyFilms.Views.ListEdit extends Backbone.View
+  initialize: -> 
+    @model.remove = false
+    
   tagName: 'li'
-
   template: JST['list/edit']
 
   events:
-    'click .save': 'removeFilm'
+    'click .toggle-film': 'toggleRemoveButton'
 
   render: ->
     @$el.html @template(film: @model)
     this
 
-  removeFilm: (event) ->
+  toggleRemoveButton: (event) ->
     link = $(event.currentTarget)
-    link.removeClass('save')
-    link.addClass('delete')
-    link.html('✖')
+    currentClass = link.attr('class')
+    link.removeClass()
 
-    @model.destroy()
+    if currentClass == 'toggle-film save'
+      link.addClass('toggle-film delete')
+      link.html('✖')
+      @model.remove = true
+    else
+      link.addClass('toggle-film save')
+      link.html('✔')
+      @model.remove = false

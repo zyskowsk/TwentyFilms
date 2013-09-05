@@ -15,7 +15,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     this
 
   findFilm: (event) ->
-    _.debounce(@sendRequest(event), 200)
+    _.debounce(@sendRequest(event), 600)
 
   appendNoResults: ->
     message = "<li><a>No Results</a></li>"

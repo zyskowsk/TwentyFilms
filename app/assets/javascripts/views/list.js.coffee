@@ -1,12 +1,11 @@
 class TwentyFilms.Views.List extends Backbone.View
 
   initialize: ->
-    @listenTo(@collection, 'change', @render)
-    @listenTo(@collection, 'sync', @render)
+    @listenTo(@collection, 'change sync destroy', @render)
     @editing = false
 
   events: 
-    'click #edit': 'toggleEditView'
+    'click #edit-toggle-button': 'toggleEditView'
 
   template: JST['list/list']
 
@@ -29,6 +28,7 @@ class TwentyFilms.Views.List extends Backbone.View
   toggleEditView: ->
     @editing = !@editing
     @render()
+    @switchButton()
 
     if @editing
       $( ".sortable" ).sortable
@@ -37,6 +37,8 @@ class TwentyFilms.Views.List extends Backbone.View
             $(thing).find('div').data('id')
           @updateOrds(newIds)
           @reorderCollection(newIds)
+    else
+      @removeFilms()
 
   updateOrds: (newIds) ->
     $.ajax
@@ -48,7 +50,14 @@ class TwentyFilms.Views.List extends Backbone.View
     for id in newIds
       film = @collection.findWhere(id: id)
       @collection.remove(film)
-      console.log(@collection)
       @collection.push(film)
+
+  switchButton: ->
+    $('#edit-toggle-button').html('done editing') if @editing
+    $('#edit-toggle-button').html('edit your list') if not @editing
+
+  removeFilms: ->
+    @collection.each (film) =>
+      film.destroy() if film.remove
 
 
