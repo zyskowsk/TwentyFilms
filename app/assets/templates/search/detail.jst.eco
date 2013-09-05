@@ -4,7 +4,9 @@
       Sorry, we couldnt find your film! add it!
     </a>
   </li>
-<% else: %>
+<% else if (@hasTwenty || @alreadyInList): %>
+  <a href='#' class='result'><%= @film.get('Title') || @film.get('title') %></a>
+<% else: %> 
   <a href='#' class='result'><%= @film.get('Title') || @film.get('title') %></a>
   <a href='#' class='result add'> add to list</a>
 <% end %>

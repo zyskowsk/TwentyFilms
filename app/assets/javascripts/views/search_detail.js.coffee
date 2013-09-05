@@ -7,12 +7,19 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
     'click .add' : 'addFilm'
     'click .new-film': 'clear'
 
+  initialize: ->
+    @currentFilms = TwentyFilms.Store.currentUser.get('films')
+
   render: ->
-    @$el.html @template(film: @model, notFound: this.options.notFound)
+    @$el.html @template 
+      film: @model, 
+      notFound: this.options.notFound,
+      alreadyInList: @_alreadyInList(@model),
+      hasTwenty: @currentFilms.length == 20
+      
     this
 
   addFilm: (event) ->
-    @currentFilms = TwentyFilms.Store.currentUser.get('films')
     $.ajax
       type: 'GET'
       url: 'http://www.omdbapi.com'
@@ -24,10 +31,19 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
   clear: ->
     $('#results').html('')
 
+  _alreadyInList: (newFilm)->
+    titleList = @currentFilms.map (film) =>
+      film.get('title')
+
+    (titleList.indexOf(newFilm.get('Title')) != -1) if newFilm
+
   _persistFilm: (response) ->
-    film = new TwentyFilms.Models.Film(response)
-    @currentFilms.create film,
-      success: =>
-        @clear()
+    newFilm = new TwentyFilms.Models.Film(response)
+    unless @_alreadyInList(newFilm)
+      @currentFilms.create newFilm, 
+        success: =>
+          @clear()
+
+
 
       
