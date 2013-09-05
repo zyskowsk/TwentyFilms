@@ -1,2 +1,6 @@
-<a href='#' class='result'><%= @film.get('Title') || @film.get('title') %></a>
-<a href='#' class='result add'> add to list</a>
+<% if @notFound: %>
+  <li><a class='new-film' href='#/film/new'>Sorry, we couldnt find your film! add it! </a></li>
+<% else: %>
+  <a href='#' class='result'><%= @film.get('Title') || @film.get('title') %></a>
+  <a href='#' class='result add'> add to list</a>
+<% end %>

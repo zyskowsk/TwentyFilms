@@ -4,10 +4,11 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
 
   events: {
     'click .add' : 'addFilm'
+    'click .new-film': 'clear'
   }
 
   render: ->
-    @$el.html @template(film: @model)
+    @$el.html @template(film: @model, notFound: this.options.notFound)
     this
 
   addFilm: (event) ->
@@ -23,6 +24,9 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
   persistFilm: (response) ->
     film = new TwentyFilms.Models.Film(response)
     @currentFilms.create film,
-      success: ->
-        $('#results').html('')
+      success: =>
+        @clear()
+        
+  clear: ->
+    $('#results').html('')
       

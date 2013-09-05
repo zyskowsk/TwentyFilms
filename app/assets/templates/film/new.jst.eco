@@ -1,0 +1,20 @@
+<h1> Add a New Film </h1>
+<h4> 
+  So... The internet failed you!, time to contribute.  
+  Please fill out all fields so that we can reuse the data!
+</h4>
+
+<form id="film-form">
+  <label for="film_title">Title</lable>
+  <input type="text" id="film_title" name="film[title]" /><br />
+
+  <label for="film_release_year">Year</label>
+  <input type="text" id="film_release_year" name="film[release_year]" /><br />
+
+  <label for="film_director">Director</label>
+  <input type="text" id="film_director" name="film[director]" /><br />
+
+  <input type="submit" />
+</form><br />
+
+<a class="back">Go bacck</a>

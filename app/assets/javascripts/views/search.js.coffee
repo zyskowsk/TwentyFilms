@@ -8,7 +8,7 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   events: 
     'submit': 'preventDefault'
-    "keyup": 'findFilm'
+    'keyup': 'findFilm'
 
   render: ->
     @$el.html @template()
@@ -18,8 +18,8 @@ class TwentyFilms.Views.Search extends Backbone.View
     _.debounce(@sendRequest(event), 600)
 
   appendNoResults: ->
-    message = "<li><a href='#'>Sorry, we couldnt find your film! add it! </a></li>"
-    $('#results').append(message)
+    noResultsView = new TwentyFilms.Views.SearchDetail(notFound: true)
+    $('#results').append(noResultsView.render().$el)
 
   appendResults: ->
     @filterResults()
@@ -60,7 +60,7 @@ class TwentyFilms.Views.Search extends Backbone.View
       @appendNoResults()
 
   sendApiRequest: (event) ->
-    data = $('#new-film-form').serializeJSON().film.title
+    data = $('#search-bar').serializeJSON().film.title
     $.ajax
       type: 'GET'
       url: 'http://www.omdbapi.com'
@@ -75,7 +75,7 @@ class TwentyFilms.Views.Search extends Backbone.View
         @handleResults(data)
 
   sendDbRequest: (event, successCallback) ->
-    data = $('#new-film-form').serializeJSON().film.title
+    data = $('#search-bar').serializeJSON().film.title
     $('#results').html('') if data == ''
     $.ajax
       type: 'GET'

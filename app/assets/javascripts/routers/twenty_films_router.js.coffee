@@ -1,28 +1,39 @@
 class TwentyFilms.Routers.Router extends Backbone.Router
 
-  initialize: ($filmList, $search, films) ->
+  initialize: ($filmList, $search, $newForm, films) ->
     @$list = $filmList
     @$search = $search
+    @$newForm = $newForm
     @films = films
 
   routes:
     '': 'home'
+    'film/new': 'filmNew'
 
   home: -> 
-    @removeCurrentViews()
-    @renderSearchView()
-    @renderListView()
+    @_removeCurrentViews()
+    @_renderSearchView()
+    @_renderListView()
 
-  renderSearchView: ->
+  filmNew: -> 
+    @_renderNewFormVew()
+    @$newForm.slideDown('slow')
+
+  _renderSearchView: ->
     searchView = new TwentyFilms.Views.Search(collection: @films)
     @currentSearch = searchView
     @$search.html searchView.render().$el
 
-  renderListView: ->
+  _renderListView: ->
     listView = new TwentyFilms.Views.List(collection: @films)
     @currentListView = listView
     @$list.html listView.render().$el
 
-  removeCurrentViews: ->
+  _renderNewFormVew: ->
+    newFormView = new TwentyFilms.Views.NewFilm
+    @$newForm.html newFormView.render().$el
+
+
+  _removeCurrentViews: ->
     @currentListView.remove() if @currentListView
     @currentSearchView.remove() if @currentSearchView

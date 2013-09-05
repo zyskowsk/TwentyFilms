@@ -10,10 +10,12 @@ window.TwentyFilms =
     TwentyFilms.Store.currentUser = currentUser
     $filmList = $('#film-list')
     $search = $('#search')
+    $newForm = $('#new-film-form')
     films = currentUser.get('films')
 
-    new TwentyFilms.Routers.Router($filmList, $search, films)
+    new TwentyFilms.Routers.Router($filmList, $search, $newForm, films)
     Backbone.history.start()
 
 $(document).ready ->
+  $('#new-film-form').hide()
   TwentyFilms.initialize()
