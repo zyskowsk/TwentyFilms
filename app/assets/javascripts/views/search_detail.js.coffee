@@ -3,7 +3,7 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
   template: JST['search/detail']
 
   events: {
-    'click' : 'addFilm'
+    'click .add' : 'addFilm'
   }
 
   render: ->

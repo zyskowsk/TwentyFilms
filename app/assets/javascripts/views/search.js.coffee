@@ -18,7 +18,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     _.debounce(@sendRequest(event), 600)
 
   appendNoResults: ->
-    message = "<li><a>No Results</a></li>"
+    message = "<li><a href='#'>Sorry, we couldnt find your film! add it! </a></li>"
     $('#results').append(message)
 
   appendResults: ->

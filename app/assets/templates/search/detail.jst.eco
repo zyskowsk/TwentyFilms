@@ -1,1 +1,2 @@
-<a class='result'><%= @film.get('Title') || @film.get('title') %></a>
+<a href='#' class='result'><%= @film.get('Title') || @film.get('title') %></a>
+<a href='#' class='result add'> add to list</a>
