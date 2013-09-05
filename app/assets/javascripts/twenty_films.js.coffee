@@ -4,6 +4,7 @@ window.TwentyFilms =
   Views: {}
   Routers: {}
   Store: {}
+  
   initialize: -> 
     data = JSON.parse($('#current_user_bs').html())
     currentUser = new TwentyFilms.Models.User(data, {parse: true})

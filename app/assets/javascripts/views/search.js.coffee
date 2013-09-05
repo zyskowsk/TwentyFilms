@@ -1,37 +1,47 @@
 class TwentyFilms.Views.Search extends Backbone.View 
 
-  initialize: ->
-    @listenTo(@collection, 'add', @render)
-    @currentResults = []
-
   template: JST['search/search']
 
   events: 
     'submit': 'preventDefault'
     'keyup': 'findFilm'
 
+  initialize: ->
+    @listenTo(@collection, 'add', @render)
+    @currentResults = []
+
+  findFilm: (event) ->
+    _.debounce(@_sendRequest(event), 1000)
+
+  preventDefault: (event) ->
+    event.preventDefault()
+
   render: ->
     @$el.html @template()
     this
 
-  findFilm: (event) ->
-    _.debounce(@sendRequest(event), 600)
-
-  appendNoResults: ->
-    noResultsView = new TwentyFilms.Views.SearchDetail(notFound: true)
-    $('#results').append(noResultsView.render().$el)
-
-  appendResults: ->
-    @filterResults()
+  _appendResults: ->
+    @_filterResults()
     for film in @currentResults[0..5]
       resultView = new TwentyFilms.Views.SearchDetail(model: film)
       $('#results').append(resultView.render().$el)
     @currentResults = []
 
-  preventDefault: (event) ->
-    event.preventDefault()
+  _appendNoResults: ->
+    noResultsView = new TwentyFilms.Views.SearchDetail(notFound: true)
+    $('#results').append(noResultsView.render().$el)
+ 
+  _filterResults: ->
+    @currentResults = _(@currentResults).reject (film) =>
+      film.Type == 'movie'
 
-  isDuplicate: (film) ->
+  _handleResults: (data) ->
+    if @currentResults.length > 0 && data != ''
+      @_appendResults()
+    else if @currentResults.length == 0
+      @_appendNoResults()
+
+  _isDuplicate: (film) ->
     title = film.get('Title')
     year = parseInt(film.get('Year'))
     count = 0
@@ -43,23 +53,8 @@ class TwentyFilms.Views.Search extends Backbone.View
       count++ if (sameTitle && sameYear)
 
     count != 0
-      
-  filterResults: ->
-    @currentResults = _(@currentResults).reject (film) =>
-      film.Type == 'movie'
 
-  sendRequest: (event) ->
-    event.preventDefault()
-    @sendDbRequest event, =>
-      @sendApiRequest event
-
-  handleResults: (data) ->
-    if @currentResults.length > 0 && data != ''
-      @appendResults()
-    else if @currentResults.length == 0
-      @appendNoResults()
-
-  sendApiRequest: (event) ->
+  _sendApiRequest: (event) ->
     data = $('#search-bar').serializeJSON().film.title
     $.ajax
       type: 'GET'
@@ -70,11 +65,11 @@ class TwentyFilms.Views.Search extends Backbone.View
         if response.Search
           for result in response.Search
             film = new TwentyFilms.Models.Film(result) 
-            @currentResults.push(film) unless @isDuplicate(film)
+            @currentResults.push(film) unless @_isDuplicate(film)
         $('#results').html('')
-        @handleResults(data)
+        @_handleResults(data)
 
-  sendDbRequest: (event, successCallback) ->
+  _sendDbRequest: (event, successCallback) ->
     data = $('#search-bar').serializeJSON().film.title
     $('#results').html('') if data == ''
     $.ajax
@@ -87,3 +82,10 @@ class TwentyFilms.Views.Search extends Backbone.View
           film = new TwentyFilms.Models.Film(result) 
           @currentResults.push(film)
         successCallback()
+
+  _sendRequest: (event) ->
+    event.preventDefault()
+    @_sendDbRequest event, =>
+      @_sendApiRequest event
+
+

@@ -56,6 +56,6 @@ class FilmsController < ApplicationController
       film.update_attributes(:ord => idx)
     end
 
-    render :status => 200
+    render :json => [], :status => 200
   end
 end

@@ -33,7 +33,6 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     newFormView = new TwentyFilms.Views.NewFilm
     @$newForm.html newFormView.render().$el
 
-
   _removeCurrentViews: ->
     @currentListView.remove() if @currentListView
     @currentSearchView.remove() if @currentSearchView
