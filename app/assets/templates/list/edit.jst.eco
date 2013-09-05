@@ -1,4 +1,6 @@
-<%= @film.get('title') %>
-<%= @film.get('director') %>
-<%= @film.get('release_year') %>
-<a class="delete">×</a>
+<div data-id="<%= @film.get('id') %>">
+  <%= @film.get('title') %>
+  <%= @film.get('director') %>
+  <%= @film.get('release_year') %>
+  <a class="save" id="<%= @film.get('id') %>">✔</a>
+</div>

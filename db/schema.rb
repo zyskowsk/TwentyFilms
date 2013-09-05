@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902235102) do
+ActiveRecord::Schema.define(:version => 20130905030601) do
 
   create_table "film_choices", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "film_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "ord"
   end
 
   add_index "film_choices", ["film_id"], :name => "index_film_choices_on_film_id"

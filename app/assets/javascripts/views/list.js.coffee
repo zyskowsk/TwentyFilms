@@ -2,6 +2,7 @@ class TwentyFilms.Views.List extends Backbone.View
 
   initialize: ->
     @listenTo(@collection, 'change', @render)
+    @listenTo(@collection, 'sync', @render)
     @editing = false
 
   events: 
@@ -30,6 +31,24 @@ class TwentyFilms.Views.List extends Backbone.View
     @render()
 
     if @editing
-      $( ".sortable" ).sortable()
-    else
-      $( ".sortable" ).sortable( "destroy" );
+      $( ".sortable" ).sortable
+        stop: =>
+          newIds = _($('#list').children()).map (thing) =>
+            $(thing).find('div').data('id')
+          @updateOrds(newIds)
+          @reorderCollection(newIds)
+
+  updateOrds: (newIds) ->
+    $.ajax
+      type: 'PUT'
+      url: '/films'
+      data: newIds: newIds
+
+  reorderCollection: (newIds) ->
+    for id in newIds
+      film = @collection.findWhere(id: id)
+      @collection.remove(film)
+      console.log(@collection)
+      @collection.push(film)
+
+

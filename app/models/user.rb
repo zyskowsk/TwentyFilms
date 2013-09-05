@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   before_create :encrypt_password
   after_initialize :ensure_session_token
 
-  has_many :films, :through => :film_choices
+  has_many :films, :through => :film_choices, :order => 'film_choices.ord'
   has_many(
     :film_choices,
     :class_name => "FilmChoice",

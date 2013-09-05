@@ -15,3 +15,13 @@
  .result:hover {
   background-color: lightBlue
  }
+
+ .delete {
+  color: red;
+  cursor: pointer;
+ }
+
+ .save {
+  color: green;
+  cursor: pointer;
+ }
