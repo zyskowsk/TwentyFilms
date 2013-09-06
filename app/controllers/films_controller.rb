@@ -27,7 +27,7 @@ class FilmsController < ApplicationController
   def index
     search_string = params[:search]
 
-    results = Film.where('title LIKE ?', "%#{search_string.titleize}%")
+    results = Film.where('title LIKE ?', "#{search_string.titleize}%")
 
     render :json => results.to_json, :status => 200
   end
