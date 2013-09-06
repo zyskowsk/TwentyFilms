@@ -31,7 +31,10 @@ class TwentyFilms.Routers.Router extends Backbone.Router
 
   filmShow: (id) ->
     TwentyFilms.Models.Film.getByRawId id, (film) =>
+      @_renderView('search', collection: @films)
       @_renderView('filmShow', model: film)
+      @elements['filmShow'].show()
+      @elements['filmShow'].animate(right: 0)
 
   _renderView: (type, options) ->
     newView = new @viewConstructors[type](options)

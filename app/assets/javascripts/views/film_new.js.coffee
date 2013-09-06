@@ -17,7 +17,7 @@ class TwentyFilms.Views.FilmNew extends Backbone.View
         @navigateHome()
 
   navigateHome: ->
-    $('#new-film-form').slideUp('slow')
+    $('#film-new').slideUp('slow')
     Backbone.history.navigate('', trigger: true)
 
   render: ->

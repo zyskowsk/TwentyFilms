@@ -12,21 +12,21 @@
  *= require_tree .
  */
 
- .result:hover {
+.result:hover {
   background-color: lightBlue
- }
+}
 
- .delete {
+.delete {
   color: red;
   cursor: pointer;
- }
+}
 
- .save {
+.save {
   color: green;
   cursor: pointer;
- }
+}
 
- #new-film-form {
+#film-new {
   border-left: 3px black solid;
   border-bottom: 3px black solid;
   border-right: 3px black solid;
@@ -40,4 +40,15 @@
   padding: 10px;
   background-color: lightGrey;
   z-index: 1;
- }
+}
+
+#film-show {
+  border: 3px black solid;
+  height: 100%;
+  position:fixed;
+  width: 90%;
+  top: 0px;
+  right:-91%;
+  z-index: 1;
+  background-color: lightGrey;
+}

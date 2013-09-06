@@ -1,1 +1,2 @@
 <h1> <%= @film.get('Title') || @film.get('title') %></h1>
+<a class="show back">home</a>

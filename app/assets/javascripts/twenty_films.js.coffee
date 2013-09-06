@@ -25,5 +25,6 @@ window.TwentyFilms =
     Backbone.history.start()
 
 $(document).ready ->
-  $('#new-film-form').hide()
+  $('#film-new').hide()
+  $('#film-show').hide() 
   TwentyFilms.initialize()

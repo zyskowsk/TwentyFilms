@@ -16,5 +16,4 @@ class TwentyFilms.Models.Film extends Backbone.Model
       @film = new TwentyFilms.Models.Film(id: id)
       @film.fetch
         success: (response) =>
-          console.log(response)
           callback(response)
