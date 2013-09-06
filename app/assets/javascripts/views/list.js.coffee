@@ -1,4 +1,5 @@
 class TwentyFilms.Views.List extends Backbone.View
+
   template: JST['list/list']
   
   events: 
@@ -10,6 +11,7 @@ class TwentyFilms.Views.List extends Backbone.View
 
   render: ->
     @$el.html @template()
+
     @collection.each (film) =>
       @_addDetail(film) if not @editing
       @_addEdit(film) if @editing
@@ -17,17 +19,10 @@ class TwentyFilms.Views.List extends Backbone.View
     this
 
   toggleEditView: ->
-    @editing = !@editing
-    @render()
-    @_switchButton()
+    @_toggleEdit()
 
     if @editing
-      $( ".sortable" ).sortable
-        stop: =>
-          newIds = _($('#list').children()).map (el) =>
-            $(el).find('div').data('id')
-          @_updateOrds(newIds)
-          @_reorderCollection(newIds)
+      @_enabelSort()
     else
       @_removeFilms()
 
@@ -38,6 +33,14 @@ class TwentyFilms.Views.List extends Backbone.View
   _addEdit: (film) ->
     edit = new TwentyFilms.Views.ListEdit(model: film)
     @$el.find('#list').append edit.render().$el
+
+  _enabelSort: ->
+    $( ".sortable" ).sortable
+      stop: =>
+        newIds = _($('#list').children()).map (el) =>
+          $(el).find('div').data('id')
+        @_updateOrds(newIds)
+        @_reorderCollection(newIds)
 
   _removeFilms: ->
     toRemove= []
@@ -57,6 +60,11 @@ class TwentyFilms.Views.List extends Backbone.View
   _switchButton: ->
     $('#edit-toggle-button').html('done editing') if @editing
     $('#edit-toggle-button').html('edit your list') if not @editing
+
+  _toggleEdit: ->
+    @render()
+    @editing = !@editing
+    @_switchButton()
 
   _updateOrds: (newIds) ->
     $.ajax

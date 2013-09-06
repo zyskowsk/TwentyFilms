@@ -6,32 +6,46 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @$newForm = $newForm
     @films = films
 
+  viewConstructors:
+    search: TwentyFilms.Views.Search
+    list: TwentyFilms.Views.List
+    newForm: TwentyFilms.Views.NewFilm
+
+  currentViews:
+
   routes:
     '': 'home'
     'film/new': 'filmNew'
 
   home: -> 
     @_removeCurrentViews()
-    @_renderSearchView()
-    @_renderListView()
+    @_renderView('search')
+    @_renderView('list')
 
   filmNew: -> 
-    @_renderNewFormVew()
+    @_renderVew('newForm')
     @$newForm.slideDown('slow')
 
-  _renderSearchView: ->
-    searchView = new TwentyFilms.Views.Search(collection: @films)
-    @currentSearch = searchView
-    @$search.html searchView.render().$el
+  _renderView: (type) ->
+    newView = new @viewConstructors[type](collection: @films)
+    @currentViews[type] = newView
+    @$search.html newView.render().$el
 
-  _renderListView: ->
-    listView = new TwentyFilms.Views.List(collection: @films)
-    @currentListView = listView
-    @$list.html listView.render().$el
+  #TODO: Check for errors, add switch method
 
-  _renderNewFormVew: ->
-    newFormView = new TwentyFilms.Views.NewFilm(collection: @films)
-    @$newForm.html newFormView.render().$el
+  # _renderSearchView: ->
+  #   searchView = new TwentyFilms.Views.Search(collection: @films)
+  #   @currentSearch = searchView
+  #   @$search.html searchView.render().$el
+
+  # _renderListView: ->
+  #   listView = new TwentyFilms.Views.List(collection: @films)
+  #   @currentListView = listView
+  #   @$list.html listView.render().$el
+
+  # _renderNewFormVew: ->
+  #   newFormView = new TwentyFilms.Views.NewFilm(collection: @films)
+  #   @$newForm.html newFormView.render().$el
 
   _removeCurrentViews: ->
     @currentListView.remove() if @currentListView

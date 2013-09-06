@@ -25,6 +25,14 @@ class TwentyFilms.Views.Search extends Backbone.View
     @$el.html @template()
     this
 
+  _apiSuccessCallback: ->
+    if response.Search
+      for result in response.Search
+        film = new TwentyFilms.Models.Film(result) 
+        @currentResults.push(film) unless @_isDuplicate(film)
+    $('#results').html('')
+    @_handleResults(data)
+
   _appendResults: ->
     @_filterResults()
     for film in @currentResults[0..5]
@@ -34,12 +42,18 @@ class TwentyFilms.Views.Search extends Backbone.View
       $('#results').append(resultView.render().$el)
     @currentResults = []
 
-  _appendNoResults: ->
+  _appendNoResults: (response) ->
     emptyCollection = new TwentyFilms.Collections.Films
     noResultsView = new TwentyFilms.Views.SearchDetail
       collection: emptyCollection, 
       notFound: true
     $('#results').append(noResultsView.render().$el)
+
+  _dbSuccessCallback: (response, callback) ->
+    for result in response
+      film = new TwentyFilms.Models.Film(result) 
+      @currentResults.push(film)
+    callback()
  
   _filterResults: ->
     @currentResults = _(@currentResults).reject (film) =>
@@ -52,6 +66,7 @@ class TwentyFilms.Views.Search extends Backbone.View
       @_appendNoResults()
     $('#results').slideDown('fast')
 
+  #TODO: Fix
   _isDuplicate: (film) ->
     title = film.get('Title')
     year = parseInt(film.get('Year'))
@@ -73,14 +88,10 @@ class TwentyFilms.Views.Search extends Backbone.View
       dataType: 'json'
       data: {s: "#{data}*"}
       success: (response) =>
-        if response.Search
-          for result in response.Search
-            film = new TwentyFilms.Models.Film(result) 
-            @currentResults.push(film) unless @_isDuplicate(film)
-        $('#results').html('')
-        @_handleResults(data)
+        @_apiSuccessCallback(response)
+        
 
-  _sendDbRequest: (successCallback) ->
+  _sendDbRequest: (callback) ->
     data = $('#search-bar').serializeJSON().film.title
     $('#results').html('') if data == ''
     $.ajax
@@ -89,13 +100,8 @@ class TwentyFilms.Views.Search extends Backbone.View
       dataType: 'json'
       data: {search: data}
       success: (response) =>
-        for result in response
-          film = new TwentyFilms.Models.Film(result) 
-          @currentResults.push(film)
-        successCallback()
+        @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
     @_sendDbRequest =>
       @_sendApiRequest()
-
-
