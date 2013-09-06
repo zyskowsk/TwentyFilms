@@ -1,7 +1,6 @@
 class FilmsController < ApplicationController
 
   def create
-    puts params[:film]
     if not (params[:film].nil? || params[:film].empty?)
       @new_film = Film.new(params[:film])
 
@@ -48,6 +47,7 @@ class FilmsController < ApplicationController
       @film = Film.find_by_title(title)
 
       if @film
+        puts @film.id
         FilmChoice.create(
           :film_id => @film.id, 
           :user_id => current_user.id

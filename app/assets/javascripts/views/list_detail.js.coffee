@@ -5,6 +5,4 @@ class TwentyFilms.Views.ListDetail extends Backbone.View
 
   render: ->
     @$el.html @template(film: @model)
-
-    console.log(@$el.html())
     this

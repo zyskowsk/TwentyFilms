@@ -4,14 +4,19 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   events: 
     'submit': 'preventDefault'
-    'keyup': 'findFilm'
+    'keyup': 'findFilmDebounce'
+    'keydown': 'hideResults'
+ 
+  findFilmDebounce: _.debounce (->
+    @_sendRequest()), 500
 
   initialize: ->
     @listenTo(@collection, 'add', @render)
     @currentResults = []
+    $('#results').hide()
 
-  findFilm: (event) ->
-    _.debounce(@_sendRequest(event), 200)
+  hideResults: ->
+    $('#results').slideUp('fast')
 
   preventDefault: (event) ->
     event.preventDefault()
@@ -45,6 +50,7 @@ class TwentyFilms.Views.Search extends Backbone.View
       @_appendResults()
     else if @currentResults.length == 0
       @_appendNoResults()
+    $('#results').slideDown('fast')
 
   _isDuplicate: (film) ->
     title = film.get('Title')
@@ -59,7 +65,7 @@ class TwentyFilms.Views.Search extends Backbone.View
 
     count != 0
 
-  _sendApiRequest: (event) ->
+  _sendApiRequest: ->
     data = $('#search-bar').serializeJSON().film.title
     $.ajax
       type: 'GET'
@@ -74,7 +80,7 @@ class TwentyFilms.Views.Search extends Backbone.View
         $('#results').html('')
         @_handleResults(data)
 
-  _sendDbRequest: (event, successCallback) ->
+  _sendDbRequest: (successCallback) ->
     data = $('#search-bar').serializeJSON().film.title
     $('#results').html('') if data == ''
     $.ajax
@@ -88,9 +94,8 @@ class TwentyFilms.Views.Search extends Backbone.View
           @currentResults.push(film)
         successCallback()
 
-  _sendRequest: (event) ->
-    event.preventDefault()
-    @_sendDbRequest event, =>
-      @_sendApiRequest event
+  _sendRequest: ->
+    @_sendDbRequest =>
+      @_sendApiRequest()
 
 

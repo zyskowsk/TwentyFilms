@@ -1,62 +1,46 @@
 class TwentyFilms.Views.List extends Backbone.View
+  template: JST['list/list']
+  
+  events: 
+    'click #edit-toggle-button': 'toggleEditView'
+
 
   initialize: ->
     @listenTo(@collection, 'change sync destroy', @render)
     @editing = false
 
-  events: 
-    'click #edit-toggle-button': 'toggleEditView'
-
-  template: JST['list/list']
-
   render: ->
     @$el.html @template()
     @collection.each (film) =>
-      @addDetail(film) if not @editing
-      @addEdit(film) if @editing
+      @_addDetail(film) if not @editing
+      @_addEdit(film) if @editing
 
     this
-
-  addDetail: (film) ->
-    detail = new TwentyFilms.Views.ListDetail(model: film)
-    @$el.find('#list').append detail.render().$el
-
-  addEdit: (film) ->
-    edit = new TwentyFilms.Views.ListEdit(model: film)
-    @$el.find('#list').append edit.render().$el
 
   toggleEditView: ->
     @editing = !@editing
     @render()
-    @switchButton()
+    @_switchButton()
 
     if @editing
       $( ".sortable" ).sortable
         stop: =>
           newIds = _($('#list').children()).map (el) =>
             $(el).find('div').data('id')
-          @updateOrds(newIds)
-          @reorderCollection(newIds)
+          @_updateOrds(newIds)
+          @_reorderCollection(newIds)
     else
-      @removeFilms()
+      @_removeFilms()
 
-  updateOrds: (newIds) ->
-    $.ajax
-      type: 'PUT'
-      url: '/films'
-      data: newIds: newIds
+  _addDetail: (film) ->
+    detail = new TwentyFilms.Views.ListDetail(model: film)
+    @$el.find('#list').append detail.render().$el
 
-  reorderCollection: (newIds) ->
-    for id in newIds
-      film = @collection.findWhere(id: id)
-      @collection.remove(film)
-      @collection.add(film)
+  _addEdit: (film) ->
+    edit = new TwentyFilms.Views.ListEdit(model: film)
+    @$el.find('#list').append edit.render().$el
 
-  switchButton: ->
-    $('#edit-toggle-button').html('done editing') if @editing
-    $('#edit-toggle-button').html('edit your list') if not @editing
-
-  removeFilms: ->
+  _removeFilms: ->
     toRemove= []
     @collection.each (film) =>
       toRemove.push(film) if film.remove
@@ -64,4 +48,18 @@ class TwentyFilms.Views.List extends Backbone.View
     for film in toRemove
       film.destroy()
 
+  _reorderCollection: (newIds) ->
+    for id in newIds
+      film = @collection.findWhere(id: id)
+      @collection.remove(film)
+      @collection.add(film)
 
+  _switchButton: ->
+    $('#edit-toggle-button').html('done editing') if @editing
+    $('#edit-toggle-button').html('edit your list') if not @editing
+
+  _updateOrds: (newIds) ->
+    $.ajax
+      type: 'PUT'
+      url: '/films'
+      data: newIds: newIds
