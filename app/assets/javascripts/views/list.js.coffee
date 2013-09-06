@@ -6,7 +6,7 @@ class TwentyFilms.Views.List extends Backbone.View
 
 
   initialize: ->
-    @listenTo(@collection, 'change sync destroy', @render)
+    @listenTo(@collection, 'add sync destroy', @render)
     @editing = false
 
   render: ->
@@ -48,11 +48,12 @@ class TwentyFilms.Views.List extends Backbone.View
     for film in toRemove
       film.destroy()
 
-  _reorderCollection: (newIds) ->
+  _reorderCollection: (newIds) -> 
+    models = []
     for id in newIds
-      film = @collection.findWhere(id: id)
-      @collection.remove(film)
-      @collection.add(film)
+      models.push(@collection.get(id))
+    @collection.reset(models)
+    console.log(@collection)
 
   _switchButton: ->
     $('#edit-toggle-button').html('done editing') if @editing

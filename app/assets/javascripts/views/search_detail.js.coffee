@@ -31,7 +31,7 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
         url: '/films'
         data: {Title: @model.get('title')}
         success: (response) =>
-          @collection.push(@model)
+          @collection.add(@model)
           @clear()
 
   clear: ->
