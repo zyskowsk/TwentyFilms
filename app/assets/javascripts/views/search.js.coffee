@@ -88,8 +88,7 @@ class TwentyFilms.Views.Search extends Backbone.View
       dataType: 'json'
       data: {s: "#{data}*"}
       success: (response) =>
-        @_apiSuccessCallback(response, data)
-        
+        @_apiSuccessCallback(response, data)      
 
   _sendDbRequest: (callback) ->
     data = $('#search-bar').serializeJSON().film.title

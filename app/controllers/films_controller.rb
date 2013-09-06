@@ -41,6 +41,12 @@ class FilmsController < ApplicationController
     render :json => [], :status => 200
   end
 
+  def show
+    @film = Film.find(params[:id])
+
+    render :json => @film, :status => 200
+  end
+
   private
     def add_film_on_search(params)
       title = params[:Title]

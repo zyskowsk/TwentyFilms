@@ -7,13 +7,21 @@ window.TwentyFilms =
   initialize: -> 
     $filmList = $('#film-list')
     $search = $('#search')
-    $newForm = $('#new-film-form')
+    $filmNew = $('#film-new')
+    $filmShow = $('#film-show')
 
-    data = JSON.parse($('#current_user_bs').html())
-    currentUser = new TwentyFilms.Models.User(data, {parse: true})
+    data = JSON.parse $('#current_user_bs').html()
+    currentUser = new TwentyFilms.Models.User(data, parse: true)
     films = currentUser.get('films')
 
-    new TwentyFilms.Routers.Router($filmList, $search, $newForm, films)
+    new TwentyFilms.Routers.Router(
+      $filmList, 
+      $search, 
+      $filmNew, 
+      $filmShow, 
+      films
+    )
+
     Backbone.history.start()
 
 $(document).ready ->

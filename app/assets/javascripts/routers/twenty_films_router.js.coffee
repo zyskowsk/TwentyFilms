@@ -14,10 +14,11 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     'film/new': 'filmNew'
     'film/:id': 'filmShow'
 
-  initialize: ($filmList, $search, $newForm, films) ->
+  initialize: ($filmList, $search, $filmNew, $filmShow, films) ->
     @elements['list'] = $filmList
     @elements['search'] = $search
-    @elements['filmNew'] = $newForm
+    @elements['filmNew'] = $filmNew
+    @elements['filmShow'] = $filmShow
     @films = films
 
   home: -> 
@@ -27,9 +28,10 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   filmNew: -> 
     @_renderView('filmNew', collection: @films)
     @elements['filmNew'].slideDown('slow')
-    
-  filmShow: ->
-    @_renderView('filmShow')
+
+  filmShow: (id) ->
+    TwentyFilms.Models.Film.getByRawId id, (film) =>
+      @_renderView('filmShow', model: film)
 
   _renderView: (type, options) ->
     newView = new @viewConstructors[type](options)
@@ -40,26 +42,5 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @currentViews[type].remove() if @currentViews[type]
     @currentViews[type] = view
 
-  ##
-  # Old Code
-  ##
-
-  # _renderSearchView: ->
-  #   searchView = new TwentyFilms.Views.Search(collection: @films)
-  #   @currentSearch = searchView
-  #   @$search.html searchView.render().$el
-
-  # _renderListView: ->
-  #   listView = new TwentyFilms.Views.List(collection: @films)
-  #   @currentListView = listView
-  #   @$list.html listView.render().$el
-
-  # _renderNewFormView: ->
-  #   newFormView = new TwentyFilms.Views.NewFilm(collection: @films)
-  #   @$newForm.html newFormView.render().$el
-
-  # _removeCurrentViews: ->
-  #   @currentListView.remove() if @currentListView
-  #   @currentSearchView.remove() if @currentSearchView
 
 
