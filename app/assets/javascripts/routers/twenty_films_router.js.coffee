@@ -6,28 +6,33 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   viewConstructors:
     search: TwentyFilms.Views.Search
     list: TwentyFilms.Views.List
-    newForm: TwentyFilms.Views.NewFilm
+    filmNew: TwentyFilms.Views.FilmNew
+    filmShow: TwentyFilms.Views.FilmShow
 
   routes:
     '': 'home'
     'film/new': 'filmNew'
+    'film/:id': 'filmShow'
 
   initialize: ($filmList, $search, $newForm, films) ->
     @elements['list'] = $filmList
     @elements['search'] = $search
-    @elements['newForm'] = $newForm
+    @elements['filmNew'] = $newForm
     @films = films
 
   home: -> 
-    @_renderView('search')
-    @_renderView('list')
+    @_renderView('search', collection: @films)
+    @_renderView('list', collection: @films)
 
   filmNew: -> 
-    @_renderView('newForm')
-    @elements['newForm'].slideDown('slow')
+    @_renderView('filmNew', collection: @films)
+    @elements['filmNew'].slideDown('slow')
+    
+  filmShow: ->
+    @_renderView('filmShow')
 
-  _renderView: (type) ->
-    newView = new @viewConstructors[type](collection: @films)
+  _renderView: (type, options) ->
+    newView = new @viewConstructors[type](options)
     @_swapView(newView, type)
     @elements[type].html newView.render().$el
 

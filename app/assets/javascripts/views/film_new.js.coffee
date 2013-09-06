@@ -1,4 +1,4 @@
-class TwentyFilms.Views.NewFilm extends Backbone.View
+class TwentyFilms.Views.FilmNew extends Backbone.View
   
   template: JST['film/new']
 
