@@ -4,7 +4,6 @@ class TwentyFilms.Views.List extends Backbone.View
   events: 
     'click #edit-toggle-button': 'toggleEditView'
 
-
   initialize: ->
     @listenTo(@collection, 'add sync destroy', @render)
     @editing = false

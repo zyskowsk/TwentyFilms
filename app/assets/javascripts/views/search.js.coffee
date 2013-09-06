@@ -8,7 +8,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     'keydown': 'hideResults'
  
   findFilmDebounce: _.debounce (->
-    @_sendRequest()), 500
+    @_sendRequest()), 300
 
   initialize: ->
     @listenTo(@collection, 'add', @render)
