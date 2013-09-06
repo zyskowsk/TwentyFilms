@@ -55,15 +55,14 @@ class TwentyFilms.Views.List extends Backbone.View
     for id in newIds
       models.push(@collection.get(id))
     @collection.reset(models)
-    console.log(@collection)
 
   _switchButton: ->
     $('#edit-toggle-button').html('done editing') if @editing
     $('#edit-toggle-button').html('edit your list') if not @editing
 
   _toggleEdit: ->
-    @render()
     @editing = !@editing
+    @render()
     @_switchButton()
 
   _updateOrds: (newIds) ->

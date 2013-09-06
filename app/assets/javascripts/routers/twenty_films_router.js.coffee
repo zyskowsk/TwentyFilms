@@ -1,37 +1,43 @@
 class TwentyFilms.Routers.Router extends Backbone.Router
 
-  initialize: ($filmList, $search, $newForm, films) ->
-    @$list = $filmList
-    @$search = $search
-    @$newForm = $newForm
-    @films = films
+  currentViews: {}
+  elements: {}
 
   viewConstructors:
     search: TwentyFilms.Views.Search
     list: TwentyFilms.Views.List
     newForm: TwentyFilms.Views.NewFilm
 
-  currentViews:
-
   routes:
     '': 'home'
     'film/new': 'filmNew'
 
+  initialize: ($filmList, $search, $newForm, films) ->
+    @elements['list'] = $filmList
+    @elements['search'] = $search
+    @elements['newForm'] = $newForm
+    @films = films
+
   home: -> 
-    @_removeCurrentViews()
     @_renderView('search')
     @_renderView('list')
 
   filmNew: -> 
-    @_renderVew('newForm')
-    @$newForm.slideDown('slow')
+    @_renderView('newForm')
+    @elements['newForm'].slideDown('slow')
 
   _renderView: (type) ->
     newView = new @viewConstructors[type](collection: @films)
-    @currentViews[type] = newView
-    @$search.html newView.render().$el
+    @_swapView(newView, type)
+    @elements[type].html newView.render().$el
 
-  #TODO: Check for errors, add switch method
+  _swapView: (view, type) ->
+    @currentViews[type].remove() if @currentViews[type]
+    @currentViews[type] = view
+
+  ##
+  # Old Code
+  ##
 
   # _renderSearchView: ->
   #   searchView = new TwentyFilms.Views.Search(collection: @films)
@@ -43,10 +49,12 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   #   @currentListView = listView
   #   @$list.html listView.render().$el
 
-  # _renderNewFormVew: ->
+  # _renderNewFormView: ->
   #   newFormView = new TwentyFilms.Views.NewFilm(collection: @films)
   #   @$newForm.html newFormView.render().$el
 
-  _removeCurrentViews: ->
-    @currentListView.remove() if @currentListView
-    @currentSearchView.remove() if @currentSearchView
+  # _removeCurrentViews: ->
+  #   @currentListView.remove() if @currentListView
+  #   @currentSearchView.remove() if @currentSearchView
+
+

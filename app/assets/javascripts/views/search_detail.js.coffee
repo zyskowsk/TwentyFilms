@@ -10,9 +10,9 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
 
   addFilm: (event) ->
     if @model.get('imdbID')
-      @_addApiFilm
+      @_addApiFilm()
     else
-      @_addDbFilm
+      @_addDbFilm()
 
   clear: ->
     $('#results').html('')

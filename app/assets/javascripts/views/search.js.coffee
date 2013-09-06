@@ -25,7 +25,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     @$el.html @template()
     this
 
-  _apiSuccessCallback: ->
+  _apiSuccessCallback: (response, data) ->
     if response.Search
       for result in response.Search
         film = new TwentyFilms.Models.Film(result) 
@@ -88,7 +88,7 @@ class TwentyFilms.Views.Search extends Backbone.View
       dataType: 'json'
       data: {s: "#{data}*"}
       success: (response) =>
-        @_apiSuccessCallback(response)
+        @_apiSuccessCallback(response, data)
         
 
   _sendDbRequest: (callback) ->
