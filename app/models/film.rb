@@ -3,7 +3,7 @@ require 'rest-client'
 class Film < ActiveRecord::Base
   attr_accessible :director, :release_year, :title
 
-  TMDB_API_KEY = "5c7ad0d82517d3ccbec62a77fb1269ca"
+  TMDB_API_KEY = "--------------------------------"
 
   validates :title, :release_year, :director, :presence => true
   validates :release_year, :inclusion => { :in => (1840..Date.today.year) }
