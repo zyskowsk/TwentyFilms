@@ -7,15 +7,12 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
     'click .add' : 'addFilm'
     'click .new-film': 'clear'
 
-  initialize: ->
-    @currentFilms = TwentyFilms.Store.currentUser.get('films')
-
   render: ->
     @$el.html @template 
       film: @model, 
       notFound: this.options.notFound,
       alreadyInList: @_alreadyInList(@model),
-      hasTwenty: @currentFilms.length == 20
+      hasTwenty: @collection.length == 20
       
     this
 
@@ -27,7 +24,6 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
         dataType: 'json'
         data: {i: @model.get('imdbID')}
         success: (response) =>
-          console.log('hello?')
           @_persistFilm(response)
     else
       $.ajax
@@ -35,23 +31,22 @@ class TwentyFilms.Views.SearchDetail extends Backbone.View
         url: '/films'
         data: {Title: @model.get('title')}
         success: (response) =>
-          TwentyFilms.Store.currentUser.get('films').push(@model)
+          @collection.push(@model)
           @clear()
 
   clear: ->
     $('#results').html('')
 
   _alreadyInList: (newFilm)->
-    titleList = @currentFilms.map (film) =>
+    titleList = @collection.map (film) =>
       film.get('title')
 
     (titleList.indexOf(newFilm.get('Title')) != -1) if newFilm
 
   _persistFilm: (response) ->
-    console.log(response)
     newFilm = new TwentyFilms.Models.Film(response)
     unless @_alreadyInList(newFilm)
-      @currentFilms.create newFilm, 
+      @collection.create newFilm, 
         success: =>
           @clear()
 

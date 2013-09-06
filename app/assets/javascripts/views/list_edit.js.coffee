@@ -1,8 +1,6 @@
 class TwentyFilms.Views.ListEdit extends Backbone.View
-  initialize: -> 
-    @model.remove = false
-    
   tagName: 'li'
+  
   template: JST['list/edit']
 
   events:

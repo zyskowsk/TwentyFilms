@@ -11,7 +11,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     @currentResults = []
 
   findFilm: (event) ->
-    _.debounce(@_sendRequest(event), 1000)
+    _.debounce(@_sendRequest(event), 200)
 
   preventDefault: (event) ->
     event.preventDefault()
@@ -23,12 +23,17 @@ class TwentyFilms.Views.Search extends Backbone.View
   _appendResults: ->
     @_filterResults()
     for film in @currentResults[0..5]
-      resultView = new TwentyFilms.Views.SearchDetail(model: film)
+      resultView = new TwentyFilms.Views.SearchDetail 
+        model: film, 
+        collection: @collection
       $('#results').append(resultView.render().$el)
     @currentResults = []
 
   _appendNoResults: ->
-    noResultsView = new TwentyFilms.Views.SearchDetail(notFound: true)
+    emptyCollection = new TwentyFilms.Collections.Films
+    noResultsView = new TwentyFilms.Views.SearchDetail
+      collection: emptyCollection, 
+      notFound: true
     $('#results').append(noResultsView.render().$el)
  
   _filterResults: ->

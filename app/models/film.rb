@@ -26,7 +26,7 @@ class Film < ActiveRecord::Base
     ).to_s
   end
 
-  def self.add_films_and_choice(params)
+  def self.add_film_and_choice(params, current_user)
     ActiveRecord::Base.transaction do
       @new_film = Film.new(
         :title => params[:Title],

@@ -1,7 +1,8 @@
 class FilmsController < ApplicationController
 
   def create
-    if params[:film]
+    puts params[:film]
+    if not (params[:film].nil? || params[:film].empty?)
       @new_film = Film.new(params[:film])
 
       if @new_film.save
@@ -54,7 +55,7 @@ class FilmsController < ApplicationController
 
         render :json => @film, :status => 200
       else
-        Film.add_film_and_choice(params)
+        Film.add_film_and_choice(params, current_user)
 
         render :json => @new_film, :status => 200
       end

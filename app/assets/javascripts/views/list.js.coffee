@@ -1,7 +1,7 @@
 class TwentyFilms.Views.List extends Backbone.View
 
   initialize: ->
-    @listenTo(@collection, 'change add sync destroy', @render)
+    @listenTo(@collection, 'change sync destroy', @render)
     @editing = false
 
   events: 
@@ -33,8 +33,8 @@ class TwentyFilms.Views.List extends Backbone.View
     if @editing
       $( ".sortable" ).sortable
         stop: =>
-          newIds = _($('#list').children()).map (thing) =>
-            $(thing).find('div').data('id')
+          newIds = _($('#list').children()).map (el) =>
+            $(el).find('div').data('id')
           @updateOrds(newIds)
           @reorderCollection(newIds)
     else
@@ -50,14 +50,18 @@ class TwentyFilms.Views.List extends Backbone.View
     for id in newIds
       film = @collection.findWhere(id: id)
       @collection.remove(film)
-      @collection.push(film)
+      @collection.add(film)
 
   switchButton: ->
     $('#edit-toggle-button').html('done editing') if @editing
     $('#edit-toggle-button').html('edit your list') if not @editing
 
   removeFilms: ->
+    toRemove= []
     @collection.each (film) =>
-      film.destroy() if film.remove
+      toRemove.push(film) if film.remove
+
+    for film in toRemove
+      film.destroy()
 
 
