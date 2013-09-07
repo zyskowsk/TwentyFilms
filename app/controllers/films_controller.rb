@@ -1,8 +1,6 @@
 class FilmsController < ApplicationController
 
   def create
-    p "In Create"
-    p params[:action]
     if not params[:response] || params[:title]
       @new_film = Film.new(params[:film])
 
@@ -54,7 +52,6 @@ class FilmsController < ApplicationController
       @film = Film.find_by_title(params[:title])
 
       if @film
-        puts @film.id
         FilmChoice.create(
           :film_id => @film.id, 
           :user_id => current_user.id

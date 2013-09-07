@@ -28,7 +28,6 @@ class Film < ActiveRecord::Base
   end
 
   def self.add_film_and_choice(params, current_user)
-    puts 'in addfilm and choice'
     ActiveRecord::Base.transaction do
       @new_film = Film.new(params[:film])
       @new_film.save!
@@ -39,7 +38,11 @@ class Film < ActiveRecord::Base
         :ord => current_user.films ? current_user.films.length : 0
       )
     end
-    @new_film.get_trailer_source
+    begin
+      @new_film.get_trailer_source
+    rescue
+      puts "error ocured"
+    end
     @new_film.save
   end
 
@@ -52,7 +55,6 @@ class Film < ActiveRecord::Base
     url = Film.build_tmdb_url(
       "3/movie/#{self.imdbid}/trailers"
     )
-    puts url 
 
     self.trailer = JSON.parse(RestClient.get url)['youtube'][0]['source']
   end

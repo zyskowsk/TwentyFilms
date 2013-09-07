@@ -10,7 +10,6 @@ class TwentyFilms.Views.ResultsFilms extends Backbone.View
       @$el.find('#film-details').append noResultsView.render().$el
 
     for film in this.options.currentFilmResults
-      console.log(film)
       filmDetailView = new TwentyFilms.Views.SearchFilmDetail
           model: film,
           collection: @collection
