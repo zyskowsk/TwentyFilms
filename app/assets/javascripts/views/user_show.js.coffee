@@ -1,0 +1,15 @@
+class TwentyFilms.Views.UserShow extends Backbone.View
+
+  template: JST['user_show']
+
+  events:
+    'click .show.back': 'navigateHome'
+
+  render: ->
+    @$el.html @template(user: @model)
+    this
+
+  navigateHome: ->
+    $('#user-show').animate right: -$('#user-show').width(), =>
+      $('#user-show').hide()
+    Backbone.history.navigate('', trigger: true)

@@ -42,13 +42,13 @@
   z-index: 1;
 }
 
-#film-show {
+#user-show, #film-show {
   border: 3px black solid;
   height: 100%;
   position:fixed;
   width: 50%;
   top: 0px;
   right:-51%;
-  z-index: 1;
+  z-index: auto;
   background-color: lightGrey;
 }

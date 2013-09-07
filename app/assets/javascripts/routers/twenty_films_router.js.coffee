@@ -8,17 +8,20 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     list: TwentyFilms.Views.List
     filmNew: TwentyFilms.Views.FilmNew
     filmShow: TwentyFilms.Views.FilmShow
+    userShow: TwentyFilms.Views.UserShow
 
   routes:
     '': 'home'
-    'film/new': 'filmNew'
-    'film/:id': 'filmShow'
+    'films/new': 'filmNew'
+    'films/:id': 'filmShow'
+    'users/:id': 'userShow'
 
-  initialize: ($filmList, $search, $filmNew, $filmShow, films) ->
+  initialize: ($filmList, $search, $filmNew, $filmShow, $userShow, films) ->
     @elements['list'] = $filmList
     @elements['search'] = $search
     @elements['filmNew'] = $filmNew
     @elements['filmShow'] = $filmShow
+    @elements['userShow'] = $userShow
     @films = films
 
   home: -> 
@@ -35,6 +38,13 @@ class TwentyFilms.Routers.Router extends Backbone.Router
       @_renderView('filmShow', model: film)
       @elements['filmShow'].show()
       @elements['filmShow'].animate(right: 0)
+
+  userShow: (id) ->
+    TwentyFilms.Models.User.getByRawId id, (user) =>
+      @_renderView('search', collection: @films)
+      @_renderView('userShow', model: user)
+      @elements['userShow'].show()
+      @elements['userShow'].animate(right: 0)
 
   _renderView: (type, options) ->
     newView = new @viewConstructors[type](options)

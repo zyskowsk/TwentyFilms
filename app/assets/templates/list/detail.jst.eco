@@ -1,4 +1,4 @@
-<a href="#/film/<%= @film.get('id') %>" >
+<a href="#/films/<%= @film.get('id') %>" >
   <%= @film.get('title') || @film.get('Title')%>
   <%= @film.get('director') || @film.get('release_year')%>
   <%= @film.get('release_year') || @film.get('Year')%>

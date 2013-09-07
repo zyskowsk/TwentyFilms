@@ -5,7 +5,6 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     'click .show.back': 'navigateHome'
 
   render: ->
-    console.log(@model)
     @$el.html @template(film: @model)
     this
 

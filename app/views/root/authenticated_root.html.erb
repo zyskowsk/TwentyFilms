@@ -15,6 +15,14 @@
 <div id="film-show">
 </div>
 
-<script type="application/json" id="current_user_bs">
-  <%= render('root/launch.json.rabl', :locals => { :current_user => @current_user }).html_safe %>
+<div id="user-show">
+</div>
+
+<script type="application/json" id="user_bs">
+  <%= render('root/launch.json.rabl', 
+             :locals => { :users => @users }).html_safe %>
+</script>
+
+<script id='current_user_id'>
+  <%= current_user.id %>
 </script>

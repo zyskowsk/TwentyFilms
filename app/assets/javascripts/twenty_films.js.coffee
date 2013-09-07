@@ -9,16 +9,21 @@ window.TwentyFilms =
     $search = $('#search')
     $filmNew = $('#film-new')
     $filmShow = $('#film-show')
+    $userShow = $('#user-show')
 
-    data = JSON.parse $('#current_user_bs').html()
-    currentUser = new TwentyFilms.Models.User(data, parse: true)
+    usersData = JSON.parse $('#user_bs').html()
+    users = new TwentyFilms.Collections.Users(usersData, parse: true)
+    
+    currentUserId = $('#current_user_id').html()
+    currentUser = users.get parseInt(currentUserId)
     films = currentUser.get('films')
 
     new TwentyFilms.Routers.Router(
       $filmList, 
       $search, 
       $filmNew, 
-      $filmShow, 
+      $filmShow,
+      $userShow, 
       films
     )
 

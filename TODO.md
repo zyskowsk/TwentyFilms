@@ -1,6 +1,4 @@
 Today (9/6):
-  -Film Show Page
-  -User Show Page
   -User Search
   -User Follow
   -Film Show Comments
@@ -28,6 +26,7 @@ MISC:
   -Netfilx api
   -HULU api
   -Search Opt.
+  -cross site scripting(thought bot bb book)
 
 MISC Style:
   -Waiting Bar on 

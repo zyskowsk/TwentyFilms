@@ -1,11 +1,11 @@
 <% if @notFound: %>
   <li>
-    <a class='new-film' href='#/film/new'>
+    <a class='new-film' href='#/films/new'>
       Sorry, we couldnt find your film! add it!
     </a>
   </li>
 <% else if (@hasTwenty || @alreadyInList): %>
-  <a href='#/film/<%= @film.get('id') || @film.get('imdbID') %>' 
+  <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
      class='result'>
     <%= @film.get('Title') || @film.get('title') %>
     (<%= @film.get('Director') || @film.get('director') %>
@@ -13,7 +13,7 @@
   </a>
 
 <% else: %> 
-  <a href='#/film/<%= @film.get('id') || @film.get('imdbID') %>' 
+  <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
      class='result'>
     <%= @film.get('Title') || @film.get('title') %>
     (<%= @film.get('Director') || @film.get('director') %>
