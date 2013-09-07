@@ -12,7 +12,7 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   initialize: ->
     @listenTo(@collection, 'add', @render)
-    @currentResults = []
+    @currentFilmResults = []
     $('#results').hide()
 
   hideResults: ->
@@ -29,44 +29,53 @@ class TwentyFilms.Views.Search extends Backbone.View
     if response.Search
       for result in response.Search
         film = new TwentyFilms.Models.Film(result) 
-        @currentResults.push(film) unless @_isDuplicate(film)
+        @currentFilmResults.push(film) unless @_isDuplicate(film)
     $('#results').html('')
     @_handleResults(data)
 
-  _appendResults: ->
+  _appendFilmResults: ->
     @_filterResults()
-    for film in @currentResults[0..5]
-      resultView = new TwentyFilms.Views.SearchDetail 
-        model: film, 
-        collection: @collection
-      $('#results').append(resultView.render().$el)
-    @currentResults = []
+    filmResults = new TwentyFilms.Views.ResultsFilms
+        collection: @collection,
+        currentFilmResults: @currentFilmResults 
 
-  _appendNoResults: (response) ->
+    $('#results').append filmResults.render().$el
+    @currentFilmResults = []
+
+  _appendNoFilmResults: (response) ->
     emptyCollection = new TwentyFilms.Collections.Films
-    noResultsView = new TwentyFilms.Views.SearchDetail
-      collection: emptyCollection, 
-      notFound: true
-    $('#results').append(noResultsView.render().$el)
+    noFilmResultsView = new TwentyFilms.Views.ResultsFilms
+        collection: emptyCollection
+        currentFilmResults: emptyCollection 
+
+    $('#results').append noFilmResultsView.render().$el
+
+  _appendUserResults: ->
+    userResults = new TwentyFilms.Views.ResultsUsers
+        collection: @_userSearchResults()
+    $('#results').append userResults.render().$el
+
 
   _dbSuccessCallback: (response, callback) ->
     for result in response
       film = new TwentyFilms.Models.Film(result) 
-      @currentResults.push(film)
+      @currentFilmResults.push(film)
     callback()
  
   _filterResults: ->
-    @currentResults = _(@currentResults).reject (film) =>
+    @currentFilmResults = _(@currentFilmResults).reject (film) =>
       film.Type == 'movie'
 
   _getSearchData: ->
     $('#search-bar').serializeJSON().film.title
 
   _handleResults: (data) ->
-    if @currentResults.length > 0 && data != ''
-      @_appendResults()
-    else if @currentResults.length == 0
-      @_appendNoResults()
+    @_appendUserResults()
+
+    if @currentFilmResults.length > 0 && data != ''
+      @_appendFilmResults()
+    else if @currentFilmResults.length == 0
+      @_appendNoFilmResults()
     $('#results').slideDown('fast')
 
   #TODO: Fix
@@ -74,7 +83,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     title = film.get('Title')
     year = parseInt(film.get('Year'))
     count = 0
-    for currentFilm in @currentResults
+    for currentFilm in @currentFilmResults
       sameTitle = (title == currentFilm.get('title') ||
                     title == currentFilm.get('Title'))
       sameYear = (year == currentFilm.get('release_year') ||
@@ -83,8 +92,10 @@ class TwentyFilms.Views.Search extends Backbone.View
 
     count != 0
 
-  _searchUsers:() ->
-    TwentyFilms.Store.users.searchUsers(@_getSearchData())
+  _userSearchResults:() ->
+    new TwentyFilms.Collections.Users TwentyFilms.Store.users.searchUsers( 
+          @_getSearchData()
+        )
 
   _sendApiRequest: ->
     data =  @_getSearchData()
@@ -108,6 +119,5 @@ class TwentyFilms.Views.Search extends Backbone.View
         @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
-    console.log(@_searchUsers())
     @_sendDbRequest =>
       @_sendApiRequest()
