@@ -1,7 +1,9 @@
 class FilmsController < ApplicationController
 
   def create
-    if not (params[:film].nil? || params[:film].empty?)
+    p "In Create"
+    p params[:action]
+    if not params[:response] || params[:title]
       @new_film = Film.new(params[:film])
 
       if @new_film.save
@@ -10,7 +12,7 @@ class FilmsController < ApplicationController
         render :json => @new_film.errors, :status => 422
       end
     else
-      add_film_on_search(params)
+      add_film_on_search
     end
   end
 
@@ -48,7 +50,7 @@ class FilmsController < ApplicationController
   end
 
   private
-    def add_film_on_search(params)
+    def add_film_on_search
       @film = Film.find_by_title(params[:title])
 
       if @film

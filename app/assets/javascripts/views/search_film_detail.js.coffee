@@ -26,7 +26,6 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     this
 
   _addApiFilm: ->
-    console.log('here')
     $.ajax
       type: 'GET'
       url: 'http://www.omdbapi.com'
@@ -52,7 +51,6 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     (titleList.indexOf(newFilm.get('title')) != -1) if newFilm
 
   _persistFilm: (response) ->
-    console.log(response)
     newFilm = new TwentyFilms.Models.Film(response)
     unless @_alreadyInList(newFilm)
       @collection.create newFilm, 
