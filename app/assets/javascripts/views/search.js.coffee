@@ -59,6 +59,9 @@ class TwentyFilms.Views.Search extends Backbone.View
     @currentResults = _(@currentResults).reject (film) =>
       film.Type == 'movie'
 
+  _getSearchData: ->
+    $('#search-bar').serializeJSON().film.title
+
   _handleResults: (data) ->
     if @currentResults.length > 0 && data != ''
       @_appendResults()
@@ -80,18 +83,21 @@ class TwentyFilms.Views.Search extends Backbone.View
 
     count != 0
 
+  _searchUsers:() ->
+    TwentyFilms.Store.users.searchUsers(@_getSearchData())
+
   _sendApiRequest: ->
-    data = $('#search-bar').serializeJSON().film.title
+    data =  @_getSearchData()
     $.ajax
       type: 'GET'
       url: 'http://www.omdbapi.com'
       dataType: 'json'
-      data: {s: "#{data}*"}
+      data: {s: "#{@_getSearchData()}*"}
       success: (response) =>
         @_apiSuccessCallback(response, data)      
 
   _sendDbRequest: (callback) ->
-    data = $('#search-bar').serializeJSON().film.title
+    data =  @_getSearchData()
     $('#results').html('') if data == ''
     $.ajax
       type: 'GET'
@@ -102,5 +108,6 @@ class TwentyFilms.Views.Search extends Backbone.View
         @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
+    console.log(@_searchUsers())
     @_sendDbRequest =>
       @_sendApiRequest()

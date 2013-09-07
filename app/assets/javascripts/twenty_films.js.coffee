@@ -3,6 +3,7 @@ window.TwentyFilms =
   Collections: {}
   Views: {}
   Routers: {}
+  Store: {}
   
   initialize: -> 
     $filmList = $('#film-list')
@@ -12,8 +13,13 @@ window.TwentyFilms =
     $userShow = $('#user-show')
 
     usersData = JSON.parse $('#user_bs').html()
-    users = new TwentyFilms.Collections.Users(usersData, parse: true)
-    
+    users = new TwentyFilms.Collections.Users(
+      usersData, 
+      parse: true
+    )
+
+    TwentyFilms.Store.users = users
+
     currentUserId = $('#current_user_id').html()
     currentUser = users.get parseInt(currentUserId)
     films = currentUser.get('films')
