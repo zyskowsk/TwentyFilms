@@ -1,8 +1,6 @@
-Today (9/6):
+Today (9/7):
   -User Follow
   -Film Show Comments
-
-Saturday (9/7):
   -Better Film Submit
   -User Edit Page
   -Clean up server side API
