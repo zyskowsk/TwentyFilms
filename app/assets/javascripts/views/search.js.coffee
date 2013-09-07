@@ -28,7 +28,8 @@ class TwentyFilms.Views.Search extends Backbone.View
   _apiSuccessCallback: (response, data) ->
     if response.Search
       for result in response.Search
-        film = new TwentyFilms.Models.Film(result) 
+        film = new TwentyFilms.Models.Film(@_clenseResult(result)) 
+        console.log(film)
         @currentFilmResults.push(film) unless @_isDuplicate(film)
     $('#results').html('')
     @_handleResults(data)
@@ -55,6 +56,12 @@ class TwentyFilms.Views.Search extends Backbone.View
         collection: @_userSearchResults()
     $('#results').append userResults.render().$el
 
+  _clenseResult: (result) ->
+    newObject = {}
+    for key in _(result).keys()
+      newObject[key.toLowerCase()] = result[key]
+
+    newObject
 
   _dbSuccessCallback: (response, callback) ->
     for result in response

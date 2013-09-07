@@ -1,5 +1,4 @@
 Today (9/6):
-  -User Search
   -User Follow
   -Film Show Comments
 

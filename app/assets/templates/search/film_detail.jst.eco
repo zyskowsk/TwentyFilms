@@ -7,17 +7,17 @@
 <% else if (@hasTwenty || @alreadyInList): %>
   <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
      class='result'>
-    <%= @film.get('Title') || @film.get('title') %>
-    (<%= @film.get('Director') || @film.get('director') %>
-     <%= @film.get('Year') || @film.get('release_year') %>)
+    <%= @film.get('title') %>
+    (<%= @film.get('director') %>
+     <%= @film.get('year') %>)
   </a>
 
 <% else: %> 
   <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
      class='result'>
-    <%= @film.get('Title') || @film.get('title') %>
-    (<%= @film.get('Director') || @film.get('director') %>
-     <%= @film.get('Year') || @film.get('release_year') %>)
+    <%= @film.get('title') %>
+    (<%= @film.get('director') %>
+     <%= @film.get('year') %>)
   </a>
   <a href='#' class='result add'> add to list</a>
 <% end %>
