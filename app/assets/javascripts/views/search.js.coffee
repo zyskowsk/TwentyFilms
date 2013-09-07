@@ -28,8 +28,8 @@ class TwentyFilms.Views.Search extends Backbone.View
   _apiSuccessCallback: (response, data) ->
     if response.Search
       for result in response.Search
-        film = new TwentyFilms.Models.Film(@_clenseResult(result)) 
-        console.log(film)
+        clensedResult = TwentyFilms.Search.clenseResult(result)
+        film = new TwentyFilms.Models.Film(clensedResult) 
         @currentFilmResults.push(film) unless @_isDuplicate(film)
     $('#results').html('')
     @_handleResults(data)
@@ -56,13 +56,6 @@ class TwentyFilms.Views.Search extends Backbone.View
         collection: @_userSearchResults()
     $('#results').append userResults.render().$el
 
-  _clenseResult: (result) ->
-    newObject = {}
-    for key in _(result).keys()
-      newObject[key.toLowerCase()] = result[key]
-
-    newObject
-
   _dbSuccessCallback: (response, callback) ->
     for result in response
       film = new TwentyFilms.Models.Film(result) 
@@ -87,14 +80,12 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   #TODO: Fix
   _isDuplicate: (film) ->
-    title = film.get('Title')
-    year = parseInt(film.get('Year'))
+    title = film.get('title')
+    year = parseInt(film.get('year'))
     count = 0
     for currentFilm in @currentFilmResults
-      sameTitle = (title == currentFilm.get('title') ||
-                    title == currentFilm.get('Title'))
-      sameYear = (year == currentFilm.get('release_year') ||
-                    year == currentFilm.get('Year'))
+      sameTitle = (title == currentFilm.get('title'))
+      sameYear = (year == currentFilm.get('year'))
       count++ if (sameTitle && sameYear)
 
     count != 0

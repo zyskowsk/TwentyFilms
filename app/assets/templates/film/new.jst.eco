@@ -9,7 +9,7 @@
   <input type="text" id="film_title" name="film[title]" /><br />
 
   <label for="film_release_year">Year</label>
-  <input type="text" id="film_release_year" name="film[release_year]" /><br />
+  <input type="text" id="film_release_year" name="film[year]" /><br />
 
   <label for="film_director">Director</label>
   <input type="text" id="film_director" name="film[director]" /><br />

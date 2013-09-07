@@ -1,4 +1,4 @@
-<h1>Title: <%= @film.get('Title') || @film.get('title') %></h1>
-<h3>Director: <%= @film.get('Director') || @film.get('director') %></h3>
-<h3>Year: <%= @film.get('Year') || @film.get('release_year') %></h3>
+<h1>Title: <%= @film.get('title') %></h1>
+<h3>Director: <%= @film.get('director') %></h3>
+<h3>Year: <%= @film.get('year') %></h3>
 <a class="show back">---></a>

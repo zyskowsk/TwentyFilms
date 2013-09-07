@@ -4,6 +4,7 @@ window.TwentyFilms =
   Views: {}
   Routers: {}
   Store: {}
+  Search: {}
   
   initialize: -> 
     $filmList = $('#film-list')
@@ -19,6 +20,14 @@ window.TwentyFilms =
     )
 
     TwentyFilms.Store.users = users
+
+    #Move this somewhere
+    TwentyFilms.Search.clenseResult = (result) ->
+      newObject = {}
+      for key in _(result).keys()
+        newObject[key.toLowerCase()] = result[key]
+
+      newObject
 
     currentUserId = $('#current_user_id').html()
     currentUser = users.get parseInt(currentUserId)

@@ -5,7 +5,7 @@
     </a>
   </li>
 <% else if (@hasTwenty || @alreadyInList): %>
-  <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
+  <a href='#/films/<%= @film.get('id') || @film.get('imdbid') %>' 
      class='result'>
     <%= @film.get('title') %>
     (<%= @film.get('director') %>
@@ -13,7 +13,7 @@
   </a>
 
 <% else: %> 
-  <a href='#/films/<%= @film.get('id') || @film.get('imdbID') %>' 
+  <a href='#/films/<%= @film.get('id') || @film.get('imdbid') %>' 
      class='result'>
     <%= @film.get('title') %>
     (<%= @film.get('director') %>

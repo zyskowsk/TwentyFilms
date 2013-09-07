@@ -10,10 +10,15 @@ class TwentyFilms.Models.Film extends Backbone.Model
         dataType: 'json'
         data: {i: id}
         success: (response) =>
-          @film = new TwentyFilms.Models.Film(response)
+          result = TwentyFilms.Search.clenseResult(response)
+          console.log(result)
+          @film = new TwentyFilms.Models.Film(result)
           callback(@film)
     else
       @film = new TwentyFilms.Models.Film(id: id)
       @film.fetch
         success: (response) =>
           callback(response)
+
+
+    

@@ -26,6 +26,7 @@ MISC:
   -HULU api
   -Search Opt.
   -cross site scripting(thought bot bb book)
+  -Figure out where to put search util methods
 
 MISC Style:
   -Waiting Bar on 

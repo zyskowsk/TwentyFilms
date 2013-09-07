@@ -7,9 +7,8 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     'click .add' : 'addFilm'
     'click .new-film': 'clear'
 
-
   addFilm: (event) ->
-    if @model.get('imdbID')
+    if @model.get('imdbid')
       @_addApiFilm()
     else
       @_addDbFilm()
@@ -27,19 +26,21 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     this
 
   _addApiFilm: ->
+    console.log('here')
     $.ajax
       type: 'GET'
       url: 'http://www.omdbapi.com'
       dataType: 'json'
-      data: {i: @model.get('imdbID')}
+      data: {i: @model.get('imdbid')}
       success: (response) =>
-        @_persistFilm(response)
+        clensedResult = TwentyFilms.Search.clenseResult(response)
+        @_persistFilm(clensedResult)
 
   _addDbFilm: ->
     $.ajax
       type: 'POST'
       url: '/films'
-      data: {Title: @model.get('title')}
+      data: {title: @model.get('title')}
       success: (response) =>
         @collection.add(@model)
         @clear()
@@ -48,9 +49,10 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     titleList = @collection.map (film) =>
       film.get('title')
 
-    (titleList.indexOf(newFilm.get('Title')) != -1) if newFilm
+    (titleList.indexOf(newFilm.get('title')) != -1) if newFilm
 
   _persistFilm: (response) ->
+    console.log(response)
     newFilm = new TwentyFilms.Models.Film(response)
     unless @_alreadyInList(newFilm)
       @collection.create newFilm, 

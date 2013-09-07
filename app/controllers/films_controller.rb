@@ -49,8 +49,7 @@ class FilmsController < ApplicationController
 
   private
     def add_film_on_search(params)
-      title = params[:Title]
-      @film = Film.find_by_title(title)
+      @film = Film.find_by_title(params[:title])
 
       if @film
         puts @film.id
