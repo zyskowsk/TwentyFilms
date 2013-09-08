@@ -70,8 +70,9 @@ class TwentyFilms.Views.Search extends Backbone.View
     $('#search-bar').serializeJSON().film.title
 
   _handleResults: (data) ->
-    $('#wait').animate(width: 0)
-    $('#wait').spin(false)
+    $('#wait').animate {width: 0}, 'fast', =>
+      $('#wait').spin(false)
+    
     @_appendUserResults()
 
     if @currentFilmResults.length > 0 && data != ''
