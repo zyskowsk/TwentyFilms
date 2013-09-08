@@ -1,14 +1,10 @@
-Today (9/6):
+Today (9/8):
   -User Follow
-
-Saturday (9/7):
+  -cross-site-scripting
   -Better Film Submit
-  -User Edit Page
-  -Clean up server side API
-  -confirmation email
   -Gravatar?
-  -forgot password email
-  -PushState
+  -Error Messages
+  -FBAuth
 
 Monday (9/9): 
   -Search Opt Day
@@ -18,16 +14,14 @@ Tuesday-Friday:
   -Front End PM
 
 MISC:
+  -User Edit Page
+  -PushState
   -FileUpload?
-  -ServerSideAuth
-  -FBAuth
-  -Netfilx api
-  -HULU api
+  -forgot password email
+  -ServerSideAuthorazationAPI
+  -Clean up server side API
+  -confirmation email
   -Search Opt.
-
-MISC Style:
-  -Waiting Bar on 
-
 
 Bugs To Fix:
   -Deployment DB Search
