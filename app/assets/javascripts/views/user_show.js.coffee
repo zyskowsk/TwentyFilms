@@ -7,6 +7,10 @@ class TwentyFilms.Views.UserShow extends Backbone.View
 
   render: ->
     @$el.html @template(user: @model)
+    @model.get('films').each (film) =>
+      detailView = new TwentyFilms.Views.ListDetail(model: film)
+      @$el.find('.list').append detailView.render().el
+
     this
 
   navigateHome: ->

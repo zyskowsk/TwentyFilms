@@ -1,2 +1,6 @@
+<a class="show back">close</a>
+
 <h1><%= @user.get('username') %></h1>
-<a class="show back">---></a>
+<h2> List </h2>
+<ul class="list">
+</ul>

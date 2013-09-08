@@ -1,5 +1,4 @@
 Today (9/6):
-  -User Show Page
   -User Follow
 
 Saturday (9/7):
@@ -7,7 +6,9 @@ Saturday (9/7):
   -User Edit Page
   -Clean up server side API
   -confirmation email
+  -Gravatar?
   -forgot password email
+  -PushState
 
 Monday (9/9): 
   -Search Opt Day
@@ -17,9 +18,7 @@ Tuesday-Friday:
   -Front End PM
 
 MISC:
-  -PushState
   -FileUpload?
-  -Gravatar?
   -ServerSideAuth
   -FBAuth
   -Netfilx api
