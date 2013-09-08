@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907211747) do
+ActiveRecord::Schema.define(:version => 20130908210005) do
 
   create_table "film_choices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20130907211747) do
     t.string   "trailer"
     t.string   "imdbid"
   end
+
+  create_table "followings", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followee_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "followings", ["followee_id"], :name => "index_followings_on_followee_id"
+  add_index "followings", ["follower_id"], :name => "index_followings_on_follower_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",            :null => false

@@ -29,6 +29,20 @@ class User < ActiveRecord::Base
     :foreign_key => :user_id
   )
 
+  has_many( 
+    :incoming_follows,
+    :class_name => "Following",
+    :foreign_key => :followee_id
+  )
+
+  has_many( 
+    :outgoing_follows,
+    :class_name => "Following",
+    :foreign_key => :follower_id
+  )
+
+  has_many :followed_users, :through => :outgoin_follows, :source => :followee
+  has_many :followers, :through => :incoming_follows, :source => :follower
 
   def self.find_by_credentials(login, password)
     user = User.find_by_username(login)

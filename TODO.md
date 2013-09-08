@@ -4,7 +4,7 @@ Today (9/8):
   -Better Film Submit
   -Gravatar?
   -Error Messages
-  -FBAuth
+ g
 
 Monday (9/9): 
   -Search Opt Day

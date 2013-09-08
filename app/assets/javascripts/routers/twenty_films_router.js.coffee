@@ -10,6 +10,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     filmNew: TwentyFilms.Views.FilmNew
     filmShow: TwentyFilms.Views.FilmShow
     userShow: TwentyFilms.Views.UserShow
+    followings: TwentyFilms.Views.UserFollows
 
   routes:
     '': 'home'
@@ -17,12 +18,8 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     'films/:id': 'filmShow'
     'users/:id': 'userShow'
 
-  initialize: ($filmList, $search, $filmNew, $filmShow, $userShow, films) ->
-    @elements['list'] = $filmList
-    @elements['search'] = $search
-    @elements['filmNew'] = $filmNew
-    @elements['filmShow'] = $filmShow
-    @elements['userShow'] = $userShow
+  initialize: (elements, films) ->
+    @elements = elements
     @films = films
 
   home: -> 
@@ -30,6 +27,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @_slideBackIfOpen 'userShow'
     @_renderView('search', collection: @films)
     @_renderView('list', collection: @films)
+    @_renderView('followings')
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)

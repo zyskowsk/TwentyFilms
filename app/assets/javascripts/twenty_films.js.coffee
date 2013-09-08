@@ -12,6 +12,7 @@ window.TwentyFilms =
     $filmNew = $('#film-new')
     $filmShow = $('#film-show')
     $userShow = $('#user-show')
+    $followings = $('#followings')
 
     usersData = JSON.parse $('#user_bs').html()
     users = new TwentyFilms.Collections.Users(
@@ -34,11 +35,14 @@ window.TwentyFilms =
     films = currentUser.get('films')
 
     new TwentyFilms.Routers.Router(
-      $filmList, 
-      $search, 
-      $filmNew, 
-      $filmShow,
-      $userShow, 
+      { 
+        list: $filmList, 
+        search: $search, 
+        filmNew: $filmNew, 
+        filmShow: $filmShow,
+        userShow: $userShow,
+        followings: $followings 
+      },
       films
     )
 
