@@ -70,14 +70,17 @@ class TwentyFilms.Views.Search extends Backbone.View
     $('#search-bar').serializeJSON().film.title
 
   _handleResults: (data) ->
+    $('#wait').animate(width: 0)
+    $('#wait').spin(false)
     @_appendUserResults()
 
     if @currentFilmResults.length > 0 && data != ''
       @_appendFilmResults()
     else if @currentFilmResults.length == 0
       @_appendNoFilmResults()
-    $('#results').slideDown('fast')
 
+    $('#results').slideDown('fast')
+    
   #TODO: Fix
   _isDuplicate: (film) ->
     title = film.get('title')
@@ -117,5 +120,11 @@ class TwentyFilms.Views.Search extends Backbone.View
         @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
+    $('#wait').animate(width: 20, 100, =>
+        $('#wait').spin 
+            radius: 3,
+            length: 4,
+            width: 1
+      )
     @_sendDbRequest =>
       @_sendApiRequest()

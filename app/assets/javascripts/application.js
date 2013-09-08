@@ -4,6 +4,8 @@
 //= require backbone
 //= require twenty_films
 //= require serializeJSON
+//= require spin
+//= require jquery_spin
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.mouse

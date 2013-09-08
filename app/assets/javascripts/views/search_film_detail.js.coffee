@@ -8,6 +8,11 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     'click .new-film': 'clear'
 
   addFilm: (event) ->
+    $('#wait').animate {width: 20}, 100, =>
+        $('#wait').spin 
+            radius: 3,
+            length: 4,
+            width: 1
     if @model.get('imdbid')
       @_addApiFilm()
     else
@@ -55,6 +60,8 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     unless @_alreadyInList(newFilm)
       @collection.create newFilm, 
         success: =>
+          $('#wait').spin(false)
+          $('#wait').animate(width: 0, 'fast')
           @clear()
 
 

@@ -1,3 +1,7 @@
 <form id="search-bar">
-  <input type="text" name="film[title]" placeholder='search' autocomplete="off">
+  <input type="text"
+         id="search-bar" 
+         name="film[title]" 
+         placeholder='search' 
+         autocomplete="off">
 </form>

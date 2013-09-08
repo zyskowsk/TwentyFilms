@@ -11,7 +11,6 @@ class TwentyFilms.Models.Film extends Backbone.Model
         data: {i: id}
         success: (response) =>
           result = TwentyFilms.Search.clenseResult(response)
-          console.log(result)
           @film = new TwentyFilms.Models.Film(result)
           callback(@film)
     else
