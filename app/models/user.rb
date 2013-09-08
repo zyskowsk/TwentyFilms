@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     :foreign_key => :follower_id
   )
 
-  has_many :followed_users, :through => :outgoin_follows, :source => :followee
+  has_many :followed_users, :through => :outgoing_follows, :source => :followee
   has_many :followers, :through => :incoming_follows, :source => :follower
 
   def self.find_by_credentials(login, password)

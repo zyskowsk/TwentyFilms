@@ -15,6 +15,7 @@ window.TwentyFilms =
     $followings = $('#followings')
 
     usersData = JSON.parse $('#user_bs').html()
+    debugger
     users = new TwentyFilms.Collections.Users(
       usersData, 
       parse: true
@@ -32,6 +33,7 @@ window.TwentyFilms =
 
     currentUserId = $('#current_user_id').html()
     currentUser = users.get parseInt(currentUserId)
+    debugger
     films = currentUser.get('films')
 
     new TwentyFilms.Routers.Router(
