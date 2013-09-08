@@ -1,4 +1,33 @@
-<h1>Title: <%= @film.get('title') %></h1>
-<h3>Director: <%= @film.get('director') %></h3>
-<h3>Year: <%= @film.get('year') %></h3>
-<a class="show back">---></a>
+<a class="show back">close</a> 
+<a class="toggle-trailer">Show Trailer</a>
+
+<div class="film-poster">
+  <img height="200" width="170" src="<%= @film.get('poster') %>" />
+</div>
+
+<div class="film-info">
+  <h1>Title: <%= @film.get('title') %></h1>
+  <h3>Director: <%= @film.get('director') %></h3>
+  <h3>Year: <%= @film.get('year') %></h3>
+  <p>Runtime: <%= @film.get('runtime') %></p>
+  <p>Genre: <%= @film.get('genre') %></p>
+  <p>writer(s): <%= @film.get('writer') %></p>
+  <p>Actors: <%= @film.get('actors') %></p>
+</div>
+
+<div class="film-plot">
+  <h4>Plot</h4>
+  <p><%= @film.get('plot') %></p>
+</div>
+
+<div class="film-trailer">
+  <% if @film.get('trailer'): %>
+    <iframe type="text/html"
+            width="100%" 
+            height="285"
+            src="//www.youtube.com/embed/<%= @film.get('trailer') %>"
+            frameborder="0" 
+            allowfullscreen>
+    </frame>
+  <% end %>
+</div>

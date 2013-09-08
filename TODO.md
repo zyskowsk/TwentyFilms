@@ -1,6 +1,8 @@
-Today (9/7):
+Today (9/6):
+  -User Show Page
   -User Follow
-  -Film Show Comments
+
+Saturday (9/7):
   -Better Film Submit
   -User Edit Page
   -Clean up server side API
@@ -23,8 +25,6 @@ MISC:
   -Netfilx api
   -HULU api
   -Search Opt.
-  -cross site scripting(thought bot bb book)
-  -Figure out where to put search util methods
 
 MISC Style:
   -Waiting Bar on 

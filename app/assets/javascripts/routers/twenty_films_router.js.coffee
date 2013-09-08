@@ -1,3 +1,4 @@
+
 class TwentyFilms.Routers.Router extends Backbone.Router
 
   currentViews: {}
@@ -33,11 +34,13 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @elements['filmNew'].slideDown('slow')
 
   filmShow: (id) ->
-    TwentyFilms.Models.Film.getByRawId id, (film) =>
-      @_renderView('search', collection: @films)
-      @_renderView('filmShow', model: film)
-      @elements['filmShow'].show()
-      @elements['filmShow'].animate(right: 0)
+    if @elements['filmShow'].css('right') == '0px'
+      @_slideBackIfOpen =>
+        TwentyFilms.Models.Film.getByRawId id, (film) =>
+          @_filmShowCallback(film)
+    else
+       TwentyFilms.Models.Film.getByRawId id, (film) =>
+          @_filmShowCallback(film)
 
   userShow: (id) ->
     TwentyFilms.Models.User.getByRawId id, (user) =>
@@ -54,6 +57,20 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   _swapView: (view, type) ->
     @currentViews[type].remove() if @currentViews[type]
     @currentViews[type] = view
+
+  _filmShowCallback: (film) ->
+    @_renderView('search', collection: @films)
+    @_renderView('filmShow', model: film)
+    $('.film-trailer').hide()
+    $(document).ready =>
+      @elements['filmShow'].show()
+      @elements['filmShow'].animate(right: 0, 800)
+
+  _slideBackIfOpen: (callback) ->
+      @elements['filmShow'].animate 
+          right: -$('#film-show').width()*1.5, 
+          800,
+          callback
 
 
 

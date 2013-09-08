@@ -47,8 +47,13 @@
   height: 100%;
   position:fixed;
   width: 50%;
+  height: 98%;
   top: 0px;
   right:-51%;
   z-index: auto;
   background-color: lightGrey;
+}
+
+.film-poster {
+  float: right;
 }
