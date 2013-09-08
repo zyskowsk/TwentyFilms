@@ -32,4 +32,6 @@ MISC Style:
 
 Bugs To Fix:
   -Deployment DB Search
+  -Deployment adding film (refresh needed)
+  -Deployment images
 
