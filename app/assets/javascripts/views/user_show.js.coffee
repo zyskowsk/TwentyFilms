@@ -9,7 +9,10 @@ class TwentyFilms.Views.UserShow extends Backbone.View
     @$el.html @template(user: @model)
     @model.get('films').each (film) =>
       detailView = new TwentyFilms.Views.ListDetail(model: film)
-      @$el.find('.list').append detailView.render().el
+      @$el.find('.list').append detailView.render().$el
+
+    followsView = new TwentyFilms.Views.UserFollows(model: @model)
+    @$el.find('.user_show_follows').append followsView.render().$el
 
     this
 

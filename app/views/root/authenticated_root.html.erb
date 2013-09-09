@@ -30,11 +30,10 @@
 <div id="user-show">
 </div>
 
-<script type="application/json" id="user_bs">
-  <%= render('root/launch.json.rabl', 
-             :locals => { :users => @users }).html_safe %>
+<script type="text/json" id="users_bootstrap">
+  <%= render('root/launch.json.rabl', :locals => { :users => @users }) %>
 </script>
 
-<script id='current_user_id'>
+<script type="text" id="current_user_id_bootstrap">
   <%= current_user.id %>
 </script>

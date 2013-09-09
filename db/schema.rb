@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908210005) do
+ActiveRecord::Schema.define(:version => 20130909165838) do
 
   create_table "film_choices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130908210005) do
     t.string   "profile"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "gravatar_id"
   end
 
   add_index "users", ["session_token"], :name => "index_users_on_session_token", :unique => true

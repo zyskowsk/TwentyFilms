@@ -1,6 +1,9 @@
 <a class="show back">close</a>
-
 <h1><%= @user.get('username') %></h1>
+<img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=48.png" />
 <h2> List </h2>
 <ul class="list">
 </ul>
+
+<div class="user_show_follows">
+</div>

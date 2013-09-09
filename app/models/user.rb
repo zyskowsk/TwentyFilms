@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   validate :confirm_password, :on => :create
 
   before_create :encrypt_password
+  before_save :set_gravatar_id
   after_initialize :ensure_session_token
 
   has_many :films, :through => :film_choices, :order => 'film_choices.ord'
@@ -74,6 +75,10 @@ class User < ActiveRecord::Base
     def confirm_password 
       errors.add(:passwords, "don't match") unless 
       @password == @password_confirmation
+    end
+
+    def set_gravatar_id
+      self.gravatar_id = Digest::MD5.hexdigest(self.email.downcase)
     end
 
     def ensure_session_token

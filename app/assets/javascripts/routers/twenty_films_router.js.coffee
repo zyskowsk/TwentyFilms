@@ -28,7 +28,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @_slideBackIfOpen 'userShow'
     @_renderView('search', collection: @films)
     @_renderView('list', collection: @films)
-    @_renderView('followings', model: @currentUser, collection: @currentUser.get('followed_users'))
+    @_renderView('followings', model: @currentUser)
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)
@@ -40,7 +40,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
         TwentyFilms.Models.Film.getByRawId id, (film) =>
           @_filmShowCallback(film)
     else if @elements['userShow'].css('right') == '0px'
-      @_slideBackIfOpen 'userShow', =>
+      @_slideBackIfOpen 'userShttp://twenty-films.herokuapp.com/#/films/7how', =>
         console.log('he')
         TwentyFilms.Models.Film.getByRawId id, (film) =>
           @_filmShowCallback(film)

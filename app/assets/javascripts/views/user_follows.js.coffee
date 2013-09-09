@@ -17,7 +17,9 @@ class TwentyFilms.Views.UserFollows extends Backbone.View
       @$el.find('#followers').append followerView.render().$el
 
     for user in followed_users.models
-      followedUserView = new TwentyFilms.Views.UserDetail(model: user, followed: true)
+      followedUserView = new TwentyFilms.Views.UserDetail
+          model: user, 
+          followed: true
       @$el.find('#followed_users').append followedUserView.render().$el   
 
     this

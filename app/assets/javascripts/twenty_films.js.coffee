@@ -14,12 +14,15 @@ window.TwentyFilms =
     $userShow = $('#user-show')
     $followings = $('#followings')
 
-    currentUserId = $('#current_user_id').html()
-    usersData = JSON.parse $('#user_bs').html()
+    div = $('<div></div>')
+    div.html $('#users_bootstrap').text()
+    usersData = JSON.parse div.text()
     users = new TwentyFilms.Collections.Users(
       usersData, 
       parse: true
     )
+
+    currentUserId = $('#current_user_id_bootstrap').text()
 
     #Move this somewhere
     TwentyFilms.Search.clenseResult = (result) ->
