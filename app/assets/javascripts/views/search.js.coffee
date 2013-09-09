@@ -114,7 +114,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     $('#results').html('') if data == ''
     $.ajax
       type: 'GET'
-      url: "/films"
+      url: "/films/search"
       dataType: 'json'
       data: {search: data}
       success: (response) =>

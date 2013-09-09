@@ -24,10 +24,14 @@ class FilmsController < ApplicationController
     render :json => @film_choice
   end
 
-  def index
-    search_string = params[:search]
+  def search
+    search_string = params[:search].downcase
+    films = Film.all
+    reg_exp = Regexp.new(".*#{search_string}.*")
 
-    results = Film.where('title LIKE ?', "#{search_string.titleize}%")
+    results = films.select do |film|
+      !!film.title.downcase.match(reg_exp)
+    end
 
     render :json => results.to_json, :status => 200
   end
