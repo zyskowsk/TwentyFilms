@@ -20,6 +20,7 @@ MISC:
   -fb-oauth
 
 Bugs To Fix:
+  -trailer fetch on remote load
   -Deployment images
   -trailers dont show up
   -images
