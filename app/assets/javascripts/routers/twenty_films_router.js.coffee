@@ -42,8 +42,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
         TwentyFilms.Models.Film.getByRawId id, (film) =>
           @_filmShowCallback(film)
     else if @elements['userShow'].css('right') == '0px'
-      @_slideBackIfOpen 'userShttp://twenty-films.herokuapp.com/#/films/7how', =>
-        console.log('he')
+      @_slideBackIfOpen 'userShow', =>
         TwentyFilms.Models.Film.getByRawId id, (film) =>
           @_filmShowCallback(film)
     else

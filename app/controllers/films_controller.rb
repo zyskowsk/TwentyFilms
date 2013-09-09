@@ -59,7 +59,7 @@ class FilmsController < ApplicationController
 
         render :json => @film, :status => 200
       else
-        Film.add_film_and_choice(params, current_user)
+        @new_film = Film.add_film_and_choice(params, current_user)
 
         render :json => @new_film, :status => 200
       end

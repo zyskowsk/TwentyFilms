@@ -18,6 +18,8 @@
 
 #results {
   clear:both;
+  padding-top: 10px;
+  position: fixed;
 }
 
 .delete {

@@ -32,7 +32,6 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
       $('.film-trailer').slideDown 'slow'
 
   _hideTrailer: ->
-    console.log('hi')
     $('.film-trailer').slideUp 'slow', ->
       $('.film-plot').slideDown 'slow'
 

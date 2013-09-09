@@ -16,7 +16,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     $('#results').hide()
 
   hideResults: ->
-    $('#results').slideUp('fast')
+    $('#results').slideUp('slow')
 
   preventDefault: (event) ->
     event.preventDefault()

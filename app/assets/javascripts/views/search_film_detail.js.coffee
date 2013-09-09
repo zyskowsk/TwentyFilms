@@ -59,10 +59,9 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     newFilm = new TwentyFilms.Models.Film(response)
     unless @_alreadyInList(newFilm)
       @collection.create newFilm, 
-        success: =>
+        success: (response) =>
           $('#wait').animate {width: 0}, 'fast', =>
             $('#wait').spin(false)
-          
           @clear()
 
 

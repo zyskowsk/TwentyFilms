@@ -41,9 +41,9 @@ class Film < ActiveRecord::Base
     begin
       @new_film.get_trailer_source
     rescue
-      puts "error ocured"
     end
     @new_film.save
+    @new_film
   end
 
   # def self.omdb_search(title)
