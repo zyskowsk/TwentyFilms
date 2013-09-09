@@ -121,11 +121,12 @@ class TwentyFilms.Views.Search extends Backbone.View
         @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
-    $('#wait').animate(width: 20, 100, =>
-        $('#wait').spin 
-            radius: 3,
-            length: 4,
-            width: 1
-      )
+    unless @_getSearchData() == ''
+      $('#wait').animate(width: 20, 100, =>
+          $('#wait').spin 
+              radius: 3,
+              length: 4,
+              width: 1
+        )
     @_sendDbRequest =>
       @_sendApiRequest()

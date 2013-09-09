@@ -1,4 +1,6 @@
 Current Bug:
+  -Deployment DB Search
+  -Deployment adding film (refresh needed)
 
 
 Today (9/9):
@@ -18,10 +20,7 @@ MISC:
   -fb-oauth
 
 Bugs To Fix:
-  -Deployment DB Search
-  -Deployment adding film (refresh needed)
   -Deployment images
-  -wait bar sticks around some times
   -trailers dont show up
   -images
   -show trailer should not be visibile if there is no trailer
