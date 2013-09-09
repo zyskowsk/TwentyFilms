@@ -1,4 +1,5 @@
 <h1> user edit </h1>
+<a class="home">home</a>
 <h1><%= @currentUser.get('username') %></h1>
 <img src="http://gravatar.com/avatar/<%= @currentUser.get('gravatar_id') %>?s=48.png" />
 <a href="#">Edit your profile image at gravatar</a>

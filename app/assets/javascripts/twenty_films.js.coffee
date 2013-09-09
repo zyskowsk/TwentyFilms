@@ -12,7 +12,7 @@ window.TwentyFilms =
     $filmNew = $('#film-new')
     $filmShow = $('#film-show')
     $userShow = $('#user-show')
-    $userEdit = $('body')
+    $userEdit = $('#user-edit')
     $followings = $('#followings')
 
     div = $('<div></div>')

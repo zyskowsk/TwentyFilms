@@ -1,5 +1,4 @@
 Today (9/9):
-  -Better Film Submit
   -Error Messages(night)
   -Search Opt Day
   -clean code
@@ -9,7 +8,6 @@ Tuesday-Friday:
   -Front End PM
 
 MISC:
-  -User Edit Page
   -PushState
   -forgot password email
   -ServerSideAuthorazationAPI

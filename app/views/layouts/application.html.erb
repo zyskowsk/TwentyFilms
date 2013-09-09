@@ -16,6 +16,7 @@
 
 <% if logged_in? %>
   <%= button_to 'logout', session_url, :method => :delete %>
+  <a href="#/user/edit" class="edit_user">edit user</a>
 <% end %>
 
 <%= yield %>
