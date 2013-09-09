@@ -28,7 +28,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @_slideBackIfOpen 'userShow'
     @_renderView('search', collection: @films)
     @_renderView('list', collection: @films)
-    @_renderView('followings', model: @currentUser)
+    @_renderView('followings', model: @currentUser, collection: @currentUser.get('followed_users'))
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)

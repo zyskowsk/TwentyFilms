@@ -1,11 +1,21 @@
 class FollowingsController < ApplicationController
   def create 
+    following = Following.create(
+      :follower_id => current_user.id,
+      :followee_id => params[:followee_id]
+    )
 
-    render :json => []
+    render :json => following
   end
 
   def destroy
+    following = Following.find_by_follower_id_and_followee_id(
+      current_user.id,
+      params[:followee_id]
+    )
 
-    render :json => []
+    following.destroy
+
+    render :json => following
   end
 end

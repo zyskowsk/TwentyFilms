@@ -12,6 +12,10 @@ class TwentyFilms.Views.SearchUserDetail extends Backbone.View
 
   follow: ->
     @model.follow()
+    TwentyFilms.Store.currentUser.get('followed_users').add(@model)
+    @render()
 
   unfollow: ->
     @model.unfollow()
+    TwentyFilms.Store.currentUser.get('followed_users').remove(@model)
+    @render()

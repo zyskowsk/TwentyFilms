@@ -1,13 +1,10 @@
-Today (9/8):
-  -User Follow
+Today (9/9):
   -cross-site-scripting
   -Better Film Submit
   -Gravatar?
   -Error Messages
- g
-
-Monday (9/9): 
   -Search Opt Day
+  -clean code
 
 Tuesday-Friday:
   -One Feature AM

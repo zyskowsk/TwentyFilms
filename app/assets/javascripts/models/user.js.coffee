@@ -13,18 +13,18 @@ class TwentyFilms.Models.User extends Backbone.Model
       type: 'POST'
       url: '/followings'
       dataType: 'json'
-      data: @_followData this.get('id')
+      data: followee_id: this.get('id')
       success: =>
-        console.log('did it!')
+        this.fetch()
 
   unfollow: ->
     $.ajax
       type: 'DELETE'
       url: '/followings'
       dataType: 'json'
-      data: @_followData this.get('id')
+      data: followee_id: this.get('id')
       success: =>
-        console.log('undid it!')
+        this.fetch()
 
   isFollowed: ->
     followed_users = TwentyFilms.Store.currentUser.get('followed_users')
@@ -40,10 +40,6 @@ class TwentyFilms.Models.User extends Backbone.Model
     data.followers = new TwentyFilms.Collections.Users(data.followers)
     data.followed_users = new TwentyFilms.Collections.Users(data.followed_users)
     data
-
-  _followData: (followeeId) ->
-      follower_id: TwentyFilms.Store.currentUserId,
-      followee_id: followeeId
 
 
 
