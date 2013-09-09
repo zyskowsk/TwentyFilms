@@ -2,7 +2,7 @@ require 'addressable/uri'
 require 'rest-client'
 class Film < ActiveRecord::Base
   attr_accessible :director, :year, :title, :runtime, :genre, :writer, 
-                  :actors, :plot, :poster, :imdbid
+                  :actors, :plot, :poster, :imdbid, :trailer
 
   TMDB_API_KEY = "5c7ad0d82517d3ccbec62a77fb1269ca"
 

@@ -1,0 +1,29 @@
+<h1> user edit </h1>
+<h1><%= @currentUser.get('username') %></h1>
+<img src="http://gravatar.com/avatar/<%= @currentUser.get('gravatar_id') %>?s=48.png" />
+<a href="#">Edit your profile image at gravatar</a>
+
+<h2>Rest Your Password</h2>
+<form id="reset_password_form">
+  <label for="password_reset_old_password">Old Password</label>
+  <input type="password" 
+         id="password_reset_old_password" 
+         name="password_reset[old_password]" /><br />
+
+  <label for="password_reset_new_password">New Password</label>
+  <input type="password" 
+         id="password_reset_new_password" 
+         name="password_reset[new_password]" /><br />
+
+  <label for="password_reset_confirmation">Confirm</label>
+  <input type="password" 
+         id="password_reset_confirmation" 
+         name="password_reset[confirmation]" /><br />
+
+  <input type="submit">
+</form>
+
+
+ 
+
+

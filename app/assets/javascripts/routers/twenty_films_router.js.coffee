@@ -11,12 +11,14 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     filmShow: TwentyFilms.Views.FilmShow
     userShow: TwentyFilms.Views.UserShow
     followings: TwentyFilms.Views.UserFollows
+    userEdit: TwentyFilms.Views.UserEdit
 
   routes:
     '': 'home'
     'films/new': 'filmNew'
     'films/:id': 'filmShow'
     'users/:id': 'userShow'
+    'user/edit': 'userEdit'
 
   initialize: (elements, films, currentUser) ->
     @elements = elements
@@ -47,6 +49,9 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     else
        TwentyFilms.Models.Film.getByRawId id, (film) =>
           @_filmShowCallback(film)
+
+  userEdit: ->
+    @_renderView('userEdit', model: @currentUser)
 
   userShow: (id) ->
     user = TwentyFilms.Store.users.get(id)
