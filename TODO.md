@@ -1,3 +1,5 @@
+Current Bug:
+
 Today (9/9):
   -Error Messages(night)
   -Search Opt Day
@@ -8,12 +10,11 @@ Tuesday-Friday:
   -Front End PM
 
 MISC:
-  -PushState
   -forgot password email
   -ServerSideAuthorazationAPI
   -Clean up server side API
   -confirmation email
-  -Search Opt.
+  -fb-oauth
 
 Bugs To Fix:
   -Deployment DB Search

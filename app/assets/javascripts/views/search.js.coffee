@@ -73,7 +73,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     $('#wait').animate {width: 0}, 'fast', =>
       $('#wait').spin(false)
     
-    @_appendUserResults()
+    @_appendUserResults() if @_userSearchResults().length > 0 && data !=  ''
 
     if @currentFilmResults.length > 0 && data != ''
       @_appendFilmResults()
