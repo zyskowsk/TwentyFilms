@@ -95,9 +95,9 @@ class TwentyFilms.Views.Search extends Backbone.View
     count != 0
 
   _userSearchResults:() ->
-    new TwentyFilms.Collections.Users TwentyFilms.Store.users.searchUsers( 
-          @_getSearchData()
-        )
+    new TwentyFilms.Collections.Users TwentyFilms.Store.users.searchUsers(
+      @_getSearchData()
+    )
 
   _sendApiRequest: ->
     data =  @_getSearchData()

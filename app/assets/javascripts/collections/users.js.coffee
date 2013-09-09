@@ -3,8 +3,7 @@ class TwentyFilms.Collections.Users extends Backbone.Collection
   model: TwentyFilms.Models.User
 
   searchUsers: (searchString) ->
-    searchLen = searchString.length
+    regExp = RegExp(".*#{searchString.toLowerCase()}.*" )
     return [] if searchString == ''
     this.models.filter (user) =>
-      ((user.get('name').slice(0, searchLen) == searchString) ||
-        (user.get('email').slice(0, searchLen) == searchString))
+      !!user.get('name').match(regExp) || !!user.get('email').match(regExp)

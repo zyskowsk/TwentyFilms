@@ -1,7 +1,6 @@
 Current Bug:
-  -Deployment DB Search
-  -Deployment adding film (refresh needed)
-
+  -gravatar loading
+  -lowercase search
 
 Today (9/9):
   -Error Messages(night)
@@ -28,5 +27,4 @@ Bugs To Fix:
   -weird jumpy when showing trailer
   -iframe bugzzzzz
   -trailer keeps playing
-  -gravatar loading
 
