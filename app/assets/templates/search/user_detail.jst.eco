@@ -1,3 +1,9 @@
 <a href="#/users/<%= @user.get('id') %>">
   <%= @user.get('name') %>
 </a>
+
+<% if @user.isFollowed(): %>
+  <button id="unfollow">unfollow</button>
+<% else: %>
+  <button id="follow">follow</button>
+<% end %>

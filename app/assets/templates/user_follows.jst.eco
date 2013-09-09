@@ -1,1 +1,7 @@
-<h1> Following Stuff </h1>
+<h2> followers </h2>
+<ul id="followers" >
+</ul>
+
+<h2> Users you are following </h2>
+<ul id="followed_users">
+</ul>

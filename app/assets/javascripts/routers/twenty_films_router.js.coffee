@@ -18,16 +18,17 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     'films/:id': 'filmShow'
     'users/:id': 'userShow'
 
-  initialize: (elements, films) ->
+  initialize: (elements, films, currentUser) ->
     @elements = elements
     @films = films
+    @currentUser = currentUser
 
   home: -> 
     @_slideBackIfOpen 'filmShow'
     @_slideBackIfOpen 'userShow'
     @_renderView('search', collection: @films)
     @_renderView('list', collection: @films)
-    @_renderView('followings')
+    @_renderView('followings', model: @currentUser)
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)

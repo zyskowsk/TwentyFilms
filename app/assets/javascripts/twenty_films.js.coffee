@@ -14,14 +14,12 @@ window.TwentyFilms =
     $userShow = $('#user-show')
     $followings = $('#followings')
 
+    currentUserId = $('#current_user_id').html()
     usersData = JSON.parse $('#user_bs').html()
-    debugger
     users = new TwentyFilms.Collections.Users(
       usersData, 
       parse: true
     )
-
-    TwentyFilms.Store.users = users
 
     #Move this somewhere
     TwentyFilms.Search.clenseResult = (result) ->
@@ -31,10 +29,9 @@ window.TwentyFilms =
 
       newObject
 
-    currentUserId = $('#current_user_id').html()
     currentUser = users.get parseInt(currentUserId)
-    debugger
     films = currentUser.get('films')
+
 
     new TwentyFilms.Routers.Router(
       { 
@@ -45,8 +42,12 @@ window.TwentyFilms =
         userShow: $userShow,
         followings: $followings 
       },
-      films
+      films,
+      currentUser
     )
+
+    TwentyFilms.Store.users = users
+    TwentyFilms.Store.currentUser = currentUser
 
     Backbone.history.start()
 
