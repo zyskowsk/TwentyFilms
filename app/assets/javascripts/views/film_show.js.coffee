@@ -21,17 +21,24 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     this
 
   toggleTrailer: ->
+
     @_hideTrailer() if @trailerOpen
     @_showTrailer() if not @trailerOpen
     @trailerOpen = !@trailerOpen
-    $('.toggle-trailer').html('Hide Trailer') if @trailerOpen
-    $('.toggle-trailer').html('Show Trailer') if not @trailerOpen
+    if @trailerOpen
+      $('.toggle-trailer').html('Hide Trailer')
+    else
+      $('.toggle-trailer').html('Show Trailer') 
 
   _showTrailer: ->
+    trailerView = new TwentyFilms.Views.FilmTrailer(model: @model)
+    @currentTrailer = trailerView
     $('.film-plot').slideUp 'slow', ->
-      $('.film-trailer').slideDown 'slow'
+      $('.film-trailer').slideDown 'slow', ->
+        $('.film-trailer').html trailerView.render().$el
 
   _hideTrailer: ->
+    @currentTrailer.remove() if @currentTrailer
     $('.film-trailer').slideUp 'slow', ->
       $('.film-plot').slideDown 'slow'
 

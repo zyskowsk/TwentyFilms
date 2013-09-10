@@ -1,6 +1,7 @@
-Current Bug:
-  -trailers dont show up
-  -trailer keeps playing
+TONIGHT: 
+  -image fetch
+  -push and play, find bugs.
+  -error messages if have time
 
 Today (9/9):
   -Error Messages(night)
@@ -16,11 +17,3 @@ MISC:
   -Clean up server side API
   -confirmation email
   -fb-oauth
-
-Bugs To Fix:
-  -Deployment images
-  
-
-
-Impossible: 
-  -iframe bugzzzzz
