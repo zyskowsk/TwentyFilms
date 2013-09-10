@@ -17,5 +17,3 @@ MISC:
   -confirmation email
   -fb-oauth
 
-Bugs: 
-  -not filtering Tv Shows
