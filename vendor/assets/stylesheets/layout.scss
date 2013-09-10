@@ -76,7 +76,7 @@ $darkGrey: #2E2E2E;
 	input, input[type="submit"], button {
 		color: $darkGrey ;
 		background-color: transparent;
-		&:hover, &:active, &:focus {
+		&:active, &:focus {
 			border-color: red;
 			color: black;
 			background-color: rgba(150,0,0,0.1);
@@ -90,6 +90,12 @@ $darkGrey: #2E2E2E;
 	#buttons {
 		margin-left: 98px;
 	}
+}
+
+input[type="submit"]:hover, button:hover {
+	border-color: red;
+	color: black;
+	background-color: rgba(150,0,0,0.1);
 }
 
 /* Misc Styling From Backend Dev */
