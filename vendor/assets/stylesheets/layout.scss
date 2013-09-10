@@ -1,0 +1,232 @@
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+/* Table of Content
+==================================================
+	#Site Styles
+	#Page Styles
+	#Media Queries
+	#Font-Face */
+
+/* #Site Styles
+================================================== */
+
+$darkGrey: #2E2E2E;
+
+/* placeholder color */
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: $darkGrey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $darkGrey;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $darkGrey;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: $darkGrey;
+}
+
+
+/* Welcome Page */
+
+#welcome-header {
+	background-color: black;
+	border-bottom-right-radius: 10px;
+	position:fixed;
+	height: 50px;
+	width: 100%;
+	#text {
+		top:0;
+		color: white;
+		margin-top: 20px;
+		font-size: 100px;
+	}
+}
+
+.welcome-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+  overflow: hidden;
+  background: url('manhattan.jpg');
+	background-size: 100%;
+	background-color: black;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+/* Forms */
+
+#welcome-form {
+	margin-top: 60%;
+}
+
+.form {
+	input, input[type="submit"], button {
+		color: $darkGrey ;
+		background-color: transparent;
+		&:hover, &:active, &:focus {
+			border-color: red;
+			color: black;
+			background-color: rgba(150,0,0,0.1);
+		}
+	}
+	label {
+		color: black;
+		font-size: 15px;
+		width: 90px;
+	}
+	#buttons {
+		margin-left: 98px;
+	}
+}
+
+/* Misc Styling From Backend Dev */
+.result:hover {
+  background-color: lightBlue
+}
+
+#results {
+  clear:both;
+  padding-top: 10px;
+}
+
+.delete {
+  color: red;
+  cursor: pointer;
+}
+
+.save {
+  color: green;
+  cursor: pointer;
+}
+
+.film-trailer {
+  background-color: black;
+  width: 100%;
+  height:300px;
+}
+
+#film-new {
+  border-left: 3px black solid;
+  border-bottom: 3px black solid;
+  border-right: 3px black solid;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 500px;
+  width: 500px;
+  position: fixed;
+  left: 15%;
+  top: 0px;
+  padding: 10px;
+  background-color: lightGrey;
+  z-index: 1;
+}
+
+#user-show, #film-show {
+  border: 3px black solid;
+  height: 100%;
+  position:fixed;
+  width: 50%;
+  height: 98%;
+  top: 0px;
+  right:-51%;
+  z-index: auto;
+  background-color: lightGrey;
+}
+
+.film-poster {
+  float: right;
+}
+
+#wait {
+  float:left;
+  height: 20px;
+  width: 0px;
+  padding-top: 2px;
+  border-top: 1px black dotted;
+  border-right: 1px black dotted;
+  border-bottom: 1px black dotted;
+}
+
+#search {
+  float: left;
+}
+
+input#search-bar { 
+  border: 1px black dotted;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 11px; 
+  margin-top: 0px; 
+  margin-right: 0px; 
+  margin-bottom: 0px; 
+  margin-left: 0px; 
+  padding-top: 1px; 
+  padding-right: 0px; 
+  padding-bottom: 1px; 
+  padding-left: 2px; 
+  height: 20px
+}
+
+input#search-bar:focus {
+  outline: none;
+  outline-style: 1px solid black;
+  box-shadow:0px;
+  border-color:black;
+}
+
+
+#search-container {
+  width: 400;
+}
+
+/* #Page Styles
+================================================== */
+
+/* #Media Queries
+================================================== */
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {}
+
+	/* Tablet Portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+	/* All Mobile Sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {}
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {}
+
+
+/* #Font-Face
+================================================== */
+/* 	This is the proper syntax for an @font-face file
+		Just create a "fonts" folder at the root,
+		copy your FontName into code below and remove
+		comment brackets */
+
+/*	@font-face {
+	    font-family: 'FontName';
+	    src: url('../fonts/FontName.eot');
+	    src: url('../fonts/FontName.eot?iefix') format('eot'),
+	         url('../fonts/FontName.woff') format('woff'),
+	         url('../fonts/FontName.ttf') format('truetype'),
+	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
+	    font-weight: normal;
+	    font-style: normal; }
+*/

@@ -1,16 +1,18 @@
-<h1> Sign In </h1>
+<div id='session-form'>
+  <h1> Sign In </h1>
 
-<form action="<%= session_url%>" method="post">
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>" />
+  <form class="form" action="<%= session_url%>" method="post">
+    <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>" />
 
-  <label for="session_login">Username</label>
-  <input type="text" id="session_login" 
-         name="session[login]" placeholder="or email"/><br />
+    <label for="session_login">Username</label>
+    <input type="text" id="session_login" 
+           name="session[login]" placeholder="or email"/><br />
 
-  <label for="user_password">Password</label>
-  <input type="password" id="session_password" name="session[password]" /><br />
+    <label for="user_password">Password</label>
+    <input type="password" id="session_password" name="session[password]" /><br />
 
-  <input type="submit" />
-</form>
+    <input type="submit" />
+  </form>
+</div>

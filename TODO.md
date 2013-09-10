@@ -2,13 +2,13 @@ Tuesday-Friday:
   -Style
 
 MISC:
+  -fb-oauth
   -user edit page
   -error messages if have time
   -forgot password email
   -ServerSideAuthorazationAPI
   -Clean up server side API
   -confirmation email
-  -fb-oauth
 
 Questins:
-  -bootstrapping API key safety
+  -bootstrapping API key safetys

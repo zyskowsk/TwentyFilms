@@ -1,4 +1,35 @@
-<h1> Welcome </h1>
+<div class='welcome-background'>
 
-<%= render :partial => 'root/user_form' %>
-<%= render :partial => 'root/session_form' %>
+  <div id="welcome-header">
+    <div id="text">Twenty Films</div>
+  </div>
+
+  <div class="container">
+    <div class="six columns offset-by-four">
+     <%= render :partial => 'root/user_form' %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('.signup').hide();
+  $(function() {
+    $('#button').on('click', function () {
+      if ($('#button').attr('class') == 'sign-in') {
+        $('h1').html('Sign Up')
+        $('.signup').fadeIn('slow');
+        $('.form').attr('action', '<%= users_url %>');
+        $('#button').html('log in');
+        $('#button').removeClass();
+        $('#button').addClass('new-user');
+      } else {
+        $('h1').html('Sign In')
+        $('.signup').fadeOut('slow');
+        $('.form').attr('action', '<%= session_url %>');
+        $('#button').html('create new account');
+        $('#button').removeClass();
+        $('#button').addClass('sign-in'); 
+      }
+    });
+  });
+</script>

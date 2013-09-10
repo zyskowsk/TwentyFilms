@@ -1,25 +1,30 @@
-<h1> Sign Up </h1>
+<div id="welcome-form">
+  <h1> Sign In </h1>
 
-<form id="sign-up-form" action="<%= users_url %>" method="post">
-  <input type="hidden"
-         name="authenticity_token"
-         value="<%= form_authenticity_token %>" />
+  <form class="form" id="sign-up-form" action="<%= session_url %>" method="post">
+    <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>" />
 
-  <label for="user_name">Name</label>
-  <input type="text" id="user_name" name="user[name]" /><br />
+    <label for="user_name" class="signup">Name</label>
+    <input type="text" class="signup" id="user_name" name="user[name]" />
 
-  <label for="user_username">Username</label>
-  <input type="text" id="user_username" name="user[username]" /> <br />
+    <label for="user_email" class="signup">Email</label>
+    <input type="text" id="user_email" class="signup" name="user[email]" />
 
-  <label for="user_email">Email</label>
-  <input type="text" id="user_email" name="user[email]" /> <br />
+    <label for="user_username">Username</label>
+    <input type="text" id="user_username" name="user[username]" />
 
-  <label for="user_password">Password</label>
-  <input type="password" id="user_password" name="user[password]" /> <br />
+    <label for="user_password">Password</label>
+    <input type="password" id="user_password" name="user[password]" /> 
 
-  <label for="user_password_confirmation">Password Confirmation</label>
-  <input type="password" id="user_password_confirmation" 
-                     name="user[password_confirmation]" /> <br />
+    <label for="user_password_confirmation" class="signup">Confirmation</label>
+    <input type="password" class="signup" id="user_password_confirmation" 
+                       name="user[password_confirmation]" /> 
 
-  <input type="submit" value="Sign Up">
-</form>
+    <div id="buttons">
+      <input type="submit" value="submit">
+      <button id="button" class="sign-in" type="button">create new account</button>
+    </div>
+  </form>
+</div>
