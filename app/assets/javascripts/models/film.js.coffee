@@ -21,14 +21,19 @@ class TwentyFilms.Models.Film extends Backbone.Model
           callback(response)
 
   getTrailer: (callback) ->
+    data = 
+      api_key: '5c7ad0d82517d3ccbec62a77fb1269ca', 
+      append_to_response: 'trailers'
+
     unless this.get('trailer')
       $.ajax
         type: 'GET'
-        url: "http://api.themoviedb.org/3/movie/#{this.get('imdbid')}/trailers?"
+        url: "http://api.themoviedb.org/3/movie/#{this.get('imdbid')}?"
         dataType: 'json'
-        data: {api_key: '5c7ad0d82517d3ccbec62a77fb1269ca'}
+        data: data
         success: (response) =>
-          this.set('trailer', response['youtube'][0]['source'])
+          this.set('trailer', response['trailers']['youtube'][0]['source'])
+          this.set('poster', response['poster_path'])
           callback(this)
 
 

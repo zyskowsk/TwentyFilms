@@ -1,5 +1,4 @@
 TONIGHT: 
-  -image fetch
   -push and play, find bugs.
   -error messages if have time
 
@@ -17,3 +16,6 @@ MISC:
   -Clean up server side API
   -confirmation email
   -fb-oauth
+
+Bugs: 
+  -not filtering Tv Shows

@@ -57,12 +57,14 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
 
   _persistFilm: (response) ->
     newFilm = new TwentyFilms.Models.Film(response)
-    unless @_alreadyInList(newFilm)
-      @collection.create newFilm, 
-        success: (response) =>
-          $('#wait').animate {width: 0}, 'fast', =>
-            $('#wait').spin(false)
-          @clear()
+    console.log(newFilm)
+    newFilm.getTrailer =>
+      unless @_alreadyInList(newFilm)
+        @collection.create newFilm, 
+          success: (response) =>
+            $('#wait').animate {width: 0}, 'fast', =>
+              $('#wait').spin(false)
+            @clear()
 
 
 

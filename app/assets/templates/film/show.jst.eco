@@ -4,7 +4,9 @@
 <% end %>
 
 <div class="film-poster">
-  <img height="200" width="170" src="<%= @film.get('poster') %>" />
+  <img height="200" 
+       width="170" 
+       src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500/<%= @film.get('poster') %>" />
 </div>
 
 <div class="film-info">
