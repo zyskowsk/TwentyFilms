@@ -38,7 +38,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     @_filterResults()
     filmResults = new TwentyFilms.Views.ResultsFilms
         collection: @collection,
-        currentFilmResults: @currentFilmResults 
+        currentFilmResults: @currentFilmResults[0..10]
 
     $('#results').append filmResults.render().$el
     @currentFilmResults = []
@@ -64,7 +64,7 @@ class TwentyFilms.Views.Search extends Backbone.View
  
   _filterResults: ->
     @currentFilmResults = _(@currentFilmResults).reject (film) =>
-      film.Type == 'movie'
+      film.get('type') != 'movie'
 
   _getSearchData: ->
     $('#search-bar').serializeJSON().film.title

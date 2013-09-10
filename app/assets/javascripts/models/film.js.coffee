@@ -35,6 +35,8 @@ class TwentyFilms.Models.Film extends Backbone.Model
           this.set('trailer', response['trailers']['youtube'][0]['source'])
           this.set('poster', response['poster_path'])
           callback(this)
+        error: (response) =>
+          console.log(response)
 
 
     

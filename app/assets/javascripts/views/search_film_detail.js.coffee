@@ -57,7 +57,6 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
 
   _persistFilm: (response) ->
     newFilm = new TwentyFilms.Models.Film(response)
-    console.log(newFilm)
     newFilm.getTrailer =>
       unless @_alreadyInList(newFilm)
         @collection.create newFilm, 
