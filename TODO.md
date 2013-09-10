@@ -1,10 +1,9 @@
 Current Bug:
-  -gravatar loading
-  -lowercase search
+  -trailers dont show up
+  -trailer keeps playing
 
 Today (9/9):
   -Error Messages(night)
-  -Search Opt Day
   -clean code
 
 Tuesday-Friday:
@@ -19,12 +18,9 @@ MISC:
   -fb-oauth
 
 Bugs To Fix:
-  -trailer fetch on remote load
   -Deployment images
-  -trailers dont show up
-  -images
-  -show trailer should not be visibile if there is no trailer
-  -weird jumpy when showing trailer
-  -iframe bugzzzzz
-  -trailer keeps playing
+  
 
+
+Impossible: 
+  -iframe bugzzzzz
