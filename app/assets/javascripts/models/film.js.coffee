@@ -12,7 +12,7 @@ class TwentyFilms.Models.Film extends Backbone.Model
         success: (response) =>
           result = TwentyFilms.Search.clenseResult(response)
           @film = new TwentyFilms.Models.Film(result)
-          @film.getTrailer =>
+          @film.getTrailerAndPoster =>
             callback(@film)
     else
       @film = new TwentyFilms.Models.Film(id: id)
@@ -20,9 +20,9 @@ class TwentyFilms.Models.Film extends Backbone.Model
         success: (response) =>
           callback(response)
 
-  getTrailer: (callback) ->
+  getTrailerAndPoster: (callback) ->
     data = 
-      api_key: '5c7ad0d82517d3ccbec62a77fb1269ca', 
+      api_key: TwentyFilms.Store.TMDB_API_KEY, 
       append_to_response: 'trailers'
 
     unless this.get('trailer')
@@ -36,7 +36,10 @@ class TwentyFilms.Models.Film extends Backbone.Model
           this.set('poster', response['poster_path'])
           callback(this)
         error: (response) =>
-          console.log(response)
+          console.log('error occurred fetching trailer and poster')
+          console.log('film:')
+          console.log(this)
+          callback(this)
 
 
     

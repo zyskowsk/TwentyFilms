@@ -53,6 +53,7 @@ window.TwentyFilms =
 
     TwentyFilms.Store.users = users
     TwentyFilms.Store.currentUser = currentUser
+    TwentyFilms.Store.TMDB_API_KEY = $('#tmdb_api_key_bootstrap').text().trim()
 
     Backbone.history.start()
 

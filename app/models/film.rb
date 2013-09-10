@@ -4,8 +4,6 @@ class Film < ActiveRecord::Base
   attr_accessible :director, :year, :title, :runtime, :genre, :writer, 
                   :actors, :plot, :poster, :imdbid, :trailer
 
-  TMDB_API_KEY = "5c7ad0d82517d3ccbec62a77fb1269ca"
-
   validates :title, :year, :director, :presence => true
   validates :year, :inclusion => { :in => (1840..Date.today.year) }
 
@@ -23,7 +21,7 @@ class Film < ActiveRecord::Base
       :scheme => 'http',
       :host => 'api.themoviedb.org',
       :path => path,
-      :query_values => query_values.merge({'api_key' => TMDB_API_KEY})
+      :query_values => query_values.merge({'api_key' => ENV["TMDB_API_KEY"]})
     ).to_s
   end
 

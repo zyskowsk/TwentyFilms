@@ -9,6 +9,7 @@ gem 'bcrypt-ruby'
 gem 'addressable'
 gem 'rest-client'
 gem 'jquery-ui-rails'
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
