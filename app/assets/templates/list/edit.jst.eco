@@ -1,6 +1,7 @@
 <div data-id="<%= @film.get('id') %>">
-  <%= @film.get('title') %>
-  <%= @film.get('director') %>
-  <%= @film.get('release_year') %>
-  <a class="toggle-film save" id="<%= @film.get('id') %>">✔</a>
+  <div class="film-title"><%= @film.get('title') %></div>
+  <hr>
+  <%= @film.get('director') %>,
+  <%= @film.get('year') %>
+  <a class="toggle-film save right" id="<%= @film.get('id') %>">✚</a>
 </div>

@@ -1,6 +1,7 @@
 class TwentyFilms.Views.ListEdit extends Backbone.View
   
   tagName: 'li'
+  className: 'edit-detail'
   
   template: JST['list/edit']
 
@@ -16,11 +17,11 @@ class TwentyFilms.Views.ListEdit extends Backbone.View
     currentClass = link.attr('class')
     link.removeClass()
 
-    if currentClass == 'toggle-film save'
-      link.addClass('toggle-film delete')
+    if currentClass == 'toggle-film save right'
+      link.addClass('toggle-film delete right')
       link.html('✖')
       @model.remove = true
     else
-      link.addClass('toggle-film save')
-      link.html('✔')
+      link.addClass('toggle-film save right')
+      link.html('✚')
       @model.remove = false
