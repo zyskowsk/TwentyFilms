@@ -1,5 +1,7 @@
 class TwentyFilms.Views.UserFollows extends Backbone.View
 
+  className: 'user-follows'
+
   template: JST['user_follows']
 
   initialize: ->

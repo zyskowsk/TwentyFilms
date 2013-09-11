@@ -1,4 +1,5 @@
 class TwentyFilms.Views.UserDetail extends Backbone.View
+  className: 'user-detail'
   template: JST['user_detail']
 
   events:

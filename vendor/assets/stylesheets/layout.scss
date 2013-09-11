@@ -292,11 +292,17 @@ button {
 	margin-top: 20px;
 }
 
+button {
+	background: transparent;
+	border: 1px white solid;
+}
+
 .edit-detail, .list-detail, .edit-detail {
 	font-size: 15px;
 	font-weight: 700;
 	margin: 1px;
 	padding: 5px;
+	border-radius: 3px;
 }
 
 .list-detail {
@@ -316,6 +322,48 @@ button {
 .film-title {
 	font-weight: 800;
 	font-style: underline;
+}
+
+/* following */
+
+.user-follows {
+	margin-top: 30px;
+	.user-name {
+		position: relative;
+		bottom: 13px;
+		font-size: 12px;
+		padding: 5px;
+	}
+}
+
+.unfollow {
+	float: right;
+	position: relative;
+	bottom: -7px;
+	padding: 2px;
+}
+
+a#unfollow {
+	color: black;
+}
+
+.follower-container {
+	float: right;
+}
+
+.followings-container {
+	float: left;
+}
+
+.user-detail {
+	margin: 2px;
+	height: 36px;
+	border: 1px black solid;
+	border-radius: 3px;
+	background-color: $siteGrey;
+	img {
+		border-radius: 3px;
+	}
 }
 
 /* Misc Styling From Backend Dev */

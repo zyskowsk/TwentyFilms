@@ -1,7 +1,13 @@
-<h2> followers </h2>
-<ul id="followers" >
-</ul>
+<div class="four columns followers-container">
+  <h3> followers </h3>
+  <hr>
+  <div id="followers" class="followers">
+  </div>
+</div>
 
-<h2> Users you are following </h2>
-<ul id="followed_users">
-</ul>
+<div class="four columns following-container">
+  <h3> following </h3>
+  <hr>
+  <div id="followed_users" class='following'>
+  </div>
+</div>
