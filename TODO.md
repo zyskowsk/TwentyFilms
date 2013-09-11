@@ -9,6 +9,3 @@ MISC:
   -ServerSideAuthorazationAPI
   -Clean up server side API
   -confirmation email
-
-Questins:
-  -bootstrapping API key safetys

@@ -7,13 +7,10 @@ window.TwentyFilms =
   Search: {}
   
   initialize: -> 
-    $filmList = $('#film-list')
     $search = $('#search')
     $filmNew = $('#film-new')
-    $filmShow = $('#film-show')
-    $userShow = $('#user-show')
     $userEdit = $('#user-edit')
-    $followings = $('#followings')
+    $rootEl = $('#root')
 
     div = $('<div></div>')
     div.html $('#users_bootstrap').text()
@@ -39,13 +36,12 @@ window.TwentyFilms =
 
     new TwentyFilms.Routers.Router(
       { 
-        list: $filmList, 
         search: $search, 
         filmNew: $filmNew, 
-        filmShow: $filmShow,
-        userShow: $userShow,
-        userEdit: $userEdit, 
-        followings: $followings 
+        filmShow: $rootEl,
+        userShow: $rootEl,
+        userEdit: $userEdit,
+        home: $rootEl 
       },
       films,
       currentUser

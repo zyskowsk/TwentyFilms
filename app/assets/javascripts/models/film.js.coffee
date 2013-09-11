@@ -32,13 +32,13 @@ class TwentyFilms.Models.Film extends Backbone.Model
         dataType: 'json'
         data: data
         success: (response) =>
-          this.set('trailer', response['trailers']['youtube'][0]['source'])
-          this.set('poster', response['poster_path'])
+          # this.set('trailer', response['trailers']['youtube'][0]['source']) if response['trailers']['youtube'][0]['source']
+          # this.set('poster', response['poster_path'])
           callback(this)
         error: (response) =>
-          console.log('error occurred fetching trailer and poster')
-          console.log('film:')
-          console.log(this)
+          # console.log('error occurred fetching trailer and poster')
+          # console.log('film:')
+          # console.log(this)
           callback(this)
 
 

@@ -10,8 +10,6 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     @trailerOpen = false
 
   navigateHome: ->
-    $('#film-show').animate {right: -$('#film-show').width()}, =>
-      $('#film-show').hide()
     Backbone.history.navigate('', trigger: true)
 
   render: ->
@@ -21,7 +19,6 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     this
 
   toggleTrailer: ->
-
     @_hideTrailer() if @trailerOpen
     @_showTrailer() if not @trailerOpen
     @trailerOpen = !@trailerOpen

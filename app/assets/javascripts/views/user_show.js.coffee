@@ -17,6 +17,4 @@ class TwentyFilms.Views.UserShow extends Backbone.View
     this
 
   navigateHome: ->
-    $('#user-show').animate right: -$('#user-show').width(), =>
-      $('#user-show').hide()
     Backbone.history.navigate('', trigger: true)

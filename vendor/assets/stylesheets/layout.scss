@@ -391,9 +391,6 @@ a#unfollow {
 }
 
 #film-new {
-  border-left: 3px black solid;
-  border-bottom: 3px black solid;
-  border-right: 3px black solid;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   height: 500px;
@@ -407,14 +404,14 @@ a#unfollow {
 }
 
 #user-show, #film-show {
-  border: 3px black solid;
   height: 100%;
-  position:fixed;
-  width: 50%;
-  height: 98%;
-  top: 0px;
-  right:-51%;
-  z-index: auto;
+  width: 0px;
+  position: relative;
+  top: 40px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
   background-color: lightGrey;
 }
 
@@ -442,6 +439,8 @@ a#unfollow {
 
 input#search-bar { 
   border-bottom: 1px red dotted;
+  border-top: 1px black solid;
+  border-right: 1px black solid;
   border-radius: 2px;
   font-family: Arial, Helvetica, sans-serif; 
   font-size: 15px; 
