@@ -13,14 +13,14 @@ $('.signup').hide();
   $(function() {
     $('#button').on('click', function () {
       if ($('#button').attr('class') == 'sign-in') {
-        $('h1').html('Sign Up')
+        $('#sign-in-header').html('Sign Up')
         $('.signup').fadeIn('slow');
         $('.form').attr('action', '<%= users_url %>');
         $('#button').html('log in');
         $('#button').removeClass();
         $('#button').addClass('new-user');
       } else {
-        $('h1').html('Sign In')
+        $('#sign-in-header').html('Sign In')
         $('.signup').fadeOut('slow');
         $('.form').attr('action', '<%= session_url %>');
         $('#button').html('create new account');

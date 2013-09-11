@@ -1,33 +1,50 @@
-<%= current_user.name %>
+<div class='header'>
+  <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
+  <a id="gear" class='nav-item right gear'>⚙</a>
+  <div id="search-container" class=" nav-item right search-bar">
+    <div id="search">
+    </div>
+    <div id="wait">
+    </div>
+  </div>
+  <h1 class="logo left fatface"> Twenty Films </h1>
+</div>
+
+<div id="results" class="results">
+</div>
+
+<div id="utilities" class="utilities center">
+  <ul>
+  <li><a href="#/user/edit" class="edit_user">edit user</a></li>
+  <li><%= link_to 'logout', session_url, :method => :delete %></li>
+</div>
 
 <div id="film-new">
 </div>
 
-<div id="film-list">
-</div>
+<div class='container'>
 
-<div id="followings">
-</div>
-
-<div id="search-container">
-  <div id="search">
+  <div class='five columns'>
+    <div id="film-list">
+    </div>
   </div>
 
-  <div id="wait">
+  <div class='five columns'>
+    <div id="followings">
+    </div>
   </div>
-</div>
 
-<div id="results">
-</div>
 
-<div id="film-show">
-</div>
 
-<div id="user-show">
 </div>
+  <div id="film-show">
+  </div>
 
-<div id="user-edit">
-</div>
+  <div id="user-show">
+  </div>
+
+  <div id="user-edit">
+  </div>
 
 <script type="text/json" id="users_bootstrap">
   <%= render('root/launch.json.rabl', :locals => { :users => @users }) %>
@@ -44,7 +61,11 @@
 <script type="text/javascript">
   $(function() {
     $('#film-new').hide();
-    $('#film-show').hide(); 
+    $('#film-show').hide();
+    $('#utilities').hide(); 
+    $('#gear').on('click', function() {
+      $('#utilities').slideToggle('fast');
+    });
     TwentyFilms.initialize();
   });
 </script>

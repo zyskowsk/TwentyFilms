@@ -3,5 +3,5 @@
          id="search-bar" 
          name="film[title]" 
          placeholder='search' 
-         autocomplete="off">
+         autocomplete="off"/>
 </form>
