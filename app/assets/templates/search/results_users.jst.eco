@@ -1,3 +1,9 @@
-<h3> users </h3>
-<ul id="user-details">
-</ul>
+<div class="user-results">
+  <div class="left-bar">
+    <h3> users </h3>
+  </div>
+  <div class="right-bar">
+    <div id="user-details">
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
-  tagName: 'li'
   
   template: JST['search/film_detail']
 

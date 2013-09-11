@@ -1,10 +1,10 @@
-<img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=48.png" />
-<a href="#/users/<%= @user.get('id') %>">
+
+<a class="user-name" href="#/users/<%= @user.get('id') %>">
   <%= @user.get('name') %>
 </a>
 
 <% if @user.isFollowed(): %>
-  <button id="unfollow">unfollow</button>
+  <a id="unfollow">✖</a>
 <% else: %>
-  <button id="follow">follow</button>
+  <a id="follow">✚</a>
 <% end %>

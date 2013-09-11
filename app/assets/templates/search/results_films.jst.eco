@@ -1,3 +1,9 @@
-<h3> films </h3>
-<ul id="film-details">
-</ul>
+<div class="film-results">
+  <div class="left-bar">
+    <h3> films </h3>
+  </div>
+  <div class="right-bar">
+    <div id="film-details">
+    </div>
+  </div>
+</div>
