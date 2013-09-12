@@ -9,15 +9,21 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :email, :format => { :with => VALID_EMAIL_REGEX,
-                                 :message => "not valid" }
-  validates :email, :name, :username, :session_token, :presence => true
-  validates :password, :password_confirmation, :presence => true, :on => :create
-  validates :email, :uniqueness => { :message => "already taken" }
-  validates :username, :uniqueness => { :message => "already taken" }
+                                 :message => "not valid" }, 
+                    :unless => Proc.new { |user| user.provider }
+  validates :email, :name, :username, :session_token, :presence => true, 
+            :unless => Proc.new { |user| user.provider }
+  validates :password, :password_confirmation, :presence => true, :on => :create, 
+            :unless => Proc.new { |user| user.provider }
+  validates :email, :uniqueness => { :message => "already taken" }, 
+            :unless => Proc.new { |user| user.provider }
+  validates :username, :uniqueness => { :message => "already taken" },
+            :unless => Proc.new { |user| user.provider }
   validates :password, :length => { :minimum => 6, :allow_nil => true },
-                       :on => :create
+                       :on => :create,
+                       :unless => Proc.new { |user| user.provider }
 
-  validate :confirm_password, :on => :create
+  validate :confirm_password, :on => :create, :unless => Proc.new { |user| user.provider }
 
   before_create :encrypt_password
   before_save :set_gravatar_id
@@ -69,6 +75,20 @@ class User < ActiveRecord::Base
   def set_session_token!
     self.session_token = self.class.generate_session_token
     self.save!
+  end
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.image = auth.info.image
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.username = auth.info.username || user.email
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
   end
 
   def save_new_password!(new_password)

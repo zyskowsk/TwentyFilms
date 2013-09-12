@@ -13,6 +13,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
 
   routes:
     '': 'home'
+    '_=_' : 'navigateHome'
     'films/new': 'filmNew'
     'films/:id': 'filmShow'
     'users/:id': 'userShow'
@@ -26,6 +27,9 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   home: -> 
     @_renderView('search', collection: @films)
     @_renderView('home', model: @currentUser, collection: @films)
+
+  navigateHome: ->
+    Backbone.history.navigate('', trigger: true)
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)

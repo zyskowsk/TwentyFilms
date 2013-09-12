@@ -10,6 +10,7 @@ gem 'addressable'
 gem 'rest-client'
 gem 'jquery-ui-rails'
 gem 'figaro'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'better_errors'
