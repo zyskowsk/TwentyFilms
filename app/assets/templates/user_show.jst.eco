@@ -1,9 +1,16 @@
-<a class="show back">close</a>
-<h1><%= @user.get('username') %></h1>
-<img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=48.png" />
-<h2> List </h2>
-<ul class="list">
-</ul>
-
-<div class="user_show_follows">
+<div class="congtroller">
+  <div class="user-show-header">
+    <img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=48.png" />
+    <h1><%= @user.get('username') %></h1>
+    <hr />
+  </div>
+  <div class="eight columns">
+    <h2> List </h2>
+    <div class="list">
+    </div>
+  </div>
+  <div class="seven columns">
+    <div class="user_show_follows">
+    </div>
+  </div>
 </div>

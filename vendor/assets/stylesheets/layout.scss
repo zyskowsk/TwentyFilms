@@ -428,6 +428,23 @@ a#unfollow {
 	margin-top: 20p
 }
 
+/* user show page */
+
+.user-show-header {
+  margin: 20px 10px 10px 10px;
+  img {
+    float: left;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px black solid;
+  }
+  h1 {
+    position: relative;
+    bottom: 5px;
+  }
+}
+
+
 /* Misc Styling From Backend Dev */
 
 #results {
