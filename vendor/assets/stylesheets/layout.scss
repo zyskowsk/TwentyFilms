@@ -84,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Welcome Page */
 
 .welcome-container {
-	margin-top: 120px;
+	margin-top: 100px;
 }
 
 .title {
@@ -114,18 +114,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-form {
-	margin-top: 100px;
+	margin-top: 60px;
 }
 
 .form {
 	textarea, input, input[type="submit"], button {
 		color: $darkGrey ;
 		padding: 5px;
+    border-color: white;
 		background-color: transparent;
 		&:active, &:focus {
 			border-color: red;
 			color: black;
-			background-color: rgba(150,0,0,0.1);
+      border-color: red;
+			background-color: rgba(250,0,0,0.1);
 		}
 	}
 	label {
@@ -149,6 +151,7 @@ input[type="submit"]:hover, button:hover {
 body{
 	background-color: $siteGrey;
 }
+
 /* inner header */
 
 .header {
@@ -474,6 +477,8 @@ a#unfollow {
 
 .gravatar-text {
   display: none;
+  position: relative;
+  bottom: 18px;
 }
 
 .edit-user-info {
@@ -499,6 +504,11 @@ a#unfollow {
   autocomplete: false;
   box-shadow: none;
   border-bottom: 1px red dotted;
+}
+
+.new-password-submit {
+  margin-left: 120px;
+  margin-top: 8px;
 }
 
 
