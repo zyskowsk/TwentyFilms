@@ -15,10 +15,21 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update_attributes(params[:user])
-      render :json => @user
+    if params[:password_reset]
+      if not (@user.is_correct_password?(params[:password_reset][:old_password]))
+        render :json => ["password not correct"], :status => 422
+      elsif params[:password_reset][:new_password] != params[:password_reset][:confirmation]
+        render :json => ["passwords don't match"], :status => 422
+      else
+        @user.save_new_password!(params[:password_reset][:new_password])
+        render :json => @user
+      end
     else
-      render :json => @user.errors.full_messages, :status => 422
+      if @user.update_attributes(params[:user])
+        render :json => @user
+      else
+        render :json => @user.errors.full_messages, :status => 422
+      end
     end
   end
 

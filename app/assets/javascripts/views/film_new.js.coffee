@@ -5,7 +5,7 @@ class TwentyFilms.Views.FilmNew extends Backbone.View
   currentErrors: []
 
   events:
-    'click .back': 'navigateHome'
+    'click .close': 'close'
     'submit' : 'addFilm'
     
   addFilm: (event) ->
@@ -28,9 +28,8 @@ class TwentyFilms.Views.FilmNew extends Backbone.View
           $('#film-new').append errorView.render().$el
         $('.error-message h5').fadeIn('slow');
 
-  navigateHome: ->
+  close: ->
     $('#film-new').slideUp('slow')
-    Backbone.history.navigate('', trigger: true)
 
   render: ->
     @$el.html @template()

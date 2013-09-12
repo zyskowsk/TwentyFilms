@@ -71,6 +71,11 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def save_new_password!(new_password)
+    self.password_digest = BCrypt::Password.create(new_password)
+    self.save!
+  end
+
   private 
     def confirm_password 
       errors.add(:passwords, "don't match") unless 

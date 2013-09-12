@@ -42,7 +42,7 @@
     <textarea type="text" class="plot" id="film_plot" name="film[plot]"></textarea><br />
 
     <input type="submit" />
-    <a class="back"> Home </a>
+    <a class="close"> close </a>
    </div>
 </form>
 
