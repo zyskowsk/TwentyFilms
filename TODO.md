@@ -1,10 +1,14 @@
-Tuesday-Friday:
-  -Style
+Today:
+  -fb-oauth
+  -debug
+  -refactor
+
+Tomorrow:
+  -style
+
 
 MISC:
   -fb-oauth
-  -user edit page
-  -error messages if have time
   -forgot password email
   -ServerSideAuthorazationAPI
   -Clean up server side API
