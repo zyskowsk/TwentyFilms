@@ -35,6 +35,7 @@
              name="user[email]" 
              value="<%= @currentUser.escape("email") %>"
              autocomplete="off" /><br />
+    </form>
   </div>
 
   <div class="six columns offset-by-one form">
