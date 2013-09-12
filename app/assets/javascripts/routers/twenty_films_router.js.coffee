@@ -1,4 +1,3 @@
-
 class TwentyFilms.Routers.Router extends Backbone.Router
 
   currentViews: {}

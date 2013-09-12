@@ -1,30 +1,71 @@
-<h1> user edit </h1>
-<a class="home">home</a>
-<h1><%= @currentUser.get('username') %></h1>
-<img src="http://gravatar.com/avatar/<%= @currentUser.get('gravatar_id') %>?s=48.png" />
-<a href="#">Edit your profile image at gravatar</a>
+<div class="container user-edit">
+  <div class="fifteen columns edit-header">
+    <h1> Edit User </h1>
+    <div class="gravatar-edit">
+      <a class="gravatar-text" id="gravatar-text">
+        Edit at gravatar.com
+      </a>
+      <a href="http://gravatar.com">
+        <img id="gravatar-edit"
+             src="http://gravatar.com/avatar/<%= @currentUser.get('gravatar_id') %>?s=48.png" />
+      </a>
+    </div>
+    <hr />
+  </div>
+  <div class="six columns offset-by-one form">
+    <h2>User Information</h2>
+    <form id="edit_user_info" class="edit-user-info">
+      <label for="user_name">n:</label>
+      <input type="text" 
+             id="user_name" 
+             name="user[name]" 
+             value="<%= @currentUser.escape("name") %>"
+             autocomplete="off" /><br />
 
-<h2>Rest Your Password</h2>
-<form id="reset_password_form">
-  <label for="password_reset_old_password">Old Password</label>
-  <input type="password" 
-         id="password_reset_old_password" 
-         name="password_reset[old_password]" /><br />
+      <label for="user_username">u:</label>
+      <input type="text" 
+             id="user_username" 
+             name="user[username]"
+             value="<%= @currentUser.escape("username") %>" 
+             autocomplete="off" /><br />
 
-  <label for="password_reset_new_password">New Password</label>
-  <input type="password" 
-         id="password_reset_new_password" 
-         name="password_reset[new_password]" /><br />
+      <label for="user_email">e:</label>
+      <input type="text" 
+             id="user_email" 
+             name="user[email]" 
+             value="<%= @currentUser.escape("email") %>"
+             autocomplete="off" /><br />
+  </div>
 
-  <label for="password_reset_confirmation">Confirm</label>
-  <input type="password" 
-         id="password_reset_confirmation" 
-         name="password_reset[confirmation]" /><br />
+  <div class="six columns offset-by-one form">
+    <h2>Reset Your Password</h2>
+    <form id="reset_password_form">
+      <label for="password_reset_old_password">Old Password</label>
+      <input type="password" 
+             id="password_reset_old_password" 
+             name="password_reset[old_password]" /><br />
 
-  <input type="submit">
-</form>
+      <label for="password_reset_new_password">New Password</label>
+      <input type="password" 
+             id="password_reset_new_password" 
+             name="password_reset[new_password]" /><br />
 
+      <label for="password_reset_confirmation">Confirm</label>
+      <input type="password" 
+             id="password_reset_confirmation" 
+             name="password_reset[confirmation]" /><br />
 
- 
+      <input type="submit">
+    </form>
+  </div>
+</div>
 
-
+<script type="text/javascript">
+  $(function () {
+    $('#gravatar-edit').hover(function () {
+      $('#gravatar-text').fadeIn('slow');
+    }, function () {
+      $('#gravatar-text').fadeOut('slow');
+    });
+  });
+</script>

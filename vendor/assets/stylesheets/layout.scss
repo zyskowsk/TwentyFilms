@@ -444,6 +444,63 @@ a#unfollow {
   }
 }
 
+/* user edit page */
+
+.user-edit {
+  label {
+    width: 110px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }   
+}
+
+.edit-header {
+  h1{
+    float: left;
+  }
+}
+
+.gravatar-edit {
+  float: right;
+  img {
+    border: 1px black solid;
+    border-radius: 5px;
+  }
+  a {
+    position: relative;
+  }
+}
+
+.gravatar-text {
+  display: none;
+}
+
+.edit-user-info {
+  input, input[type="text"] {
+    border: 1px $siteGrey solid;
+    font-family: $bodyFont;
+    font-size: 25px;
+    width: inherit;
+  }
+  label {
+    font-family: $bodyFont;
+    font-size: 18px;
+    width: 10px;
+    position:relative;
+    top:9px;
+  }
+}
+
+.edit-user-info input:focus {
+  background-color: $siteGrey;
+  border: 1px $siteGrey solid;
+  border-radius: none;
+  autocomplete: false;
+  box-shadow: none;
+  border-bottom: 1px red dotted;
+}
+
 
 /* Misc Styling From Backend Dev */
 

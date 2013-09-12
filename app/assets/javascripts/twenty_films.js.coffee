@@ -9,7 +9,6 @@ window.TwentyFilms =
   initialize: -> 
     $search = $('#search')
     $filmNew = $('#film-new')
-    $userEdit = $('#user-edit')
     $rootEl = $('#root')
 
     div = $('<div></div>')
@@ -40,7 +39,7 @@ window.TwentyFilms =
         filmNew: $filmNew, 
         filmShow: $rootEl,
         userShow: $rootEl,
-        userEdit: $userEdit,
+        userEdit: $rootEl,
         home: $rootEl 
       },
       films,
