@@ -167,6 +167,15 @@ form.button_to {
 	color: $siteGrey;
 	font-size:25px;
 	margin-left: 10px
+
+}
+
+.home-link a {
+	cursor: pointer;
+  color: $siteGrey;
+	&:hover {
+		color: lighten($siteGrey, 20);
+	}
 }
 
 .gear {
@@ -178,7 +187,7 @@ form.button_to {
 }
 
 .nav-item {
-	margin-right: 20px;
+	margin-right: 23px;
 	color: $siteGrey;
 	margin-top: 8px;
 }
@@ -186,8 +195,10 @@ form.button_to {
 .utilities {
 	background-color: white;
 	position: absolute;
-	right: 177px;
-	padding: 5px;
+	right: 0px;
+	padding-bottom: 5px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
 	top: 40px;
 	z-index: 3;
 	ul {
@@ -245,7 +256,9 @@ form.button_to {
 	position:absolute;
 	background-color: white;
 	margin-top: 40px;
-	right: 270px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	right: 65px;
 }
 
 a.add:hover, a#follow:hover, a#unfollow:hover {
@@ -403,6 +416,17 @@ a#unfollow {
   -o-filter: blur(10px);
   filter: blur(10px);
 }*/
+
+/* film show page */
+
+.film-info {
+	border-right: 1px white solid;
+	padding: 5px;
+}
+
+.plot-trailer {
+	margin-top: 20p
+}
 
 /* Misc Styling From Backend Dev */
 

@@ -1,5 +1,4 @@
 <div class='header'>
-  <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
   <a id="gear" class='nav-item right gear'>⚙</a>
   <div id="search-container" class=" nav-item right search-bar">
     <div id="search">
@@ -7,6 +6,10 @@
     <div id="wait">
     </div>
   </div>
+  <h5 id="home" class="nav-item right home-link">
+    <a href="#/">home</a>
+  </h5>
+  <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
   <h1 class="logo left fatface"> Twenty Films </h1>
 </div>
 

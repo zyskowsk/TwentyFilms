@@ -3,14 +3,10 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
   template: JST['film/show']
 
   events: 
-    'click .show.back': 'navigateHome'
     'click .toggle-trailer': 'toggleTrailer'
 
   initialize: ->
     @trailerOpen = false
-
-  navigateHome: ->
-    Backbone.history.navigate('', trigger: true)
 
   render: ->
     @$el.html @template
