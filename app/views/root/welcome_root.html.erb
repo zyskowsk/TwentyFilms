@@ -1,7 +1,19 @@
 <div class='welcome-background'>
+<button id="button" class="sign-in" type="button">create new account</button>
 
 <div class="welcome-container container">
   <h1 class='title fatface center'>Twenty Films</h1>
+
+  <% if flash[:notices] %>
+    <% flash[:notices].each do |message| %>
+
+      <div class="flash two columns">
+        <p><%= message %></p>
+      </div>
+
+   <% end %>
+  <% end %>
+
   <div class="sign-in-container container">
    <%= render :partial => 'root/user_form' %>
   </div>
@@ -9,7 +21,15 @@
 </div>
 
 <script type="text/javascript">
-$('.signup').hide();
+  $('.signup').hide();
+  if (document.URL.slice(-5, -1) == "user") {
+    $('#sign-in-header').html('Sign Up');
+    $('.signup').show();
+    $('.form').attr('action', '<%= users_url %>');     
+    $('#button').html('log in');
+    $('#button').removeClass();
+    $('#button').addClass('new-user');
+  }
   $(function() {
     $('#button').on('click', function () {
       if ($('#button').attr('class') == 'sign-in') {

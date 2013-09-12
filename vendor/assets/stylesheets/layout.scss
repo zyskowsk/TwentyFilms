@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-form {
-	margin-top: 60px;
+	margin-top: 50px;
 }
 
 .form {
@@ -138,6 +138,12 @@ h1, h2, h3, h4, h5, h6 {
 	.buttons {
 		margin-left: 98px;
 	}
+}
+
+#button {
+  float: right;
+  margin: 10px;
+  color: white;
 }
 
 input[type="submit"]:hover, button:hover {
@@ -509,6 +515,23 @@ a#unfollow {
 .new-password-submit {
   margin-left: 120px;
   margin-top: 8px;
+}
+
+/* flash notices */
+
+.flash p{
+  text-align: center;
+  background-color: rgba(250,0,0,0.5);
+  color: black;
+  border-radius: 10px;
+  border: 1px white solid;
+  padding: 5px;
+  margin-bottom: 0px;
+}
+
+div.flash.two.columns {
+  height: 5px;
+  float: none;
 }
 
 

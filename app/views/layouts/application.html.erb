@@ -8,12 +8,6 @@
 </head>
 <body>
 
-<% if flash[:notices] %>
-  <% flash[:notices].each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-<% end %>
-
 <%= yield %>
 
 </body>

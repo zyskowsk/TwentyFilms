@@ -7,6 +7,7 @@ class TwentyFilms.Views.UserFollows extends Backbone.View
   initialize: ->
     currentFollowedUsers = TwentyFilms.Store.currentUser.get('followed_users')
     @listenTo(currentFollowedUsers, 'add remove', @render)
+    @listenTo(TwentyFilms.Store.currentUser, 'update', @render)
 
   render: -> 
     followers = @model.get('followers')
