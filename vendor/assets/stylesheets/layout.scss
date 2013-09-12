@@ -534,6 +534,19 @@ div.flash.two.columns {
   float: none;
 }
 
+.error-message  h5{
+  color: white;
+  background-color: red;
+  margin-top: 5px;
+  margin-left: 40px;
+  border: 1px white solid;
+  border-radius: 5px;
+  display: none;
+}
+
+.error-message {
+  display: none;
+}
 
 /* Misc Styling From Backend Dev */
 

@@ -7,7 +7,7 @@ class FilmsController < ApplicationController
       if @new_film.save
         render :json => @new_film
       else
-        render :json => @new_film.errors, :status => 422
+        render :json => @new_film.errors.full_messages, :status => 422
       end
     else
       add_film_on_search
