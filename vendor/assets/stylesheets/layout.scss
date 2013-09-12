@@ -58,6 +58,10 @@ a {
 	cursor: pointer;
 }
 
+.container {
+	padding-top: 40px;
+}
+
 /* Typography */
 
 a {
@@ -80,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Welcome Page */
 
 .welcome-container {
-	margin-top: 160px;
+	margin-top: 120px;
 }
 
 .title {
@@ -114,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form {
-	input, input[type="submit"], button {
+	textarea, input, input[type="submit"], button {
 		color: $darkGrey ;
 		padding: 5px;
 		background-color: transparent;
@@ -151,6 +155,8 @@ body{
 	height: 40px;
 	background-color: black;
 	width: 100%;
+	position: fixed;
+	z-index: 3;
 }
 
 form.button_to {
@@ -159,6 +165,8 @@ form.button_to {
 
 .logo {
 	color: $siteGrey;
+	font-size:25px;
+	margin-left: 10px
 }
 
 .gear {
@@ -180,6 +188,7 @@ form.button_to {
 	position: absolute;
 	right: 177px;
 	padding: 5px;
+	top: 40px;
 	z-index: 3;
 	ul {
 		margin-bottom: 0px
@@ -235,6 +244,7 @@ form.button_to {
 .results {
 	position:absolute;
 	background-color: white;
+	margin-top: 40px;
 	right: 270px;
 }
 
@@ -282,10 +292,6 @@ div.user-name {
 
 hr {
 	margin: 3px 0 5px;
-}
-
-button {
-
 }
 
 .list-container {
@@ -366,6 +372,38 @@ a#unfollow {
 	}
 }
 
+/* new film form */
+
+.right-input {
+	margin-left: 30px;
+}
+
+#film-new {
+	background-color: rgba(5,5,5,0.8);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	label, h4, a ,h1, input, textarea,  {
+		color: white;
+		autocomplete: false;
+	}
+	::-webkit-input-placeholder {
+    color: grey;
+	}
+}
+
+.plot {
+	width:100%;
+	background: transparent;
+}
+
+/*.root.blur {
+	-webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);
+  -o-filter: blur(10px);
+  filter: blur(10px);
+}*/
+
 /* Misc Styling From Backend Dev */
 
 #results {
@@ -391,15 +429,9 @@ a#unfollow {
 }
 
 #film-new {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  height: 500px;
-  width: 500px;
   position: fixed;
-  left: 15%;
-  top: 0px;
+  top: 40px;
   padding: 10px;
-  background-color: lightGrey;
   z-index: 1;
 }
 
@@ -423,7 +455,7 @@ a#unfollow {
   float:left;
   height: 20px;
   width: 0px;
-  position:fixed;
+  position: fixed;
   color: white;
   background-color: $siteGrey;
   padding-top: 2px;
@@ -441,6 +473,7 @@ input#search-bar {
   border-bottom: 1px red dotted;
   border-top: 1px black solid;
   border-right: 1px black solid;
+  border-left: 1px black solid;
   border-radius: 2px;
   font-family: Arial, Helvetica, sans-serif; 
   font-size: 15px; 

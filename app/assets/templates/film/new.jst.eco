@@ -1,42 +1,48 @@
-<h1> Add a New Film </h1>
-<h4> 
-  So... The internet failed you!, time to contribute.  
-  Please fill out all fields so that we can reuse the data!
-</h4>
+<div clas="four columns left">
+  <h1> Add a New Film </h1>
+  <h4> 
+    The internet failed you! Time to contribute.  
+  </h4><br />
+</div>
 
-<form id="film-form">
-  <label for="film_title">Title</label>
-  <input type="text" id="film_title" name="film[title]" /><br />
 
-  <label for="film_year">Year</label>
-  <input type="text" id="film_year" name="film[year]" /><br />
+<form id="film-form" class="form">
+  <div class="three columns right">
+    <label for="film_title">Title</label>
+    <input type="text" id="film_title" name="film[title]" /><br />
 
-  <label for="film_director">Director</label>
-  <input type="text" id="film_director" name="film[director]" /><br />
+    <label for="film_year">Year</label>
+    <input type="text" id="film_year" name="film[year]" /><br />
 
-  <label for="film_runtime">Runtime</label>
-  <input type="text" id="film_runtime" name="film[runtime]" /><br />
+    <label for="film_director">Director</label>
+    <input type="text" id="film_director" name="film[director]" /><br />
 
-  <label for="film_genre">Genre</label>
-  <input type="text" id="film_genre" name="film[genre]" /><br />
+    <label for="film_runtime">Runtime</label>
+    <input type="text" id="film_runtime" name="film[runtime]" /><br />
+  </div>
+  <div class="three columns right right-input">
+    <label for="film_genre">Genre</label>
+    <input type="text" id="film_genre" name="film[genre]" /><br />
 
-  <label for="film_writer">Writer(s)</label>
-  <input type="text" id="film_writer" name="film[writer]" /><br />
+    <label for="film_writer">Writer(s)</label>
+    <input type="text" id="film_writer" name="film[writer]" /><br />
 
-  <label for="film_cast">Cast</label>
-  <input type="text" id="film_cast" name="film[actors]" /><br />
+    <label for="film_cast">Cast</label>
+    <input type="text" id="film_cast" name="film[actors]" /><br />
 
-  <label for="film_image">Image Url</label>
-  <input type="text" id="film_image" name="film[poster]" /><br />
+    <label for="film_image">Image Url</label>
+    <input type="text" id="film_image" name="film[poster]" /><br />
+    <label for="film_trailer" class="trailer-form">Trailer</label>
+    <input type="text" class="trailer-form" id="film_trailer" 
+           name="film[trailer]" placeholder="youtube-code"/><br />
+  </div>
 
-  <label for="film_trailer">Trailer</label>
-  <input type="text" id="film_trailer" 
-         name="film[trailer]" placeholder="youtube-code"/><br />
+  <div class="six columns plot-container">
+    <label for="film_plot">Plot</label>
+    <textarea type="text" class="plot" id="film_plot" name="film[plot]"></textarea><br />
 
-  <label for="film_plot">Plot</label>
-  <textarea type="text" id="film_plot" name="film[plot]"></textarea><br />
+    <input type="submit" />
+    <a class="back"> Home </a>
+   </div>
+</form>
 
-  <input type="submit" />
-</form><br />
-
-<a class="back">home</a>
