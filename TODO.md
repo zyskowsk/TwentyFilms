@@ -13,10 +13,10 @@ MISC:
   -Clean up server side API
 
 TODO:
+  -edit user page
   -excape modle attrs in views
   -fix neds solution for iframe
 
 Style To fix:
-  -colors
 
   NOTE: user edit refresh will not work unless i rebootstrap all the data...

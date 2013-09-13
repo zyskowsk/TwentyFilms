@@ -1,4 +1,9 @@
-<img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=36.png" />
+<% if @user.get('image'): %>
+  <img class="facebook-detail" src="<%=@user.get('image')%>" />
+<% else: %>
+  <img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>.png?s=36&d=retro" />
+<% end %>
+
 <a class="user-name" href="#/users/<%= @user.get('id') %>" >
   <%= @user.get('name') %>
 </a>

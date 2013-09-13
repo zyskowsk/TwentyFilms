@@ -468,9 +468,14 @@ a#unfollow {
   border-radius: 3px;
 	background-color: lighten($siteGrey, 20);
 	img {
-	  border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+	  border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
 	}
+}
+
+img.facebook-detail {
+  height: 36px;
+  width: 36px;
 }
 
 /* new film form */
@@ -537,7 +542,6 @@ a#unfollow {
   margin-top: 20px;
 }
 
-
 .toggle-trailer{
   position: relative;
   left: 55px;
@@ -586,6 +590,7 @@ a#unfollow {
   }
   button {
     float: right;
+    text-align: center;
     position: relative;
     top: 20px;
     color: $highlight;
@@ -595,6 +600,10 @@ a#unfollow {
       border-color: black;
     }
   }
+}
+
+.unfollow {
+  padding-right: 10px;
 }
 
 
