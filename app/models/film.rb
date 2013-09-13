@@ -7,6 +7,34 @@ class Film < ActiveRecord::Base
   validates :title, :year, :director, :presence => true
   validates :year, :inclusion => { :in => (1840..Date.today.year) }
 
+  def self.bacon_number
+    connection.execute(<<-SQL).to_a[0]["count"]
+      SELECT 
+        COUNT(*)
+      FROM 
+        films
+      JOIN 
+        film_choices
+      ON
+        films.id = film_choices.film_id
+      WHERE
+        actors LIKE '%Kevin Bacon%';
+    SQL
+  end
+
+  def self.get_bacon_number
+    bacon_number = REDIS.get('bacon_count')
+
+    unless bacon_number
+      puts "here"
+      bacon_number = Film.bacon_number
+      REDIS.set('bacon_count', bacon_number)
+      REDIS.expire('bacon_count', 10.minutes)
+    end
+
+    bacon_number
+  end
+
   def self.build_tmdb_url(path, query_values = {})
     Addressable::URI.new(
       :scheme => 'http',

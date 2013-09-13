@@ -34,6 +34,14 @@ class TwentyFilms.Models.Film extends Backbone.Model
 
     (titleList.indexOf(this.get('title')) != -1) if this
 
+  @getBaconNumber: (callback) ->
+    $.ajax
+      type: 'GET'
+      url:'/bacon_number'
+      dataType: 'json'
+      success: (response) =>
+        callback(response)
+
   getTrailerAndPoster: (callback) ->
     data = 
       api_key: TwentyFilms.Store.TMDB_API_KEY, 

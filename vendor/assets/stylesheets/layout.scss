@@ -708,6 +708,24 @@ div.flash.two.columns {
   display: none;
 }
 
+/* bacon number */
+
+.bacon-container {
+  text-align: center;
+  background-color: rgba(230, 230, 230, 0.92);
+  padding: 5px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border: 1px black solid;
+  border-top: none;
+  position: fixed;
+  left: 30px;
+  z-index: 5;
+  .bacon-close {
+    cursor: pointer;
+  }
+}
+
 /* Misc Styling From Backend Dev */
 
 #results {

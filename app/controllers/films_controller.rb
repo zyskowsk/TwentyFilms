@@ -14,6 +14,10 @@ class FilmsController < ApplicationController
     end
   end
 
+  def bacon_number
+    render :json => Film.get_bacon_number, :status => 200
+  end
+
   def destroy
     @film_choice = FilmChoice.find_by_user_id_and_film_id(
       current_user.id,

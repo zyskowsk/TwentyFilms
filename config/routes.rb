@@ -4,7 +4,7 @@ TwentyFilms::Application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#facebook_create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
-  
+  get 'bacon_number' => 'films#bacon_number' 
   get '/films/search' => 'films#search'
   delete '/followings' => 'followings#destroy'
   put '/films' => 'films#update'

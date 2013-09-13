@@ -11,6 +11,7 @@ gem 'rest-client'
 gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'redis'
 
 group :development do
   gem 'better_errors'

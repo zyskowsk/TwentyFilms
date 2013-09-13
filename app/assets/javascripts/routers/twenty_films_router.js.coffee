@@ -18,6 +18,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     'films/:id': 'filmShow'
     'users/:id': 'userShow'
     'user/edit': 'userEdit'
+    'bacon_number': 'baconNumber'
 
   initialize: (elements, films, users, currentUserId) ->
     @elements = elements
@@ -29,6 +30,12 @@ class TwentyFilms.Routers.Router extends Backbone.Router
   home: -> 
     @_renderView('search', collection: @films)
     @_renderView('home', model: @currentUser, collection: @films)
+
+  baconNumber: ->
+    TwentyFilms.Models.Film.getBaconNumber (response) =>
+        $('#bacon-number').html(response)
+        $('.bacon-container').slideDown('fast')
+        Backbone.history.navigate('')
 
   navigateHome: ->
     Backbone.history.navigate('', trigger: true)

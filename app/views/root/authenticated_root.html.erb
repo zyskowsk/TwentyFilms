@@ -12,6 +12,9 @@
   <h5 id="home" class="nav-item right home-link">
     <a href="#/" class="home">home</a>
   </h5>
+  <h5 id="home" class="nav-item right bacon-number home-link">
+    <a href="#/bacon_number" class="home">bacon number</a>
+  </h5>
   
   <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
   <h1 class="logo left fatface"> Twenty Films </h1>
@@ -24,11 +27,20 @@
 
 <div id="utilities" class="utilities center">
   <ul>
-  <li><a href="#/user/edit" class="edit_user">edit user</a></li>
-  <li><%= link_to 'logout', session_url, :method => :delete, :class => 'logout' %></li>
+    <li><a href="#/user/edit" class="edit_user">edit user</a></li>
+    <li><%= link_to 'logout', session_url, :method => :delete, :class => 'logout' %></li>
+  </ul>
 </div>
 
 <div class='container'>
+
+  <div class="bacon-container three columns">
+    <p>The number of films on user lists that Kevin Bacon acted in is:</p>
+    <h1 id="bacon-number" class="bacon-number center">
+    </h1>
+    <div class="center bacon-close"> close </div>
+  </div>
+
   <div id="film-new" class="seven columns offset-by-four film-new">
   </div>
 
@@ -49,6 +61,7 @@
 </script>
 
 <script type="text/javascript">
+  $('.bacon-container').hide();
   $(function() {
     $('#film-new').hide();
     $('#film-show').hide();
@@ -64,6 +77,9 @@
     });
      $('.home').on('click', function() {
       $('#utilities').slideUp('fast');
+    });
+    $('.bacon-close').on('click', function() {
+      $('.bacon-container').slideUp('fast');
     });
 
     TwentyFilms.initialize();
