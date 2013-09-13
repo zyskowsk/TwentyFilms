@@ -7,15 +7,6 @@ class Film < ActiveRecord::Base
   validates :title, :year, :director, :presence => true
   validates :year, :inclusion => { :in => (1840..Date.today.year) }
 
-  # def self.build_omdb_url(path, query_values = {})
-  #   Addressable::URI.new(
-  #     :scheme => 'http',
-  #     :host => 'www.omdbapi.com',
-  #     :path => path,
-  #     :query_values => query_values
-  #   ).to_s
-  # end
-
   def self.build_tmdb_url(path, query_values = {})
     Addressable::URI.new(
       :scheme => 'http',
@@ -44,11 +35,6 @@ class Film < ActiveRecord::Base
     @new_film
   end
 
-  # def self.omdb_search(title)
-  #   url = self.build_omdb_url('/', {'t' => "#{title.titleize}" })
-  #   result = JSON.parse(RestClient.get url)
-  # end
-
   def get_trailer_source
     url = Film.build_tmdb_url(
       "3/movie/#{self.imdbid}/trailers"
@@ -57,13 +43,5 @@ class Film < ActiveRecord::Base
     self.trailer = JSON.parse(RestClient.get url)['youtube'][0]['source']
   end
 
-  # def self.get_tmdb_id(title)
-  #   url = self.build_tmdb_url(
-  #     '/3/search/movie', 
-  #     {'query' => "#{title.titleize}"} 
-  #   )
-
-  #   JSON.parse(RestClient.get url)['results'][0]['id']
-  # end
 
 end

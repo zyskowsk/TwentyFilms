@@ -83,61 +83,84 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Welcome Page */
 
-.welcome-container {
-	margin-top: 100px;
+.title {
+  color: white;
+  font-size: 100px;
 }
 
-.title {
-	color: white;
-	font-size: 100px;
+.form {
+  textarea, input, input[type="submit"], button {
+    color: $darkGrey ;
+    padding: 5px;
+    border-color: white;
+    background-color: transparent;
+    &:active, &:focus {
+      border-color: red;
+      color: black;
+      border-color: red;
+      background-color: rgba(250,0,0,0.1);
+    }
+  }
+  label {
+    color: black;
+    font-size: 15px;
+    width: 90px;
+  }
+  .buttons {
+    margin-left: 98px;
+  }
+}
+
+input:hover, input[type="submit"]:hover, button:hover {
+  border-color: red;
+  color: black;
+  background-color: rgba(150,0,0,0.1);
+}
+.welcome-container {
+  margin-top: 100px;
+}
+
+
+.fb-button {
+  float: right;
+  margin-top: 115px;
+  margin-right: 50px;
+  input[type="submit"] {
+    height: 58px;
+    width: 170px;
+    background-color: transparent;
+    color: black;
+    border: 1px white solid;
+    &:hover {
+      background-color: rgba(0, 0, 255, 0.2);
+      border-color: blue;
+    }
+  }
 }
 
 .welcome-background {
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   overflow: hidden;
   background: url('manhattan.jpg');
-	background-size: 100%;
-	background-color: black;
-	background-position: center;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: black;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 /* Forms */
 
 .sign-in-container {
-	width: 300px;
+  width: 300px;
 }
 
 .welcome-form {
-	margin-top: 50px;
-}
-
-.form {
-	textarea, input, input[type="submit"], button {
-		color: $darkGrey ;
-		padding: 5px;
-    border-color: white;
-		background-color: transparent;
-		&:active, &:focus {
-			border-color: red;
-			color: black;
-      border-color: red;
-			background-color: rgba(250,0,0,0.1);
-		}
-	}
-	label {
-		color: black;
-		font-size: 15px;
-		width: 90px;
-	}
-	.buttons {
-		margin-left: 98px;
-	}
+  margin-top: 50px;
 }
 
 #button {
@@ -146,11 +169,6 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-input[type="submit"]:hover, button:hover {
-	border-color: red;
-	color: black;
-	background-color: rgba(150,0,0,0.1);
-}
 
 /* inner app */
 
@@ -438,7 +456,12 @@ a#unfollow {
 }
 
 .plot-trailer {
-	margin-top: 20p
+	margin-top: 20px
+}
+
+.image {
+  float: right;
+  margin-left: 500px;
 }
 
 /* user show page */
@@ -514,6 +537,10 @@ a#unfollow {
   autocomplete: false;
   box-shadow: none;
   border-bottom: 1px red dotted;
+}
+
+.edit-user-info input:hover {
+  background-color: $siteGrey;
 }
 
 .new-password-submit {
@@ -614,7 +641,6 @@ div.flash.two.columns {
 
 #search {
   float: left;
-  cursor: none;
 }
 
 input#search-bar { 
@@ -650,7 +676,6 @@ input#search-bar:focus {
   box-shadow:0px;
   background-color: $siteGrey;
   color: white;
-  cursor: none;
 }
 
 

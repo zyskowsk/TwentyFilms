@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
     if @user.save
       login!(@user)
+      puts "logged in"
+      puts current_user
       redirect_to root_url
     else
       now_notices.push(*@user.errors.full_messages)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912201939) do
+ActiveRecord::Schema.define(:version => 20130912232627) do
 
   create_table "film_choices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130912201939) do
     t.string   "genre"
     t.string   "writer"
     t.string   "actors"
-    t.string   "plot"
+    t.text     "plot"
     t.string   "poster"
     t.string   "trailer"
     t.string   "imdbid"

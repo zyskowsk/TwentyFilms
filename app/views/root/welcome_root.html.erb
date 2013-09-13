@@ -13,19 +13,13 @@
 
    <% end %>
   <% end %>
+  <div class="sign-in-container container ten columns offset-by-three">
+    <%= render :partial => 'root/user_form' %>
 
-  <div id="user_nav">
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-  </div>
-
-  <div class="sign-in-container container">
-   <%= render :partial => 'root/user_form' %>
-  </div>
+    <div class="fb-button">
+       <%= button_to "Sign in with Facebook",
+                 "/auth/facebook", id: "sign_in", :method => :get %>
+    <div>
   </div>
 </div>
 

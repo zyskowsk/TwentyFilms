@@ -25,6 +25,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @currentUser = currentUser
 
   home: -> 
+    console.log(TwentyFilms.Store.currentUser)
     @_renderView('search', collection: @films)
     @_renderView('home', model: @currentUser, collection: @films)
 
@@ -37,7 +38,10 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     @elements['filmNew'].slideDown('slow')
 
   filmShow: (id) ->
+    $('#results').slideUp('fast')
+    $('body').spin()
     TwentyFilms.Models.Film.getByRawId id, (film) =>
+       $('body').spin(false)
        @_filmShowCallback(film)
 
   userEdit: ->

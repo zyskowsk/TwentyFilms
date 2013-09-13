@@ -1,13 +1,5 @@
 <div class="container">
-  <% if @film.get('trailer'): %>
-    <a class="toggle-trailer">Show Trailer</a>
-  <% end %>
-
-  <div class="film-poster">
-    <img src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500/<%= @film.get('poster') %>" />
-  </div>
-
-  <div class="film-info five columns">
+  <div class="film-info four columns">
     <h1><%= @film.get('title') %></h1>
     <hr />
     <h3>Director: <%= @film.get('director') %></h3>
@@ -18,7 +10,11 @@
     <p>Actors: <%= @film.get('actors') %></p>
   </div>
 
-  <div class="plot-trailer ten columns">
+  <div class="plot-trailer seven columns">
+    <% if @film.get('trailer'): %>
+      <a class="toggle-trailer">Show Trailer</a>
+    <% end %>
+
     <div class="film-plot">
       <h3>Plot</h3>
       <p><%= @film.get('plot') %></p>
@@ -27,6 +23,12 @@
     <% if @film.get('trailer'): %>
       <div class="film-trailer">
       </div>
-    <% end %>
+    <% end %> 
+
+  </div>
+  <div class="four columns image">
+    <div class="film-poster">
+      <img src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/<%= @film.get('poster') %>" />
+    </div>
   </div>
 </div>
