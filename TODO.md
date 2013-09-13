@@ -1,5 +1,5 @@
 Current Item:
-  -style both spinny thingings
+  -utilities hover
 
 Tomorrow:
   -style
@@ -19,7 +19,6 @@ TODO:
 Style To fix:
   -film show page
   -show fb-image if availible
-  -utilities hover
   -clear search bar when done
   -colors
 

@@ -50,6 +50,19 @@ window.TwentyFilms =
 
     TwentyFilms.Store.users = users
     TwentyFilms.Store.TMDB_API_KEY = $('#tmdb_api_key_bootstrap').text().trim()
+    TwentyFilms.Store.addSpinner = ->
+      $('body').spin(
+        lines: 11,
+        length: 0,
+        width: 22,
+        radius: 39,
+        corners: 1.0,
+        rotate: 50,
+        trail: 60,
+        speed: 1.0,
+        direction: 1,
+        shadow: on
+      )
 
     Backbone.history.start()
 

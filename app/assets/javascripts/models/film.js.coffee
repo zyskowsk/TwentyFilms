@@ -22,7 +22,7 @@ class TwentyFilms.Models.Film extends Backbone.Model
 
   addFilmTo: (collection, callback) ->
     $('#results').slideUp('fast')
-    $('body').spin()
+    TwentyFilms.Store.addSpinner()
     if this.get('imdbid')
       this._addApiFilm(collection, callback)
     else

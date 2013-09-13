@@ -40,7 +40,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
 
   filmShow: (id) ->
     $('#results').slideUp('fast')
-    $('body').spin()
+    TwentyFilms.Store.addSpinner()
     TwentyFilms.Models.Film.getByRawId id, (film) =>
        $('body').spin(false)
        @_filmShowCallback(film)

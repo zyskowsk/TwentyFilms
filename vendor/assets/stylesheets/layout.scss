@@ -190,7 +190,7 @@ body{
 
 .header {
 	height: 40px;
-	background-color: rgba(0,0,0,0.9);
+	background-color: black;
 	width: 100%;
 	position: fixed;
 	z-index: 3;
@@ -731,8 +731,8 @@ div.flash.two.columns {
   height: 20px;
   width: 0px;
   position: fixed;
-  color: white;
-  background-color: $siteGrey;
+  color: highlight;
+  background-color: black;
   padding-top: 2px;
   border-top: 1px black solid;
   border-right: 1px black solid;

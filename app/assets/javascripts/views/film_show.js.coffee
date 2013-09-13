@@ -10,7 +10,6 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     @trailerOpen = false
 
   addToList: ->
-    $('body').spin()
     @model.addFilmTo @collection, =>
       Backbone.history.navigate('', trigger: true)
 

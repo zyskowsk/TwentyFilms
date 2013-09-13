@@ -129,7 +129,7 @@ class TwentyFilms.Views.Search extends Backbone.View
     unless @_getSearchData() == ''
       $('#wait').animate(width: 20, 100, =>
           $('#wait').spin 
-              radius: 3,
-              length: 4,
-              width: 1
+              radius: 4,
+              length: 2,
+              width: 2
         )
