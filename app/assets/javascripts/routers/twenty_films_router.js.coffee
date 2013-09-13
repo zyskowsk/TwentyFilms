@@ -19,13 +19,14 @@ class TwentyFilms.Routers.Router extends Backbone.Router
     'users/:id': 'userShow'
     'user/edit': 'userEdit'
 
-  initialize: (elements, films, currentUser) ->
+  initialize: (elements, films, users, currentUserId) ->
     @elements = elements
     @films = films
-    @currentUser = currentUser
+    @users = users
+    @currentUser = TwentyFilms.Store.currentUser
+    @currentUserId = currentUserId
 
   home: -> 
-    console.log(TwentyFilms.Store.currentUser)
     @_renderView('search', collection: @films)
     @_renderView('home', model: @currentUser, collection: @films)
 
@@ -45,10 +46,10 @@ class TwentyFilms.Routers.Router extends Backbone.Router
        @_filmShowCallback(film)
 
   userEdit: ->
-    @_renderView('userEdit', model: @currentUser)
+    @_renderView('userEdit', model: @currentUser, collection: @users)
 
   userShow: (id) ->
-    user = TwentyFilms.Store.users.get(id)
+    user = @users.get(id)
     @_userShowCallback(user)
 
   _filmShowCallback: (film) ->

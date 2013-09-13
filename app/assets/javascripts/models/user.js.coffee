@@ -16,6 +16,7 @@ class TwentyFilms.Models.User extends Backbone.Model
       data: followee_id: this.get('id')
       success: =>
         this.fetch()
+        $('#results').slideUp('fast')
 
   unfollow: ->
     $.ajax
@@ -25,6 +26,7 @@ class TwentyFilms.Models.User extends Backbone.Model
       data: followee_id: this.get('id')
       success: =>
         this.fetch()
+        $('#results').slideUp('fast')
 
   isFollowed: ->
     followed_users = TwentyFilms.Store.currentUser.get('followed_users')

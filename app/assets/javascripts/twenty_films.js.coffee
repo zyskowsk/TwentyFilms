@@ -30,6 +30,7 @@ window.TwentyFilms =
       newObject
 
     currentUser = users.get parseInt(currentUserId)
+    TwentyFilms.Store.currentUser = currentUser
     films = currentUser.get('films')
 
 
@@ -43,11 +44,11 @@ window.TwentyFilms =
         home: $rootEl 
       },
       films,
-      currentUser
+      users,
+      currentUserId
     )
 
     TwentyFilms.Store.users = users
-    TwentyFilms.Store.currentUser = currentUser
     TwentyFilms.Store.TMDB_API_KEY = $('#tmdb_api_key_bootstrap').text().trim()
 
     Backbone.history.start()

@@ -1,18 +1,3 @@
-Current Bug:
-  -user edit page
-
-Bugs:
-  -wipes follows when update user
-  -cannot add a lot of users before refreshing page
-  -add film search
-
-
-
-
-Today:
-  -debug
-  -refactor
-
 Tomorrow:
   -style
 
@@ -37,3 +22,6 @@ Style To fix:
   -put list edit button at top
   -show fb-image if availible
   -utilities dropdown hover slide
+
+
+  NOTE: user edit refresh will not work unless i rebootstrap all the data...

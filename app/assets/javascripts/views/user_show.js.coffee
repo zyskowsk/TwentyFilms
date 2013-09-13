@@ -1,4 +1,4 @@
-class TwentyFilms.Views.UserShow extends Backbone.View
+ class TwentyFilms.Views.UserShow extends Backbone.View
 
   template: JST['user_show']
 

@@ -9,6 +9,10 @@ class TwentyFilms.Views.UserEdit extends Backbone.View
   userUpdateDebounce: _.debounce (->
     @_updateUser()), 500
 
+  initialize: ->
+    @currentFollowers = @model.get('followers')
+    @currentFollowed = @model.get('followed_users')
+
   render: ->
     @$el.html @template(currentUser: @model)
     this
@@ -37,5 +41,12 @@ class TwentyFilms.Views.UserEdit extends Backbone.View
 
   _updateUser: ->
     formData = $('.edit-user-info').serializeJSON()
-    @model.save(formData)
+    @model.save formData, 
+      success: (model) =>
+        model.set('followers', @currentFollowers)
+        model.set('followed_users', @currentFollowed)
+        TwentyFilms.Store.currentUser = model
+        currentUserID = model.get('id')
+        @collection.remove(model)
+        @collection.add(model)
 
