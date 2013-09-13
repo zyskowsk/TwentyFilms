@@ -28,7 +28,8 @@
   if (document.URL.slice(-5, -1) == "user") {
     $('#sign-in-header').html('Sign Up');
     $('.signup').show();
-    $('.form').attr('action', '<%= users_url %>');     
+    $('.form').attr('action', '<%= users_url %>');  
+    $('#user_username').attr('placeholder', '');   
     $('#button').html('log in');
     $('#button').removeClass();
     $('#button').addClass('new-user');
@@ -39,12 +40,15 @@
         $('#sign-in-header').html('Sign Up')
         $('.signup').fadeIn('slow');
         $('.form').attr('action', '<%= users_url %>');
+        $('#user_username').attr('placeholder', '');
         $('#button').html('log in');
         $('#button').removeClass();
         $('#button').addClass('new-user');
       } else {
         $('#sign-in-header').html('Sign In')
-        $('.signup').fadeOut('slow');
+        $('.signup').fadeOut('slow', function () {
+          $('#user_username').attr('placeholder', 'or email');
+        });
         $('.form').attr('action', '<%= session_url %>');
         $('#button').html('create new account');
         $('#button').removeClass();
