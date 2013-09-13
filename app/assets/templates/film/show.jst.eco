@@ -10,7 +10,7 @@
     <p>Actors: <%= @film.get('actors') %></p>
   </div>
 
-  <div class="plot-trailer seven columns">
+  <div class="plot-trailer eight columns">
     <% if @film.get('trailer'): %>
       <a class="toggle-trailer">Show Trailer</a>
     <% end %>
@@ -26,7 +26,7 @@
     <% end %> 
 
   </div>
-  <div class="four columns image">
+  <div class="three columns image">
     <div class="film-poster">
       <img src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/<%= @film.get('poster') %>" />
     </div>

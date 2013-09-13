@@ -2,6 +2,11 @@
   <h3> followers </h3>
   <hr>
   <div id="followers" class="followers">
+    <% if @followers.length == 0: %>
+      <div class="no-followers-message">
+        <h4> No one is currently following you </h4>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -9,5 +14,10 @@
   <h3> following </h3>
   <hr>
   <div id="followed_users" class='following'>
+    <% if @followed_users.length == 0: %>
+      <div class="no-followers-message">
+        <h4> You are not currently following anyone </h4>
+      </div>
+    <% end %>
   </div>
 </div>

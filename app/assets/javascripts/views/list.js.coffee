@@ -10,7 +10,7 @@ class TwentyFilms.Views.List extends Backbone.View
     @editing = false
 
   render: ->
-    @$el.html @template()
+    @$el.html @template(films: @collection)
 
     @collection.each (film) =>
       @_addDetail(film) if not @editing

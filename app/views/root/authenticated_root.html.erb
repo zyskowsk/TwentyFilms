@@ -10,7 +10,7 @@
   </div>
 
   <h5 id="home" class="nav-item right home-link">
-    <a href="#/">home</a>
+    <a href="#/" class="home">home</a>
   </h5>
   
   <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
@@ -25,7 +25,7 @@
 <div id="utilities" class="utilities center">
   <ul>
   <li><a href="#/user/edit" class="edit_user">edit user</a></li>
-  <li><%= link_to 'logout', session_url, :method => :delete %></li>
+  <li><%= link_to 'logout', session_url, :method => :delete, :class => 'logout' %></li>
 </div>
 
 <div class='container'>
@@ -56,6 +56,16 @@
     $('#gear').on('click', function() {
       $('#utilities').slideToggle('fast');
     });
+    $('.edit_user').on('click', function() {
+      $('#utilities').slideToggle('fast');
+    });
+    $('.logout').on('click', function() {
+      $('#utilities').slideToggle('fast');
+    });
+     $('.home').on('click', function() {
+      $('#utilities').slideToggle('fast');
+    });
+
     TwentyFilms.initialize();
   });
 </script>

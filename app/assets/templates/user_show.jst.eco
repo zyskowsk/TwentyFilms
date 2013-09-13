@@ -4,12 +4,13 @@
     <h1><%= @user.get('username') %></h1>
     <hr />
   </div>
-  <div class="eight columns">
+  <div class="six columns list-container">
     <h2> List </h2>
+    <hr />
     <div class="list">
     </div>
   </div>
-  <div class="seven columns">
+  <div class="nine columns follow">
     <div class="user_show_follows">
     </div>
   </div>

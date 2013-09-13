@@ -12,7 +12,7 @@ class TwentyFilms.Views.UserFollows extends Backbone.View
   render: -> 
     followers = @model.get('followers')
     followed_users = @model.get('followed_users')
-    @$el.html @template()
+    @$el.html @template(followers: followers, followed_users: followed_users)
 
     for user in followers.models
       followerView = new TwentyFilms.Views.UserDetail
