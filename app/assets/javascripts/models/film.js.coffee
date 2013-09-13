@@ -28,6 +28,12 @@ class TwentyFilms.Models.Film extends Backbone.Model
     else
       this._addDbFilm(collection, callback)
 
+  alreadyInList: (collection) ->
+    titleList = collection.map (film) =>
+      film.get('title')
+
+    (titleList.indexOf(this.get('title')) != -1) if this
+
   getTrailerAndPoster: (callback) ->
     data = 
       api_key: TwentyFilms.Store.TMDB_API_KEY, 
@@ -47,6 +53,7 @@ class TwentyFilms.Models.Film extends Backbone.Model
           callback(this)
         error: (response) =>
           callback(this)
+          
 
   _addApiFilm: (collection, callback) ->
     $.ajax
@@ -70,15 +77,9 @@ class TwentyFilms.Models.Film extends Backbone.Model
         $('#results').html('')
         callback()
 
-  _alreadyInList: (collection)->
-    titleList = collection.map (film) =>
-      film.get('title')
-
-    (titleList.indexOf(this.get('title')) != -1) if this
-
   _persistFilm: (collection, callback) ->
     this.getTrailerAndPoster =>
-      unless this._alreadyInList(collection)
+      unless this.alreadyInList(collection)
         collection.create this, 
           success: =>
             $('body').spin(false)

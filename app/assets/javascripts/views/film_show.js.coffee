@@ -17,6 +17,7 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     @$el.html @template
         film: @model
         trailerOpen: @trailerOpen
+        alreadyInList: @model.alreadyInList(@collection)
     this
 
   toggleTrailer: ->

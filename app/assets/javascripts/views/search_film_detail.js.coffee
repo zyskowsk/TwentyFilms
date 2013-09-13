@@ -10,10 +10,11 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     @model.addFilmTo(@collection)
 
   render: ->
+    alreadyInList = @model.alreadyInList(@collection) if @model
     @$el.html @template 
       film: @model, 
       notFound: this.options.notFound,
-      alreadyInList: @model._alreadyInList(@collection),
+      alreadyInList: alreadyInList,
       hasTwenty: @collection.length == 20
       
     this

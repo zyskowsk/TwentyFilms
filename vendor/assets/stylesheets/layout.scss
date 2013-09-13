@@ -511,19 +511,37 @@ a#unfollow {
 
 /* film show page */
 
+.film-header {
+  margin-bottom: 40px;
+  h1 {
+    float: left;
+  }
+}
+
 .film-info {
 	border-right: 1px white solid;
 	padding: 5px;
-  padding-right: 20px;
+  padding-right: 10px;
+  padding-top: 0;
 }
 
-.plot-trailer {
-	margin-top: 20px;
+.film-plot {
+  padding-top: 10px;
 }
+
+.plot-trailer hr {
+  margin-top: 0px;
+}
+
+.film-trailer {
+  margin-top: 20px;
+}
+
 
 .toggle-trailer{
   position: relative;
-  bottom:25px;
+  left: 55px;
+  bottom: 8px;
   &:hover {
     color: $highlight;
   }
@@ -532,9 +550,12 @@ a#unfollow {
 .add-to-list {
   float: right;
   position: relative;
-  bottom: 24px;
+  top: 24px;
+  color: $highlight;
+  border-color: $highlight;
   &:hover {
-    color: $highlight;
+    color: black;
+    border-color: black;
   }
 }
 
@@ -542,10 +563,9 @@ a#unfollow {
   float: right;
   margin-left: 500px;
   img { 
-    margin-top: 50px;
     position: relative;
     left: 30px;
-    border: 1px black solid;
+    border: 2px black solid;
   }
 }
 

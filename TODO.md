@@ -1,5 +1,5 @@
 Current Item:
-  -utilities hover
+  -show fb-image if availible
 
 Tomorrow:
   -style
@@ -17,8 +17,6 @@ TODO:
   -fix neds solution for iframe
 
 Style To fix:
-  -film show page
-  -show fb-image if availible
   -clear search bar when done
   -colors
 
