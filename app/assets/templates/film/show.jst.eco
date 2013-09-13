@@ -14,6 +14,8 @@
     <% if @film.get('trailer'): %>
       <a class="toggle-trailer">Show Trailer</a>
     <% end %>
+      <a class="add-to-list"> Add to List</a>
+      <hr /> 
 
     <div class="film-plot">
       <h3>Plot</h3>
