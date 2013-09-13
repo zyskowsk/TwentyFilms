@@ -17,7 +17,6 @@ TODO:
   -fix neds solution for iframe
 
 Style To fix:
-  -clear search bar when done
   -colors
 
   NOTE: user edit refresh will not work unless i rebootstrap all the data...
