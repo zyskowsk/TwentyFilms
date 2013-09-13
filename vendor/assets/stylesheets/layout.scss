@@ -562,8 +562,22 @@ a#unfollow {
   h1 {
     position: relative;
     bottom: 5px;
+    float: left;
+  }
+  button {
+    float: right;
+    position: relative;
+    top: 20px;
+    color: $highlight;
+    border-color: $highlight;
+    &:hover {
+      color: black;
+      border-color: black;
+    }
   }
 }
+
+
 
 
 /* user edit page */

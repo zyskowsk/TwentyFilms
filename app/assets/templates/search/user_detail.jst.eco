@@ -2,7 +2,7 @@
   <%= @user.get('name') %>
 </a>
 
-<% if @user.isFollowed(): %>
+<% if @user.isFollowed() && Backbone.history.fragment == '': %>
   <a id="unfollow">✖</a>
 <% else: %>
   <a id="follow">✚</a>

@@ -5,7 +5,7 @@ class FollowingsController < ApplicationController
       :followee_id => params[:followee_id]
     )
 
-    render :json => following
+    render :json => following, :status => 200
   end
 
   def destroy

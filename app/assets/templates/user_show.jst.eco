@@ -2,6 +2,7 @@
   <div class="user-show-header">
     <img src="http://gravatar.com/avatar/<%= @user.get('gravatar_id') %>?s=48.png" />
     <h1><%= @user.get('username') %></h1>
+    <button id="toggle-follow-user"> follow </button>
     <hr />
   </div>
   <div class="six columns list-container">
@@ -10,8 +11,8 @@
     <div class="list">
     </div>
   </div>
-  <div class="nine columns follow">
     <div class="user_show_follows">
+    <div class="nine columns follow">
     </div>
   </div>
 </div>

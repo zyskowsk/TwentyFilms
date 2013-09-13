@@ -6,10 +6,13 @@ class TwentyFilms.Views.UserDetail extends Backbone.View
     'click #unfollow': 'unfollow'
 
   render: -> 
-    @$el.html @template(user: @model, followed: this.options.followed)
+    fragment = Backbone.history.fragment
+    @$el.html @template 
+        user: @model, 
+        followed: this.options.followed,
+        fragment: fragment
     this
 
   unfollow: ->
     @model.unfollow()
-    TwentyFilms.Store.currentUser.get('followed_users').remove(@model)
     @render()

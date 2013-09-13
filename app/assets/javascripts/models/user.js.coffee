@@ -8,14 +8,14 @@ class TwentyFilms.Models.User extends Backbone.Model
       success: (response) => 
         callback(response)
   
-  follow: ->
+  follow: (options) ->
     $.ajax
       type: 'POST'
       url: '/followings'
       dataType: 'json'
       data: followee_id: this.get('id')
       success: =>
-        this.fetch()
+        TwentyFilms.Store.currentUser.get('followed_users').add(this)
         $('#results').slideUp('fast')
 
   unfollow: ->
@@ -25,7 +25,7 @@ class TwentyFilms.Models.User extends Backbone.Model
       dataType: 'json'
       data: followee_id: this.get('id')
       success: =>
-        this.fetch()
+        TwentyFilms.Store.currentUser.get('followed_users').remove(this)
         $('#results').slideUp('fast')
 
   isFollowed: ->
