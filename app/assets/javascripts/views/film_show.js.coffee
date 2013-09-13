@@ -4,9 +4,15 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
 
   events: 
     'click .toggle-trailer': 'toggleTrailer'
+    'click .add-to-list': 'addToList'
 
   initialize: ->
     @trailerOpen = false
+
+  addToList: ->
+    $('body').spin()
+    @model.addFilmTo @collection, =>
+      Backbone.history.navigate('', trigger: true)
 
   render: ->
     @$el.html @template

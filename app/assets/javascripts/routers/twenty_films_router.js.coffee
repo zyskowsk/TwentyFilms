@@ -54,7 +54,7 @@ class TwentyFilms.Routers.Router extends Backbone.Router
 
   _filmShowCallback: (film) ->
     @_renderView('search', collection: @films)
-    @_renderView('filmShow', model: film)
+    @_renderView('filmShow', model: film, collection: @films)
     $('.film-trailer').hide()
 
   _renderView: (type, options) ->
