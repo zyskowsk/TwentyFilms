@@ -1,8 +1,8 @@
 Twenty Films
 ============
 
-A simple way to share and discover new films.
----------------------------------------------
+### A simple way to share and discover new films.
+
 
 #### Details 
 The idea is quite simple, users craft a list of their favorite twenty films.
@@ -19,7 +19,7 @@ technologies used include Redis cacheing, and OAuth login through Facebook.
 
 Deployed at [www.twentyfilms.com](http://twentyfilms.com)
 
-##### Want to try it out? 
+#### Want to try it out? 
 Login as a demo user:
 
 <strong>Username:</strong> demo_user <br>
