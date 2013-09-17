@@ -21,3 +21,10 @@ TODO:
 Style To fix:
 
   NOTE: user edit refresh will not work unless i rebootstrap all the data...
+
+To Fix:
+  -user edit page
+  -add film form
+  -some times list
+  -navigate home seems broken
+  -add delayed job email
