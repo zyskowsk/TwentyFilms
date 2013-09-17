@@ -22,5 +22,5 @@ Deployed at [www.twentyfilms.com](http://twentyfilms.com)
 ##### Want to try it out? 
 Login as a demo user:
 
-<strong>Username:</strong> demo_user
+<strong>Username:</strong> demo_user <br>
 <strong>Password:</strong> password
