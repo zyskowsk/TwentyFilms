@@ -19,8 +19,8 @@ technologies used include Redis cacheing, and OAuth login through Facebook.
 
 Deployed at [www.twentyfilms.com](http://twentyfilms.com)
 
-Want to try it out? 
+##### Want to try it out? 
 Login as a demo user:
 
-Username: demo_user
-Password: password
+<strong>Username:</strong> demo_user
+<strong>Password:</strong> password
