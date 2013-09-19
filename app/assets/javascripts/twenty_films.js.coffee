@@ -20,11 +20,9 @@ window.TwentyFilms =
     )
 
     currentUserId = $('#current_user_id_bootstrap').text()
-
     currentUser = users.get parseInt(currentUserId)
     TwentyFilms.Store.currentUser = currentUser
     films = currentUser.get('films')
-
 
     new TwentyFilms.Routers.Router(
       { 

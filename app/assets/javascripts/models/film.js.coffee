@@ -54,14 +54,10 @@ class TwentyFilms.Models.Film extends Backbone.Model
         dataType: 'json'
         data: data
         success: (response) =>
-          if (response['trailers']['youtube'].length > 0)
-            this.set('trailer', response['trailers']['youtube'][0]['source'])
-          if response['poster_path']
-            this.set('poster', response['poster_path'])
+          @_handleMedia(response)
           callback(this)
         error: (response) =>
-          callback(this)
-          
+          callback(this)       
 
   _addApiFilm: (collection, callback) ->
     $.ajax
@@ -84,6 +80,12 @@ class TwentyFilms.Models.Film extends Backbone.Model
         $('body').spin(false)
         $('#results').html('')
         callback()
+
+  _handleMedia: (response) ->
+    if (response['trailers']['youtube'].length > 0)
+      this.set('trailer', response['trailers']['youtube'][0]['source'])
+    if response['poster_path']
+      this.set('poster', response['poster_path'])
 
   _persistFilm: (collection, callback) ->
     this.getTrailerAndPoster =>
