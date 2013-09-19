@@ -1,5 +1,4 @@
 class TwentyFilms.Views.FilmShow extends Backbone.View
-
   template: JST['film/show']
 
   events: 

@@ -41,9 +41,14 @@ class FilmsController < ApplicationController
   end
 
   def update
+    film_choices = current_user.film_choices
+
     params[:newIds].each_with_index do |id, idx|
-      film = FilmChoice.find_by_user_id_and_film_id(current_user.id, id)
-      film.update_attributes(:ord => idx)
+      film_choice = film_choices.select do |film_choice|
+        film_choice.film_id == id.to_i
+      end.first
+  
+      film_choice.update_attributes(:ord => idx) unless film_choice.ord == idx
     end
 
     render :json => [], :status => 200

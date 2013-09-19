@@ -23,7 +23,6 @@ class TwentyFilms.Views.List extends Backbone.View
 
     if @editing
       @_enabelSort()
-
     else
       @_removeFilms()
 
@@ -40,6 +39,7 @@ class TwentyFilms.Views.List extends Backbone.View
       stop: =>
         newIds = _($('#list').children()).map (el) =>
           $(el).find('div').data('id')
+          
         @_updateOrds(newIds)
         @_reorderCollection(newIds)
 
