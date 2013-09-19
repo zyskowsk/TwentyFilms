@@ -25,6 +25,7 @@ Style To fix:
 To Fix:
   -user edit page
   -add film form
+  -not searching my
   -some times list
   -navigate home seems broken
   -add delayed job email

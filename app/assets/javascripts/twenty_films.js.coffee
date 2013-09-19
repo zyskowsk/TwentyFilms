@@ -21,14 +21,6 @@ window.TwentyFilms =
 
     currentUserId = $('#current_user_id_bootstrap').text()
 
-    #Move this somewhere
-    TwentyFilms.Search.clenseResult = (result) ->
-      newObject = {}
-      for key in _(result).keys()
-        newObject[key.toLowerCase()] = result[key]
-
-      newObject
-
     currentUser = users.get parseInt(currentUserId)
     TwentyFilms.Store.currentUser = currentUser
     films = currentUser.get('films')
@@ -47,6 +39,14 @@ window.TwentyFilms =
       users,
       currentUserId
     )
+
+    # Find out where this goes 
+    TwentyFilms.Search.clenseResult = (result) ->
+      newObject = {}
+      for key in _(result).keys()
+        newObject[key.toLowerCase()] = result[key]
+
+      newObject
 
     TwentyFilms.Store.users = users
     TwentyFilms.Store.TMDB_API_KEY = $('#tmdb_api_key_bootstrap').text().trim()
