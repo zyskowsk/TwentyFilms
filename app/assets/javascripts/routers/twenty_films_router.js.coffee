@@ -42,7 +42,6 @@ class TwentyFilms.Routers.Router extends Backbone.Router
 
   filmNew: -> 
     @_renderView('filmNew', collection: @films)
-    $('.root').toggleClass('blur')
     @elements['filmNew'].slideDown('slow')
 
   filmShow: (id) ->
