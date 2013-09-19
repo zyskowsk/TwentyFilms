@@ -1,10 +1,9 @@
 class TwentyFilms.Views.ListEdit extends Backbone.View
+  template: JST['list/edit']
   
   tagName: 'li'
   className: 'edit-detail'
   
-  template: JST['list/edit']
-
   events:
     'click .toggle-film': 'toggleRemoveButton'
 

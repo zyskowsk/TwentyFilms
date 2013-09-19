@@ -1,9 +1,8 @@
 class TwentyFilms.Views.ListDetail extends Backbone.View
+  template: JST['list/detail']
 
   tagName: 'li'
   className: 'list-detail'
-
-  template: JST['list/detail']
 
   events: 
     'click #film-link': 'hideIfVisible'

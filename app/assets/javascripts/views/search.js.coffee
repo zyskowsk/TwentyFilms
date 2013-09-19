@@ -1,5 +1,4 @@
 class TwentyFilms.Views.Search extends Backbone.View 
-
   template: JST['search/search']
 
   events: 
@@ -12,7 +11,6 @@ class TwentyFilms.Views.Search extends Backbone.View
 
   initialize: ->
     @listenTo(@collection, 'add', @render)
-    @currentFilmResults = []
     $('#results').hide()
 
   hideResults: ->
@@ -64,7 +62,7 @@ class TwentyFilms.Views.Search extends Backbone.View
  
   _filterResults: ->
     @currentFilmResults = _(@currentFilmResults).reject (film) =>
-      film.get('type') != 'movie'
+      film.get('type') != 'movie' && !film.get('id')
 
   _getSearchData: ->
     $('#search-bar').serializeJSON().film.title
@@ -82,7 +80,6 @@ class TwentyFilms.Views.Search extends Backbone.View
 
     $('#results').slideDown('fast')
     
-  #TODO: Fix
   _isDuplicate: (film) ->
     title = film.get('title')
     year = parseInt(film.get('year'))
@@ -121,6 +118,7 @@ class TwentyFilms.Views.Search extends Backbone.View
         @_dbSuccessCallback(response, callback)
 
   _sendRequest: ->
+    @currentFilmResults = []
     @_slideOutWaitBar()
     @_sendDbRequest =>
       @_sendApiRequest()
