@@ -15,21 +15,21 @@
   <div class="six columns offset-by-one form">
     <h2>User Information</h2>
     <form id="edit_user_info" class="edit-user-info">
-      <label for="user_name">n:</label>
+      <label for="user_name">N:</label>
       <input type="text" 
              id="user_name" 
              name="user[name]" 
              value="<%= @currentUser.escape("name") %>"
              autocomplete="off" /><br />
 
-      <label for="user_username">u:</label>
+      <label for="user_username">U:</label>
       <input type="text" 
              id="user_username" 
              name="user[username]"
              value="<%= @currentUser.escape("username") %>" 
              autocomplete="off" /><br />
 
-      <label for="user_email">e:</label>
+      <label for="user_email">E:</label>
       <input type="text" 
              id="user_email" 
              name="user[email]" 

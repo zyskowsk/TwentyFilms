@@ -642,7 +642,7 @@ img.facebook-detail {
 
 .edit-user-info {
   input, input[type="text"] {
-    border: 1px $siteGrey solid;
+    border: 1px transparent solid;
     font-family: $bodyFont;
     font-size: 25px;
     width: inherit;
@@ -652,13 +652,13 @@ img.facebook-detail {
     font-size: 18px;
     width: 10px;
     position:relative;
-    top:9px;
+    top:10px;
   }
 }
 
 .edit-user-info input:focus {
-  background-color: $siteGrey;
-  border: 1px $siteGrey solid;
+  background-color: transparent;
+  border: 1px transparent solid;
   border-radius: none;
   autocomplete: false;
   box-shadow: none;
@@ -666,7 +666,7 @@ img.facebook-detail {
 }
 
 .edit-user-info input:hover {
-  background-color: $siteGrey;
+  background-color: transparent;
 }
 
 .new-password-submit {
