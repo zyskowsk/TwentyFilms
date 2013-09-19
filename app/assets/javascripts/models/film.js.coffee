@@ -1,5 +1,4 @@
-class TwentyFilms.Models.Film extends Backbone.Model
-  
+class TwentyFilms.Models.Film extends Backbone.Model 
   urlRoot: '/films'
 
   @getByRawId: (id, callback) ->

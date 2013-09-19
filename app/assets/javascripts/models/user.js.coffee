@@ -1,5 +1,4 @@
 class TwentyFilms.Models.User extends Backbone.Model
-
   urlRoot: '/users'
 
   @getByRawId: (id, callback) ->
@@ -29,9 +28,9 @@ class TwentyFilms.Models.User extends Backbone.Model
         $('#results').slideUp('fast')
 
   isFollowed: ->
-    followed_users = TwentyFilms.Store.currentUser.get('followed_users')
     areFollowing = false
-
+    
+    followed_users = TwentyFilms.Store.currentUser.get('followed_users')
     followed_users.each (user) =>
       areFollowing = true if user.get('username') == this.get('username')
 
