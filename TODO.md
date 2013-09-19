@@ -1,6 +1,3 @@
-Current Item:
-  -show fb-image if availible
-
 Tomorrow:
   -style
   -ned-video-solution
