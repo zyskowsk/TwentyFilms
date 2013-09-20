@@ -24,7 +24,7 @@ end
 group :test do
   gem 'sqlite3'
   gem 'capybara'
-  gem 'guard-rails'
+  gem 'guard-rspec'
   gem 'factory_girl_rails'
   gem 'rb-fsevent'
 end

@@ -1,4 +1,4 @@
-uri = URI.parse(ENV["REDISTOGO_URL"])
+uri = URI.parse('http://localhose:3000')
 REDIS = Redis.new(
   :host => uri.host, 
   :port => uri.port, 

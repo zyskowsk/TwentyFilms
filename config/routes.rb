@@ -6,6 +6,8 @@ TwentyFilms::Application.routes.draw do
   get 'signout' => 'sessions#destroy', as: 'signout'
   get 'bacon_number' => 'films#bacon_number' 
   get '/films/search' => 'films#search'
+  get '/password_reset' => 'password_reset#new'
+  post '/password_reset' => 'password_reset#create'
   delete '/followings' => 'followings#destroy'
   put '/films' => 'films#update'
 
