@@ -13,6 +13,8 @@ gem 'figaro'
 gem 'omniauth-facebook'
 gem 'redis'
 
+gem 'rspec-rails', :group => [:test, :development]
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -21,6 +23,10 @@ end
 
 group :test do
   gem 'sqlite3'
+  gem 'capybara'
+  gem 'guard-rails'
+  gem 'factory_girl_rails'
+  gem 'rb-fsevent'
 end
 
 group :assets do
