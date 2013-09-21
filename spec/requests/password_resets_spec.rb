@@ -18,6 +18,14 @@ describe "PasswordResets" do
     it "should send email when user submits email" do
       last_email.to.should include(user.email)
     end
+
+    it "should send email with new token in html version" do
+      last_email.html_part.body.raw_source.should include('Password Reset Token')
+    end
+
+    it "should send email with new token in text version" do
+      last_email.text_part.body.raw_source.should include('Password Reset Token')
+    end
   end
 
   describe "InValidRequest" do 

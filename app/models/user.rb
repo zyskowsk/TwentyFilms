@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   validates :email, :format => { :with => VALID_EMAIL_REGEX,
                                  :message => "not valid" }, 
                     :unless => Proc.new { |user| user.provider }
-  validates :email, :name, :username, :session_token, :presence => true, 
-            :unless => Proc.new { |user| user.provider }
+  validates :email, :name, :username, :session_token, :password_reset_token,
+            :presence => true, :unless => Proc.new { |user| user.provider }
   validates :password, :password_confirmation, :presence => true, :on => :create, 
             :unless => Proc.new { |user| user.provider }
   validates :email, :uniqueness => { :message => "already taken" }, 
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   before_create :encrypt_password
   before_save :set_gravatar_id
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_password_reset_token
 
   has_many :films, :through => :film_choices, :order => 'film_choices.ord'
   has_many(
@@ -60,23 +60,6 @@ class User < ActiveRecord::Base
     user.is_correct_password?(password) ? user : nil;
   end
 
-  def self.generate_session_token
-    SecureRandom::urlsafe_base64(16)
-  end
-
-  def encrypt_password
-    self.password_digest = BCrypt::Password.create(password)
-  end
-
-  def is_correct_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
-  end
-
-  def set_session_token!
-    self.session_token = self.class.generate_session_token
-    self.save!
-  end
-
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
@@ -89,6 +72,37 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def self.generate_password_reset_token
+    SecureRandom::urlsafe_base64(6)
+  end
+
+  def self.generate_session_token
+    SecureRandom::urlsafe_base64(16)
+  end
+
+  def encrypt_password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_correct_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def set_password_reset_token!
+    self.password_reset_token = self.class.generate_password_reset_token
+    self.save!
+  end
+
+  def set_session_token!
+    self.session_token = self.class.generate_session_token
+    self.save!
+  end
+
+  def send_password_reset
+    self.set_password_reset_token!
+    UserMailer.password_reset(self).deliver
   end
 
   def save_new_password!(new_password)
@@ -108,5 +122,9 @@ class User < ActiveRecord::Base
 
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
+    end
+
+    def ensure_password_reset_token
+      self.password_reset_token ||= self.class.generate_password_reset_token
     end
 end
