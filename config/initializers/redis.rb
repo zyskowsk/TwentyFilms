@@ -1,6 +1,6 @@
-uri = URI.parse('http://localhose:3000')
-REDIS = Redis.new(
-  :host => uri.host, 
-  :port => uri.port, 
-  :password => uri.password
-)
+# uri = URI.parse(ENV["EDISTOGO_URL"])
+# REDIS = Redis.new(
+#   :host => uri.host, 
+#   :port => uri.port, 
+#   :password => uri.password
+# )

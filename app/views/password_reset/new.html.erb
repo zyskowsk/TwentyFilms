@@ -1,13 +1,14 @@
 <% if flash[:notices] %>
   <% flash[:notices].each do |message| %>
-    <div id="flash"> <%= message %></div>
+    <div class="flash"><%= message %></div>
   <% end %>
 <% end %>
 
-<h1> Forgot you password? We've got you covered </h1>
-<form id="reset-password" action="<%=password_reset_url%>" method="post">
-  <label for="password_reset_email">Email</label>
-  <input type="text" id="password_reset_email" name="password_reset[email]">
+<h1> Forgot your password?  We've Got you covered. </h1>
 
-  <input type="submit" value="Reset Password!">
+<form id="password_reset_form" action="<%= password_reset_url %>" method="post">
+  <label for="password_reset_email">Email</label>
+  <input type="text" id="password_reset_email" name="password_reset[email]" />
+
+  <input type="submit" value="Reset Password" />
 </form>
