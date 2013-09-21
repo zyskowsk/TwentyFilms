@@ -13,9 +13,9 @@ add new films and they will be availible to add to lists.
 
 #### Technology
 This is a Backbone.js app writen in CoffeScript and built on a Rails Api.  The
-search capabilities were build using Ajax requests to various third party Apis. 
-For styling and UI, I used Skeleton, Sass, JQuery, and JQuery Ui.  Other
-technologies used include Redis cacheing, and OAuth login through Facebook. 
+search capabilities were build using Ajax requests to various third party Apis.  For testing 
+I used rspec and capybara.  For styling and UI, I used Skeleton, Sass, JQuery, and JQuery Ui.  Other
+technologies used include Redis cacheing, and OAuth login through Facebook.  
 
 Deployed at [www.twentyfilms.com](http://twentyfilms.com)
 
