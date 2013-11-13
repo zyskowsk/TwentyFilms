@@ -17,7 +17,7 @@
     <%= render :partial => 'root/user_form' %>
 
     <div class="fb-button">
-       <%= button_to "Sign in with Facebook",
+       <%= button_to "Sign in with facebook",
                  "/auth/facebook", id: "sign_in", :method => :get %>
     <div>
   </div>
@@ -28,8 +28,8 @@
   if (document.URL.slice(-5, -1) == "user") {
     $('#sign-in-header').html('Sign Up');
     $('.signup').show();
-    $('.form').attr('action', '<%= users_url %>');  
-    $('#user_username').attr('placeholder', '');   
+    $('.form').attr('action', '<%= users_url %>');
+    $('#user_username').attr('placeholder', '');
     $('#button').html('log in');
     $('#button').removeClass();
     $('#button').addClass('new-user');
@@ -52,7 +52,7 @@
         $('.form').attr('action', '<%= session_url %>');
         $('#button').html('create new account');
         $('#button').removeClass();
-        $('#button').addClass('sign-in'); 
+        $('#button').addClass('sign-in');
       }
     });
   });
