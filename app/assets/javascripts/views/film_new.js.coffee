@@ -9,6 +9,7 @@ class TwentyFilms.Views.FilmNew extends Backbone.View
     
   addFilm: (event) ->
     event.preventDefault()
+    mixpanel.track("Added Film")
 
     formData = $(event.target).serializeJSON()
     newFilm = new TwentyFilms.Models.Film

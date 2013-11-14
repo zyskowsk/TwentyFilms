@@ -9,10 +9,21 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     @trailerOpen = false
 
   addToList: ->
+    mixpanel.track 'Added To List'
+      year: @model.get 'year'
+      genre: @model.get 'genre'
+      director: @model.get 'director'
+      location: 'show_page'
+
     @model.addFilmTo @collection, =>
       Backbone.history.navigate('', trigger: true)
 
   render: ->
+    mixpanel.track 'Film Show Page Landing'
+      year: @model.get 'year'
+      genre: @model.get 'genre'
+      director: @model.get 'director'
+
     @$el.html @template
         film: @model
         trailerOpen: @trailerOpen
@@ -20,6 +31,11 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     this
 
   toggleTrailer: ->
+    mixpanel.track 'Trailer Opened'
+      year: @model.get 'year'
+      genre: @model.get 'genre'
+      director: @model.get 'director'
+
     @_hideTrailer() if @trailerOpen
     @_showTrailer() if not @trailerOpen
     @trailerOpen = !@trailerOpen
