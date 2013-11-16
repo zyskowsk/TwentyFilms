@@ -24,7 +24,10 @@
 </div>
 
 <script type="text/javascript">
+
+  mixpanel.track("Welcome Page Landing");
   $('.signup').hide();
+
   if (document.URL.slice(-5, -1) == "user") {
     $('#sign-in-header').html('Sign Up');
     $('.signup').show();
@@ -34,6 +37,7 @@
     $('#button').removeClass();
     $('#button').addClass('new-user');
   }
+
   $(function() {
     $('#button').on('click', function () {
       if ($('#button').attr('class') == 'sign-in') {
