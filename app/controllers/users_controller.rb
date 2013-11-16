@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @sign_up  = true
 
     if @user.save
       login!(@user)
