@@ -15,7 +15,7 @@
   <h5 id="home" class="nav-item right bacon-number home-link">
     <a href="#/bacon_number" class="home">bacon number</a>
   </h5>
-  
+
   <h5 class='nav-item right'>welcome, <%= current_user.name %></h5>
   <h1 class="logo left fatface"> Twenty Films </h1>
 </div>
@@ -61,23 +61,50 @@
 </script>
 
 <script type="text/javascript">
+  mixpanel.identify(<%= current_user.id %>);
+  mixpanel.people.set({
+    "$first_name" : <%= current_user.name.split("").first %>,
+    "$last_name" : <%= current_user.name.split("").last %>,
+    "$username" : <%= current_user.username %>,
+    "$email" : <%= current_user.email %>,
+    "login" : <% @facebook ? "facebook" : "normal" %>
+  });
+
+  <% if @sign_up %>
+    mixpanel.track("Sign Up", {
+      "login" : <%= @facebook ? "facebook" " normal" %>
+    });
+  <% end %>
+
+  <% if @sign_in %>
+    mixpanel.track("Sign In", {
+      "login" : <%= @facebook ? "facebook" : "normal" %>
+    });
+  <% end %>
+
   $('.bacon-container').hide();
+
   $(function() {
     $('#film-new').hide();
     $('#film-show').hide();
-    $('#utilities').hide(); 
+    $('#utilities').hide();
+
     $('#gear').on('click', function() {
       $('#utilities').slideToggle('fast');
     });
+
     $('.edit_user').on('click', function() {
       $('#utilities').slideToggle('fast');
     });
+
     $('.logout').on('click', function() {
       $('#utilities').slideToggle('fast');
     });
+
      $('.home').on('click', function() {
-      $('#utilities').slideUp('fast');
-    });
+       $('#utilities').slideUp('fast');
+     });
+
     $('.bacon-close').on('click', function() {
       $('.bacon-container').slideUp('fast');
     });
