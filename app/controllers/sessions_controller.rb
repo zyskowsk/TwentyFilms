@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if @user
       login!(@user)
+      flash[:sign_in] = true
 
       redirect_to root_url
     else
@@ -19,6 +20,7 @@ class SessionsController < ApplicationController
   def facebook_create
     @user = User.from_omniauth(env["omniauth.auth"])
 
+    flash[:facebook] = true
     session[:user_id] = @user.id
     redirect_to root_url
   end

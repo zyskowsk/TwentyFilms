@@ -2,20 +2,20 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
-  attr_accessible :email, :name, :password_digest, 
-                  :password, :password_confirmation, 
+  attr_accessible :email, :name, :password_digest,
+                  :password, :password_confirmation,
                   :profile, :session_token, :username
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :email, :format => { :with => VALID_EMAIL_REGEX,
-                                 :message => "not valid" }, 
+                                 :message => "not valid" },
                     :unless => Proc.new { |user| user.provider }
-  validates :email, :name, :username, :session_token, :presence => true, 
+  validates :email, :name, :username, :session_token, :presence => true,
             :unless => Proc.new { |user| user.provider }
-  validates :password, :password_confirmation, :presence => true, :on => :create, 
+  validates :password, :password_confirmation, :presence => true, :on => :create,
             :unless => Proc.new { |user| user.provider }
-  validates :email, :uniqueness => { :message => "already taken" }, 
+  validates :email, :uniqueness => { :message => "already taken" },
             :unless => Proc.new { |user| user.provider }
   validates :username, :uniqueness => { :message => "already taken" },
             :unless => Proc.new { |user| user.provider }
@@ -36,13 +36,13 @@ class User < ActiveRecord::Base
     :foreign_key => :user_id
   )
 
-  has_many( 
+  has_many(
     :incoming_follows,
     :class_name => "Following",
     :foreign_key => :followee_id
   )
 
-  has_many( 
+  has_many(
     :outgoing_follows,
     :class_name => "Following",
     :foreign_key => :follower_id
@@ -96,9 +96,9 @@ class User < ActiveRecord::Base
     self.save!
   end
 
-  private 
-    def confirm_password 
-      errors.add(:passwords, "don't match") unless 
+  private
+    def confirm_password
+      errors.add(:passwords, "don't match") unless
       @password == @password_confirmation
     end
 

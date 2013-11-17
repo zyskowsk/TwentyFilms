@@ -58,7 +58,27 @@
 
 <script type="text" id='tmdb_api_key_bootstrap'>
   <%= ENV["TMDB_API_KEY"] %>
-</script>i
+</script>
+
+<!-- Mixpanel Events -->
+
+<% if flash[:facebook] %>
+  <script type="text/javascript">
+    mixpanel.register({"login" : "facebook"});
+  </script>
+<% end %>
+
+<% if flash[:sign_in] %>
+  <script type="text/javascript">
+    mixpanel.track("Sign In");
+  </script>
+<% end %>
+
+<% if flash[:sign_up] %>
+  <script type="text/javascript">
+    mixpanel.track("Sign Up");
+  <script>
+<% end %>
 
 <script type="text/javascript">
   mixpanel.identify('<%= current_user.id %>');
@@ -67,7 +87,7 @@
       '$last_name' : '<%= current_user.name.split(' ').last %>',
       '$email' : '<%= current_user.email %>',
       '$username' : '<%= current_user.username %>',
-      'login' : '<%= @facebook ? "facebook" : "normal" %>'
+      'login' : '<%= flash[:facebook] ? "facebook" : "normal" %>'
   });
 
   $('.bacon-container').hide();

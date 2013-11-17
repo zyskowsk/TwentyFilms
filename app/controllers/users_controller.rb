@@ -2,12 +2,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @sign_up  = true
 
     if @user.save
       login!(@user)
-      puts "logged in"
-      puts current_user
+
+      flash[:sign_up] = true
       redirect_to root_url
     else
       now_notices.push(*@user.errors.full_messages)
