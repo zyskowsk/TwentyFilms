@@ -13,8 +13,6 @@ class TwentyFilms.Views.ResultsFilms extends Backbone.View
       filmDetailView = new TwentyFilms.Views.SearchFilmDetail
           model: film,
           collection: @collection
-      
+
       @$el.find('#film-details').append filmDetailView.render().$el
     this
-
-    
