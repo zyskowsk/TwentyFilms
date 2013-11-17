@@ -62,24 +62,6 @@
 
 <!-- Mixpanel Events -->
 
-<% if flash[:facebook] %>
-  <script type="text/javascript">
-    mixpanel.register({"login" : "facebook"});
-  </script>
-<% end %>
-
-<% if flash[:sign_in] %>
-  <script type="text/javascript">
-    mixpanel.track("Sign In");
-  </script>
-<% end %>
-
-<% if flash[:sign_up] %>
-  <script type="text/javascript">
-    mixpanel.track("Sign Up");
-  <script>
-<% end %>
-
 <script type="text/javascript">
   mixpanel.identify('<%= current_user.id %>');
   mixpanel.people.set({
@@ -120,3 +102,22 @@
     TwentyFilms.initialize();
   });
 </script>
+
+<% if flash[:facebook] %>
+  <script type="text/javascript">
+    mixpanel.register({"login" : "facebook"});
+  </script>
+<% end %>
+
+<% if flash[:sign_in] %>
+  <script type="text/javascript">
+    mixpanel.track("Sign In");
+  </script>
+<% end %>
+
+<% if flash[:sign_up] %>
+  <script type="text/javascript">
+    mixpanel.track("Sign Up");
+  <script>
+<% end %>
+
