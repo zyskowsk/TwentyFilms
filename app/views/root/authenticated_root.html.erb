@@ -60,22 +60,6 @@
   <%= ENV["TMDB_API_KEY"] %>
 </script>i
 
-<% if @sign_up %>
-  <script type="text/javascript">
-    mixpanel.track("Sign Up", {
-      'login' : '<%= @facebook ? "facebook" : " normal" %>'
-    });
-  </script>
-<% end %>
-
-<% if @sign_in %>
-  <script type="text/javascript">
-    mixpanel.track("Sign In", {
-      'login' : '<%= @facebook ? "facebook" : "normal" %>'
-    });
-  </script>
-<% end %>
-
 <script type="text/javascript">
   mixpanel.identify('<%= current_user.id %>');
   mixpanel.people.set({

@@ -12,6 +12,7 @@ gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'omniauth-facebook'
 gem 'redis'
+gem 'mixpanel-ruby'
 
 group :development do
   gem 'debugger'
