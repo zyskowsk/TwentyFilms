@@ -13,16 +13,18 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
       year: @model.get 'year'
       genre: @model.get 'genre'
       director: @model.get 'director'
+      title: @model.get 'title'
       location: 'show_page'
 
     @model.addFilmTo @collection, =>
       Backbone.history.navigate('', trigger: true)
 
   render: ->
-    mixpanel.track 'Film Show Page Landing',
+    mixpanel.track 'Film Show Page',
       year: @model.get 'year'
       genre: @model.get 'genre'
       director: @model.get 'director'
+      title: @model.get 'title'
 
     @$el.html @template
         film: @model
@@ -35,6 +37,7 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
       year: @model.get 'year'
       genre: @model.get 'genre'
       director: @model.get 'director'
+      title: @model.get 'title'
 
     @_hideTrailer() if @trailerOpen
     @_showTrailer() if not @trailerOpen
