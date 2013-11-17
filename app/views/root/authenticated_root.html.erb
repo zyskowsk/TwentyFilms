@@ -58,7 +58,23 @@
 
 <script type="text" id='tmdb_api_key_bootstrap'>
   <%= ENV["TMDB_API_KEY"] %>
-</script>
+</script>i
+
+<% if @sign_up %>
+  <script type="text/javascript">
+    mixpanel.track("Sign Up", {
+      'login' : '<%= @facebook ? "facebook" : " normal" %>'
+    });
+  </script>
+<% end %>
+
+<% if @sign_in %>
+  <script type="text/javascript">
+    mixpanel.track("Sign In", {
+      'login' : '<%= @facebook ? "facebook" : "normal" %>'
+    });
+  </script>
+<% end %>
 
 <script type="text/javascript">
   mixpanel.identify('<%= current_user.id %>');
@@ -69,18 +85,6 @@
       '$username' : '<%= current_user.username %>',
       'login' : '<%= @facebook ? "facebook" : "normal" %>'
   });
-
-  <% if @sign_up %>
-    mixpanel.track("Sign Up", {
-      'login' : '<%= @facebook ? "facebook" : " normal" %>'
-    });
-  <% end %>
-
-  <% if @sign_in %>
-    mixpanel.track("Sign In", {
-      'login' : '<%= @facebook ? "facebook" : "normal" %>'
-    });
-  <% end %>
 
   $('.bacon-container').hide();
 
