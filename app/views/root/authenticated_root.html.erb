@@ -61,24 +61,24 @@
 </script>
 
 <script type="text/javascript">
-  mixpanel.identify(<%= current_user.id %>);
+  mixpanel.identify('<%= current_user.id %>');
   mixpanel.people.set({
-    "$first_name" : <%= current_user.name.split("").first %>,
-    "$last_name" : <%= current_user.name.split("").last %>,
-    "$username" : <%= current_user.username %>,
-    "$email" : <%= current_user.email %>,
-    "login" : <% @facebook ? "facebook" : "normal" %>
+      '$first_name' : '<%= current_user.name.split(' ').first %>',
+      '$last_name' : '<%= current_user.name.split(' ').last %>',
+      '$email' : '<%= current_user.email %>',
+      '$username' : '<%= current_user.username %>',
+      'login' : '<%= @facebook ? "facebook" : "normal" %>'
   });
 
   <% if @sign_up %>
     mixpanel.track("Sign Up", {
-      "login" : <%= @facebook ? "facebook" " normal" %>
+      'login' : '<%= @facebook ? "facebook" : " normal" %>'
     });
   <% end %>
 
   <% if @sign_in %>
     mixpanel.track("Sign In", {
-      "login" : <%= @facebook ? "facebook" : "normal" %>
+      'login' : '<%= @facebook ? "facebook" : "normal" %>'
     });
   <% end %>
 
