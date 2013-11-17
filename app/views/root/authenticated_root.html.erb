@@ -60,18 +60,7 @@
   <%= ENV["TMDB_API_KEY"] %>
 </script>
 
-<!-- Mixpanel Events -->
-
 <script type="text/javascript">
-  mixpanel.identify('<%= current_user.id %>');
-  mixpanel.people.set({
-      '$first_name' : '<%= current_user.name.split(' ').first %>',
-      '$last_name' : '<%= current_user.name.split(' ').last %>',
-      '$email' : '<%= current_user.email %>',
-      '$username' : '<%= current_user.username %>',
-      'login' : '<%= flash[:facebook] ? "facebook" : "normal" %>'
-  });
-
   $('.bacon-container').hide();
 
   $(function() {
@@ -103,6 +92,8 @@
   });
 </script>
 
+<!-- Mixpanel Events -->
+
 <% if flash[:facebook] %>
   <script type="text/javascript">
     mixpanel.register({"login" : "facebook"});
@@ -120,4 +111,15 @@
     mixpanel.track("Sign Up");
   <script>
 <% end %>
+
+<script type="text/javascript">
+  mixpanel.identify('<%= current_user.id %>');
+  mixpanel.people.set({
+      '$first_name' : '<%= current_user.name.split(' ').first %>',
+      '$last_name' : '<%= current_user.name.split(' ').last %>',
+      '$email' : '<%= current_user.email %>',
+      '$username' : '<%= current_user.username %>',
+      'login' : '<%= flash[:facebook] ? "facebook" : "normal" %>'
+  });
+</script>
 
