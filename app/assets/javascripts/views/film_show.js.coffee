@@ -9,12 +9,12 @@ class TwentyFilms.Views.FilmShow extends Backbone.View
     @trailerOpen = false
 
   addToList: ->
-    mixpanel.track 'Added To List',
+    mixpanel.track 'Add Film',
       year: @model.get 'year'
       genre: @model.get 'genre'
       director: @model.get 'director'
       title: @model.get 'title'
-      location: 'show_page'
+      from: 'Show Page'
 
     @model.addFilmTo @collection, =>
       Backbone.history.navigate('', trigger: true)

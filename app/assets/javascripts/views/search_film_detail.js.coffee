@@ -7,6 +7,13 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
     'click .new-film': 'clear'
 
   addFilm: ->
+    mixpanel.track('Add Film',
+      title: @model.get('title'),
+      director: @model.get('directer'),
+      year: @model.get('year'),
+      genre: @model.get('genre'),
+      from: 'Search'
+
     @model.addFilmTo(@collection)
 
   render: ->

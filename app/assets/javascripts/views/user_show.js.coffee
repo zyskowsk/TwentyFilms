@@ -30,11 +30,18 @@
 
   toggleFollow: ->
     if $('#toggle-follow-user').attr('class') == 'follow'
+      mixpanel.track "Follow User",
+        from: "User Show"
+
       @model.follow()
+
       $('#toggle-follow-user').html('unfollow')
       $('#toggle-follow-user').removeClass()
       $('#toggle-follow-user').addClass('unfollow')
     else
+      mixpanel.track "Unfollow User",
+        from: "User Show"
+
       @model.unfollow()
       $('#toggle-follow-user').html('follow')
       $('#toggle-follow-user').removeClass()

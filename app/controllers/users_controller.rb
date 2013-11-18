@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       login!(@user)
 
       flash[:sign_up] = true
+      p flash[:sign_up]
       redirect_to root_url
     else
       now_notices.push(*@user.errors.full_messages)

@@ -12,14 +12,14 @@ class TwentyFilms.Views.SearchUserDetail extends Backbone.View
 
   follow: ->
     mixpanel.track 'Follow User',
-      origin: 'Search Bar'
+      from: 'Search Bar'
 
     @model.follow()
     @render()
 
   unfollow: ->
     mixpanel.track 'Unfollow User',
-      origin: 'Search Bar'
+      from: 'Search Bar'
       
     @model.unfollow()
     @render()

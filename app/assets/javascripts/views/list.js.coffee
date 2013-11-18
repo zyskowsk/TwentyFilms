@@ -22,6 +22,8 @@ class TwentyFilms.Views.List extends Backbone.View
     @_toggleEdit()
 
     if @editing
+      mixpanel.track "Edit List"
+
       @_enabelSort()
     else
       @_removeFilms()
@@ -49,9 +51,17 @@ class TwentyFilms.Views.List extends Backbone.View
       toRemove.push(film) if film.remove
 
     for film in toRemove
+      mixpanel.track "Removed Film",
+        title: film.get 'title',
+        year: film.get 'year',
+        director: film.get 'director',
+        genre: film.get 'genre'
+
       film.destroy()
 
-  _reorderCollection: (newIds) -> 
+  _reorderCollection: (newIds) ->
+    mixpanel.track "Reorder List"
+
     models = []
     for id in newIds
       models.push(@collection.get(id))
