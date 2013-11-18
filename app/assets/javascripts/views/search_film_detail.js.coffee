@@ -5,6 +5,7 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
   events:
     'click .add' : 'addFilm'
     'click .new-film': 'clear'
+    'click .result' : 'clickFilm'
 
   addFilm: ->
     mixpanel.track 'Add Film',
@@ -16,6 +17,10 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
 
     @model.addFilmTo(@collection)
 
+  clickFilm: ->
+    mixpanel.track "Click Film",
+      from: "Search Bar"
+
   render: ->
     alreadyInList = @model.alreadyInList(@collection) if @model
     @$el.html @template 
@@ -25,6 +30,3 @@ class TwentyFilms.Views.SearchFilmDetail extends Backbone.View
       hasTwenty: @collection.length == 20
       
     this
-
-
-      

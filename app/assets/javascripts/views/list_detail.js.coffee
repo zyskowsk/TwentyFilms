@@ -5,11 +5,13 @@ class TwentyFilms.Views.ListDetail extends Backbone.View
   className: 'list-detail'
 
   events: 
-    'click #film-link': 'hideIfVisible'
+    'click .film-link': 'clickFilm'
+
+  clickFilm: ->
+    mixpanel.track 'Click Film',
+      from: 'List'
 
   render: ->
     @$el.html @template(film: @model)
     this
 
-  hideIfVisible: ->
-    $('#film-show').animate(right: -10) if $('#film-show').is('visible')
